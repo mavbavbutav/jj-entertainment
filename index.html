@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J&J Entertainment | John & Jami Ferguson</title>
+  <meta name="description" content="J&J Entertainment is the home for John and Jami Ferguson's creative services, including photography, drone videography, and more." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark">J&amp;J</span>
+        <span class="brand-text">Entertainment</span>
+      </a>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">John &amp; Jami Ferguson</p>
+          <h1>One home for all of your creative services.</h1>
+          <p class="lead">J&amp;J Entertainment is the umbrella brand for the services we offer together. Explore each specialty, learn what we do, and reach out to book your next project.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore Services</a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <h2>What this site can grow into</h2>
+          <ul>
+            <li>Photography</li>
+            <li>Drone videography</li>
+            <li>Events & entertainment</li>
+            <li>Booking inquiry forms</li>
+            <li>Portfolio galleries</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Start with focused landing pages for each business line.</h2>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="/photography/">
+            <h3>Photography</h3>
+            <p>Portraits, events, branding sessions, and professional imagery.</p>
+            <span>Visit /photography →</span>
+          </a>
+          <a class="service-card" href="/drone/">
+            <h3>Drone Videography</h3>
+            <p>Aerial video and photo services for events, real estate, and promotions.</p>
+            <span>Visit /drone →</span>
+          </a>
+          <div class="service-card muted">
+            <h3>More Services Coming</h3>
+            <p>You can add more sections later, such as <strong>/events</strong>, <strong>/dj</strong>, <strong>/rentals</strong>, or <strong>/media</strong>.</p>
+            <span>Built to expand</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section alt">
+      <div class="container narrow">
+        <p class="eyebrow">About</p>
+        <h2>Built as a shared brand for your family business.</h2>
+        <p>J&amp;J Entertainment stands for <strong>John and Jami Ferguson</strong>. Instead of sending people to separate websites with no connection between them, this site gives you one professional home base where visitors can discover every service you offer.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container narrow">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to talk about a project?</h2>
+        <p>Replace the email below with your preferred booking address.</p>
+        <p><a class="contact-link" href="mailto:hello@jjentertainment.com?subject=J%26J%20Entertainment%20Inquiry">hello@jjentertainment.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> J&amp;J Entertainment</p>
+      <p>John &amp; Jami Ferguson</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
