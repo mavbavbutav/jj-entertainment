@@ -407,60 +407,6 @@ h3 {
   transition: transform 0.55s ease, filter 0.4s ease;
 }
 
-.venture-card-media-duo img {
-  position: absolute;
-  inset: 0;
-}
-
-.wallflower-image-primary,
-.wallflower-image-secondary,
-.wallflower-image-tertiary {
-  transition: opacity 0.45s ease;
-}
-
-.wallflower-image-secondary,
-.wallflower-image-tertiary {
-  opacity: 0;
-}
-
-.venture-card:hover .wallflower-image-primary {
-  opacity: 0;
-}
-
-.venture-card:hover .wallflower-image-secondary {
-  animation: wallflower-secondary 6.2s ease-in-out infinite;
-}
-
-.venture-card:hover .wallflower-image-tertiary {
-  animation: wallflower-tertiary 6.2s ease-in-out infinite;
-}
-
-@keyframes wallflower-secondary {
-  0%, 45% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-@keyframes wallflower-tertiary {
-  0%, 45% { opacity: 0; }
-  50%, 95% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .venture-card:hover .wallflower-image-secondary,
-  .venture-card:hover .wallflower-image-tertiary {
-    animation: none;
-  }
-
-  .venture-card:hover .wallflower-image-secondary {
-    opacity: 1;
-  }
-
-  .venture-card:hover .wallflower-image-tertiary {
-    opacity: 0;
-  }
-}
-
 .venture-card-media::after {
   content: "";
   position: absolute;
