@@ -3,98 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>J&J Entertainment | John & Jami Ferguson</title>
-  <meta name="description" content="J&J Entertainment is the home for John and Jami Ferguson's creative services, including photography, drone videography, and more." />
-  <link rel="stylesheet" href="styles.css" />
+  <title>JJ Entertainment Solutions | The Ferguson Family of Creative Ventures in Nashville, TN</title>
+  <meta name="description" content="JJ Entertainment Solutions is the home of the Ferguson family's creative businesses in Nashville and Middle Tennessee: photography, flower wall rentals, aerial videography, and digital craft." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#f4f1ec" />
+  <link rel="canonical" href="https://jjentertainmentsolutions.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <meta property="og:title" content="JJ Entertainment Solutions" />
+  <meta property="og:description" content="The Ferguson family of creative ventures in Nashville and Middle Tennessee." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jjentertainmentsolutions.com/" />
+  <meta property="og:site_name" content="JJ Entertainment Solutions" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JJ Entertainment Solutions" />
+  <meta name="twitter:description" content="The Ferguson family of creative ventures in Nashville and Middle Tennessee." />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JJ Entertainment Solutions",
+      "url": "https://jjentertainmentsolutions.com/",
+      "description": "Family of creative ventures by John and Jami Ferguson, based in Nashville and Middle Tennessee.",
+      "founder": [
+        { "@type": "Person", "name": "John Ferguson" },
+        { "@type": "Person", "name": "Jami Ferguson" }
+      ],
+      "areaServed": ["Nashville, Tennessee", "Middle Tennessee"],
+      "subOrganization": [
+        { "@type": "Organization", "name": "Jami Ferguson Photography", "url": "https://www.jamifergusonphotography.com/" },
+        { "@type": "Organization", "name": "Williamson Wallflowers", "url": "https://www.williamsonwallflowers.com/" },
+        { "@type": "Organization", "name": "Ferguson Aerial Visions", "url": "https://jjentertainmentsolutions.com/drone/" }
+      ]
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="/">
-        <span class="brand-mark">J&amp;J</span>
-        <span class="brand-text">Entertainment</span>
-      </a>
-      <nav>
-        <a href="#services">Services</a>
+    <div class="container nav">
+      <a href="/" class="brand">JJ Entertainment</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#ventures">Ventures</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">John &amp; Jami Ferguson</p>
-          <h1>One home for all of your creative services.</h1>
-          <p class="lead">J&amp;J Entertainment is the umbrella brand for the services we offer together. Explore each specialty, learn what we do, and reach out to book your next project.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#services">Explore Services</a>
-            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
-          </div>
-        </div>
-        <div class="card feature-card">
-          <h2>What this site can grow into</h2>
-          <ul>
-            <li>Photography</li>
-            <li>Drone videography</li>
-            <li>Events & entertainment</li>
-            <li>Booking inquiry forms</li>
-            <li>Portfolio galleries</li>
-          </ul>
+      <div class="container">
+        <p class="eyebrow">Nashville &middot; Middle Tennessee</p>
+        <h1>The Ferguson family of creative ventures.</h1>
+        <p class="lead">Photography, flower walls, aerial videography, and digital craft &mdash; brought to life by John &amp; Jami Ferguson from our home in Middle Tennessee.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#ventures">Explore Ventures</a>
+          <a class="btn btn-ghost" href="#contact">Get in Touch</a>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section">
+    <section id="ventures" class="section">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Services</p>
-          <h2>Start with focused landing pages for each business line.</h2>
+        <div class="section-head">
+          <p class="eyebrow">Ventures</p>
+          <h2>Four businesses, one family.</h2>
+          <p class="lead">Each venture stands on its own &mdash; with its own style, clients, and story. Together they represent the work we love and the life we&rsquo;re building.</p>
         </div>
-        <div class="service-grid">
-          <a class="service-card" href="/photography/">
-            <h3>Photography</h3>
-            <p>Portraits, events, branding sessions, and professional imagery.</p>
-            <span>Visit /photography →</span>
+
+        <div class="ventures-grid">
+          <a class="venture-card" href="https://www.jamifergusonphotography.com/" target="_blank" rel="noopener">
+            <span class="external-tag">Jami</span>
+            <p class="eyebrow">Photography</p>
+            <h3>Jami Ferguson Photography</h3>
+            <p>Weddings, portraits, and family sessions crafted with a warm, timeless eye.</p>
+            <span class="venture-link">Visit Site</span>
           </a>
-          <a class="service-card" href="/drone/">
-            <h3>Drone Videography</h3>
-            <p>Aerial video and photo services for events, real estate, and promotions.</p>
-            <span>Visit /drone →</span>
+
+          <a class="venture-card" href="https://www.williamsonwallflowers.com/" target="_blank" rel="noopener">
+            <span class="external-tag">Jami</span>
+            <p class="eyebrow">Flower Walls</p>
+            <h3>Williamson Wallflowers</h3>
+            <p>Luxury flower wall rentals for weddings, showers, and special celebrations.</p>
+            <span class="venture-link">Visit Site</span>
           </a>
-          <div class="service-card muted">
-            <h3>More Services Coming</h3>
-            <p>You can add more sections later, such as <strong>/events</strong>, <strong>/dj</strong>, <strong>/rentals</strong>, or <strong>/media</strong>.</p>
-            <span>Built to expand</span>
-          </div>
+
+          <a class="venture-card" href="/drone/">
+            <span class="external-tag">John</span>
+            <p class="eyebrow">Aerial Videography</p>
+            <h3>Ferguson Aerial Visions</h3>
+            <p>FAA Part 107 licensed drone videography for weddings, real estate, and events.</p>
+            <span class="venture-link">Learn More</span>
+          </a>
+
+          <a class="venture-card" href="/ai/">
+            <span class="external-tag">John</span>
+            <p class="eyebrow">Digital Craft</p>
+            <h3>Web, AI &amp; Automation</h3>
+            <p>Custom websites, AI integrations, and workflow automation for small businesses.</p>
+            <span class="venture-link">Learn More</span>
+          </a>
         </div>
       </div>
     </section>
 
     <section id="about" class="section alt">
-      <div class="container narrow">
-        <p class="eyebrow">About</p>
-        <h2>Built as a shared brand for your family business.</h2>
-        <p>J&amp;J Entertainment stands for <strong>John and Jami Ferguson</strong>. Instead of sending people to separate websites with no connection between them, this site gives you one professional home base where visitors can discover every service you offer.</p>
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2>Meet John &amp; Jami Ferguson.</h2>
+          </div>
+          <div>
+            <p>We&rsquo;re a husband-and-wife team in the Nashville area who&rsquo;ve spent years turning our creative passions into small businesses. Jami runs a wedding and portrait photography studio and a luxury flower wall rental company. John captures cinematic aerial footage and builds modern digital tools for other entrepreneurs.</p>
+            <p>JJ Entertainment Solutions is how we keep it all in one place &mdash; a single home for the people, couples, and small businesses who want to work with us.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="section">
       <div class="container narrow">
         <p class="eyebrow">Contact</p>
-        <h2>Ready to talk about a project?</h2>
-        <p>Replace the email below with your preferred booking address.</p>
-        <p><a class="contact-link" href="mailto:hello@jjentertainment.com?subject=J%26J%20Entertainment%20Inquiry">hello@jjentertainment.com</a></p>
+        <h2>Let&rsquo;s start a conversation.</h2>
+        <p class="lead">Reach out to whichever of us fits your project best &mdash; or send a note to either of us and we&rsquo;ll point you to the right place.</p>
+
+        <div class="contact-block">
+          <div class="contact-card">
+            <p class="name">Jami Ferguson</p>
+            <p class="role">Photography &middot; Flower Walls</p>
+            <a href="mailto:jamicarswell@gmail.com">jamicarswell@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <p class="name">John Ferguson</p>
+            <p class="role">Aerial &middot; Digital</p>
+            <a href="mailto:johnmartinferguson@gmail.com">johnmartinferguson@gmail.com</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© <span id="year"></span> J&amp;J Entertainment</p>
-      <p>John &amp; Jami Ferguson</p>
+      <p>&copy; <span id="year"></span> JJ Entertainment Solutions &middot; Nashville, TN</p>
+      <nav aria-label="Footer">
+        <a href="https://www.jamifergusonphotography.com/" target="_blank" rel="noopener">Jami Ferguson Photography</a>
+        <a href="https://www.williamsonwallflowers.com/" target="_blank" rel="noopener">Williamson Wallflowers</a>
+        <a href="/drone/">Ferguson Aerial Visions</a>
+      </nav>
     </div>
   </footer>
 
