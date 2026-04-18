@@ -200,6 +200,17 @@ h3 {
   z-index: 1;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
 .hero h1 { max-width: 18ch; }
 
 .hero-actions {
@@ -207,6 +218,72 @@ h3 {
   gap: 0.9rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+}
+
+.hero-watermark {
+  position: relative;
+  min-height: clamp(280px, 35vw, 430px);
+  border-radius: clamp(24px, 3vw, 34px);
+  border: 1px solid rgba(221, 212, 202, 0.9);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.88), transparent 38%),
+    radial-gradient(circle at 84% 12%, rgba(183, 163, 144, 0.22), transparent 34%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.78), rgba(244, 239, 232, 0.8));
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-watermark::before,
+.hero-watermark::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.hero-watermark::before {
+  width: 78%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(143, 122, 102, 0.26);
+  transform: translate(-8%, 3%) rotate(-10deg);
+}
+
+.hero-watermark::after {
+  width: 68%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(143, 122, 102, 0.2);
+  transform: translate(11%, -8%) rotate(12deg);
+}
+
+.hero-watermark-mark {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+  color: rgba(94, 78, 65, 0.78);
+}
+
+.hero-watermark-mono {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.4rem, 10vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 6px 16px rgba(47, 43, 40, 0.1);
+}
+
+.hero-watermark-name {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .btn {
@@ -766,6 +843,8 @@ h3 {
 
   .about-grid { gap: 1.5rem; }
   .hero { padding: 4.5rem 0 3rem; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-watermark { display: none; }
   .section { padding: 4rem 0; }
   .nav-links { gap: 1rem; font-size: 0.85rem; }
 
