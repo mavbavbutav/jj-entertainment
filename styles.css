@@ -87,15 +87,12 @@ button:focus-visible {
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-}
-
-.brand-logo {
-  width: clamp(118px, 14vw, 160px);
-  height: auto;
-  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .nav-links {
@@ -830,7 +827,10 @@ h3 {
 }
 
 @media (max-width: 560px) {
-  .brand-logo { width: 128px; }
+  .brand {
+    letter-spacing: 0.16em;
+    font-size: 1.05rem;
+  }
 
   .nav-links a:not(.nav-cta) { display: none; }
 
