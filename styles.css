@@ -231,6 +231,19 @@ h3 {
   margin-top: 2rem;
 }
 
+.hero-mark-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/logo-jj-mark.png");
+  background-repeat: no-repeat;
+  background-position: 65% 100%;
+  background-size: clamp(340px, 56vw, 720px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
