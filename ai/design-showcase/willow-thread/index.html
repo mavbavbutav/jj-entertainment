@@ -3,193 +3,1111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Willow &amp; Thread Fashion Boutique | Design Showcase by JJE Digital</title>
-  <meta name="description" content="A JJE Digital design showcase for a chic fashion boutique website with shopping, category browsing, origin story, cart preview, and footer contact details." />
+  <title>Willow &amp; Thread Fashion Boutique | JJE Digital Design Showcase</title>
+  <meta name="description" content="A JJE Digital design showcase for Willow &amp; Thread, a chic fashion boutique with curated pieces, private styling, and local pickup." />
   <meta name="robots" content="noindex,nofollow" />
+  <meta property="og:title" content="Willow &amp; Thread Fashion Boutique" />
+  <meta property="og:description" content="Curated pieces for a softer kind of statement." />
+  <meta property="og:image" content="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── DESIGN TOKENS (derived from logo) ─── */
+    :root {
+      --wine:        #3D0A10;   /* logo background — dominant brand */
+      --wine-mid:    #5C1520;   /* hover state */
+      --gold:        #BF9B5A;   /* logo script color */
+      --gold-light:  #D4B47A;   /* lighter gold accent */
+      --blush:       #E8C4B0;   /* garment color */
+      --blush-light: #F4E0D4;   /* subtle blush tint */
+      --cream:       #FAF6F1;   /* page background */
+      --parchment:   #F0E8DE;   /* alternate section bg */
+      --ink:         #1A0508;   /* near-black text */
+      --muted:       #8B6866;   /* supporting text */
+      --border:      rgba(191,155,90,.22);
+
+      --font-script: 'Great Vibes', cursive;
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'Manrope', system-ui, sans-serif;
+
+      --max-w: 1280px;
+      --ease:  0.3s ease;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img  { display: block; width: 100%; height: auto; }
+    a    { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 7rem 0; }
+    .section--parchment { background: var(--parchment); }
+    .section--wine { background: var(--wine); }
+
+    /* ─── TYPE HELPERS ─── */
+    .label {
+      display: block;
+      font-size: .67rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .label--light { color: rgba(232,196,176,.65); }
+    .label--gold  { color: var(--gold); }
+
+    .gold-rule {
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+    .gold-rule--left { margin-left: 0; }
+
+    .section-head { text-align: center; margin-bottom: 4rem; }
+    .section-head h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: .02em;
+    }
+    .section-head--light h2  { color: var(--cream); }
+    .section-head--light .gold-rule { background: var(--gold); }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(250,246,241,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--ease);
+    }
+    .nav.scrolled { box-shadow: 0 2px 24px rgba(61,10,16,.08); }
+
+    .nav-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 68px;
+      padding: 0 2rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--ink); opacity: .6;
+      transition: opacity var(--ease);
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-brand {
+      text-align: center;
+      font-family: var(--font-script);
+      font-size: 1.75rem;
+      color: var(--wine);
+      line-height: 1;
+    }
+
+    .nav-actions {
+      display: flex; justify-content: flex-end; align-items: center; gap: 1.5rem;
+    }
+    .cart-btn {
+      display: flex; align-items: center; gap: 6px;
+      font-size: .67rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--ink); opacity: .6;
+      transition: opacity var(--ease);
+    }
+    .cart-btn:hover { opacity: 1; }
+    .cart-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 17px; height: 17px; border-radius: 50%;
+      background: var(--wine); color: var(--cream);
+      font-size: .58rem; font-weight: 600;
+      opacity: 0; transform: scale(.4);
+      transition: opacity var(--ease), transform var(--ease);
+    }
+    .cart-count.show { opacity: 1; transform: scale(1); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=85') center 30%/cover;
+      transform: scale(1.05);
+      transition: transform 9s ease;
+    }
+    .hero-bg.ready { transform: scale(1); }
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(26,5,8,.12) 0%,
+        rgba(26,5,8,.45) 55%,
+        rgba(26,5,8,.68) 100%
+      );
+    }
+    .hero-body {
+      position: relative; z-index: 1;
+      text-align: center; color: var(--cream);
+      padding: 2rem;
+    }
+    .hero-logo {
+      width: 140px; margin: 0 auto 2rem;
+      opacity: .92; filter: drop-shadow(0 4px 24px rgba(26,5,8,.4));
+    }
+    .hero-sub {
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--cream);
+      border-bottom: 1px solid rgba(212,180,122,.45);
+      padding-bottom: 4px;
+      transition: gap var(--ease), border-color var(--ease);
+    }
+    .hero-cta:hover { gap: 18px; border-color: var(--gold-light); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, transparent, rgba(212,180,122,.55));
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+    /* fade-up entrance */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .hero-body > * { animation: fadeUp .9s ease both; }
+    .hero-body > *:nth-child(1){ animation-delay:.1s; }
+    .hero-body > *:nth-child(2){ animation-delay:.28s; }
+    .hero-body > *:nth-child(3){ animation-delay:.46s; }
+
+    /* ─── EDITORIAL BAND ─── */
+    .editorial { background: var(--wine); }
+    .editorial-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      max-width: var(--max-w); margin: 0 auto;
+    }
+    .editorial-img { aspect-ratio: 4/5; overflow: hidden; }
+    .editorial-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .8s ease;
+    }
+    .editorial-img:hover img { transform: scale(1.05); }
+    .editorial-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem;
+      color: var(--cream);
+    }
+    .editorial-quote {
+      font-family: var(--font-serif);
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      line-height: 1.4;
+      color: var(--blush-light);
+      margin: 1.5rem 0 2rem;
+    }
+    .editorial-text p {
+      font-size: .88rem; color: rgba(232,196,176,.65);
+      max-width: 300px; margin-bottom: 2.5rem;
+    }
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      transition: gap var(--ease);
+    }
+    .link-arrow:hover { gap: 18px; }
+    .link-arrow--light { color: var(--blush-light); }
+    .link-arrow--wine  { color: var(--wine); border-bottom: 1px solid var(--border); padding-bottom: 3px; }
+
+    /* ─── SHOP / FILTERS ─── */
+    .filter-row {
+      display: flex; justify-content: center;
+      gap: 2rem; margin-bottom: 3.5rem; flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .filter-btn:hover { color: var(--ink); }
+    .filter-btn[aria-pressed="true"] { color: var(--wine); border-bottom-color: var(--gold); }
+
+    /* ─── PRODUCT GRID ─── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1.75rem;
+    }
+    @media(max-width:1100px){ .product-grid{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:720px) { .product-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:440px) { .product-grid{grid-template-columns:1fr;} }
+
+    .product-card { position: relative; }
+    .product-img-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4; background: var(--parchment);
+      margin-bottom: 1rem;
+    }
+    .product-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .65s ease;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.07); }
+
+    .product-badge {
+      position: absolute; top: 10px; left: 10px; z-index: 1;
+      font-size: .58rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; padding: 4px 10px;
+    }
+    .badge--new     { background: var(--wine); color: var(--cream); }
+    .badge--limited { background: var(--gold); color: var(--wine); }
+
+    .quick-add {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(26,5,8,.84);
+      color: var(--cream);
+      font-size: .62rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      text-align: center; padding: 14px;
+      transform: translateY(100%);
+      transition: transform .3s ease;
+      width: 100%;
+    }
+    .product-card:hover .quick-add { transform: translateY(0); }
+    .quick-add.added { background: var(--wine-mid); }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 6px;
+    }
+    .product-foot {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: .9rem; color: var(--muted);
+    }
+    .add-btn {
+      font-size: .6rem; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--wine);
+      border-bottom: 1px solid var(--border); padding-bottom: 2px;
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .add-btn:hover  { color: var(--gold); border-bottom-color: var(--gold); }
+    .add-btn.added  { color: var(--gold); }
+
+    /* ─── STORY ─── */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .story-img { overflow: hidden; min-height: 580px; }
+    .story-img img { width:100%; height:100%; object-fit:cover; }
+    .story-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem;
+    }
+    .story-pull {
+      font-family: var(--font-serif);
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      line-height: 1.45; color: var(--wine);
+      margin: 1.5rem 0 2rem;
+    }
+    .story-text p {
+      font-size: .9rem; color: var(--muted);
+      max-width: 380px; margin-bottom: 1.25rem;
+    }
+    .founder {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 2rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .founder-img {
+      width: 52px; height: 52px;
+      border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--blush);
+      flex-shrink: 0;
+    }
+    .founder-name  { font-family:var(--font-script); font-size:1.5rem; color:var(--wine); line-height:1; }
+    .founder-title { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+
+    .values {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+      padding-top: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .value { text-align: center; }
+    .value-icon  { font-size:1.1rem; color:var(--gold); margin-bottom:.5rem; }
+    .value-title { font-family:var(--font-serif); font-size:.9rem; color:var(--ink); margin-bottom:2px; }
+    .value-desc  { font-size:.75rem; color:var(--muted); }
+
+    /* ─── CART ─── */
+    .cart-layout { display:grid; grid-template-columns:1fr 360px; gap:4rem; align-items:start; }
+    @media(max-width:860px){ .cart-layout{grid-template-columns:1fr;} }
+
+    .cart-empty { display:none; text-align:center; padding:4rem 0; }
+    .cart-empty.show { display:block; }
+    .cart-empty-icon { font-size:2rem; opacity:.25; margin-bottom:1rem; }
+    .cart-empty p { font-family:var(--font-serif); font-style:italic; font-size:1.1rem; color:var(--muted); margin-bottom:1.5rem; }
+    .cart-list { display:block; }
+    .cart-list.hide { display:none; }
+
+    .cart-item {
+      display: grid; grid-template-columns:68px 1fr auto;
+      gap: 1rem; align-items: center;
+      padding: 1rem 0; border-bottom: 1px solid var(--border);
+    }
+    .cart-item-thumb { width:68px; height:84px; object-fit:cover; }
+    .cart-item-name  { font-family:var(--font-serif); font-size:.95rem; color:var(--ink); }
+    .cart-item-cat   { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+    .cart-item-price { font-family:var(--font-serif); font-size:.95rem; text-align:right; }
+    .cart-remove {
+      display:block; font-size:.58rem;
+      letter-spacing:.12em; text-transform:uppercase;
+      color:var(--muted); margin-top:4px;
+      text-align:right; transition:color var(--ease);
+    }
+    .cart-remove:hover { color:var(--wine); }
+
+    .cart-summary {
+      background: var(--cream); border: 1px solid var(--border);
+      padding: 2rem; display:none;
+    }
+    .cart-summary.show { display:block; }
+    .cart-summary-title {
+      font-family:var(--font-serif); font-size:1.05rem;
+      margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--border);
+    }
+    .summary-line { display:flex; justify-content:space-between; font-size:.85rem; color:var(--muted); margin-bottom:.75rem; }
+    .summary-line.total {
+      font-family:var(--font-serif); font-size:1rem; color:var(--ink);
+      padding-top:1rem; border-top:1px solid var(--border); margin-top:.75rem;
+    }
+    .checkout-btn {
+      display:block; width:100%; text-align:center;
+      background:var(--wine); color:var(--cream);
+      font-size:.67rem; font-weight:600;
+      letter-spacing:.2em; text-transform:uppercase;
+      padding:15px; margin-top:1.5rem;
+      transition:background var(--ease);
+    }
+    .checkout-btn:hover { background:var(--wine-mid); }
+    .pickup-note { font-size:.7rem; color:var(--muted); text-align:center; margin-top:.75rem; }
+
+    /* ─── NEWSLETTER ─── */
+    .newsletter { background:var(--wine); padding:4.5rem 0; }
+    .newsletter-inner { max-width:520px; margin:0 auto; text-align:center; padding:0 2rem; }
+    .newsletter-inner .label { margin-bottom:1rem; }
+    .newsletter-headline {
+      font-family:var(--font-serif); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:300;
+      color:var(--cream); margin-bottom:2rem;
+    }
+    .newsletter-form { display:flex; max-width:380px; margin:0 auto; }
+    .newsletter-input {
+      flex:1; background:rgba(250,246,241,.1);
+      border:1px solid rgba(212,180,122,.3); border-right:none;
+      color:var(--cream); font-size:.85rem; font-family:var(--font-sans);
+      padding:11px 16px; outline:none;
+      transition:border-color var(--ease);
+    }
+    .newsletter-input::placeholder { color:rgba(250,246,241,.4); }
+    .newsletter-input:focus { border-color:rgba(212,180,122,.65); }
+    .newsletter-submit {
+      background:var(--gold); color:var(--wine);
+      font-size:.63rem; font-weight:600;
+      letter-spacing:.18em; text-transform:uppercase;
+      padding:11px 22px; white-space:nowrap;
+      transition:background var(--ease);
+    }
+    .newsletter-submit:hover { background:var(--gold-light); }
+
+    /* ─── CONTACT ─── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    @media(max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+
+    .contact-meta h2 {
+      font-family:var(--font-serif);
+      font-size:clamp(1.5rem,2.5vw,2.1rem); font-weight:300;
+      margin-bottom:2.5rem;
+    }
+    .contact-detail { display:grid; grid-template-columns:76px 1fr; gap:.75rem; margin-bottom:1rem; font-size:.88rem; }
+    .detail-label { font-size:.62rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); padding-top:2px; }
+    .detail-val { color:var(--muted); line-height:1.6; }
+
+    .socials { display:flex; gap:1.75rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+    .social-link {
+      font-size:.62rem; font-weight:600;
+      letter-spacing:.18em; text-transform:uppercase;
+      color:var(--muted); border-bottom:1px solid transparent;
+      padding-bottom:2px; transition:all var(--ease);
+    }
+    .social-link:hover { color:var(--wine); border-bottom-color:var(--gold); }
+
+    .form-group { margin-bottom:1.25rem; }
+    .form-label { display:block; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .form-field {
+      width:100%; background:transparent; border:none;
+      border-bottom:1px solid var(--border);
+      color:var(--ink); font-size:.9rem; font-family:var(--font-sans);
+      padding:9px 0; outline:none;
+      transition:border-color var(--ease);
+      appearance:none; -webkit-appearance:none;
+    }
+    .form-field:focus { border-bottom-color:var(--gold); }
+    .form-field::placeholder { color:var(--muted); opacity:.5; }
+    .select-wrap { position:relative; }
+    .select-wrap::after { content:'↓'; position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:.7rem; color:var(--gold); pointer-events:none; }
+    .form-submit {
+      margin-top:2rem;
+      background:transparent; border:1px solid var(--wine);
+      color:var(--wine);
+      font-size:.67rem; font-weight:600;
+      letter-spacing:.2em; text-transform:uppercase;
+      padding:13px 38px;
+      transition:background var(--ease), color var(--ease);
+    }
+    .form-submit:hover { background:var(--wine); color:var(--cream); }
+    .form-note { font-size:.7rem; color:var(--muted); margin-top:.75rem; opacity:.65; }
+
+    /* ─── FOOTER ─── */
+    .footer { background:var(--ink); padding:5rem 0 2.5rem; }
+    .footer-grid {
+      display:grid; grid-template-columns:1.3fr 1fr 1fr 1.3fr;
+      gap:3rem; margin-bottom:4rem;
+    }
+    @media(max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr; gap:2rem;} }
+    @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} }
+
+    .footer-brand img { width:80px; margin-bottom:1.25rem; opacity:.8; }
+    .footer-brand p { font-size:.8rem; color:rgba(250,246,241,.4); max-width:200px; line-height:1.7; margin-bottom:1.5rem; }
+    .footer-social { display:flex; gap:1.25rem; }
+    .footer-social a { font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:rgba(250,246,241,.4); transition:color var(--ease); }
+    .footer-social a:hover { color:var(--gold); }
+
+    .footer-col h4 { font-size:.6rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:.75rem; }
+    .footer-col a { font-size:.82rem; color:rgba(250,246,241,.45); transition:color var(--ease); }
+    .footer-col a:hover { color:var(--cream); }
+
+    .footer-addr { font-size:.82rem; color:rgba(250,246,241,.45); line-height:1.9; }
+    .footer-addr strong { display:block; font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; margin-top:1rem; }
+    .footer-addr strong:first-child { margin-top:0; }
+
+    .footer-bottom {
+      border-top:1px solid rgba(250,246,241,.08); padding-top:1.5rem;
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.75rem;
+    }
+    .footer-bottom span, .footer-bottom a { font-size:.7rem; color:rgba(250,246,241,.28); }
+    .footer-bottom a:hover { color:rgba(250,246,241,.55); }
+
+    /* ─── RESPONSIVE MISC ─── */
+    @media(max-width:900px){
+      .story-grid { grid-template-columns:1fr; }
+      .story-img  { min-height:340px; }
+      .story-text { padding:3rem 2rem; }
+      .editorial-grid { grid-template-columns:1fr; }
+      .editorial-text { padding:3rem 2rem; }
+      .nav-links { display:none; }
+    }
+    @media(max-width:600px){
+      .values { grid-template-columns:1fr; }
+      .newsletter-form { flex-direction:column; }
+      .newsletter-input { border-right:1px solid rgba(212,180,122,.3); }
+    }
+  </style>
 </head>
-<body class="showcase-page willow-theme">
-  <header class="showcase-topbar">
-    <div class="showcase-wrap showcase-nav">
-      <a class="showcase-brand" href="#top" aria-label="Willow and Thread home">
-        <span class="showcase-logo showcase-logo-image" aria-hidden="true">
-          <img src="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png" alt="" />
-        </span>
-        <span>Willow &amp; Thread</span>
-      </a>
-      <nav class="showcase-links" aria-label="Primary">
-        <a href="#shop">Shop</a>
-        <a href="#story">Story</a>
-        <a href="#cart">Cart</a>
-        <a class="showcase-cta" href="#contact">Visit Boutique</a>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#contact">Visit Us</a></li>
+        </ul>
       </nav>
+      <a class="nav-brand" href="#top" aria-label="Willow &amp; Thread home">Willow &amp; Thread</a>
+      <div class="nav-actions">
+        <button class="cart-btn" type="button" onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})" aria-label="View cart">
+          Cart
+          <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="showcase-hero">
-      <div class="showcase-wrap showcase-hero-grid">
-        <div>
-          <img class="showcase-brand-art" src="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png" alt="Willow &amp; Thread Fashion Boutique logo" />
-          <p class="showcase-kicker">New arrivals now styled</p>
-          <h1>Curated pieces for a softer kind of statement.</h1>
-          <p class="showcase-lead">A polished boutique storefront built around editorial product imagery, fast category browsing, and a simple cart flow for shoppers ready to buy.</p>
-          <div class="showcase-actions">
-            <a class="showcase-cta" href="#shop">Shop New Arrivals</a>
-            <a class="showcase-cta showcase-ghost" href="#story">Our Story</a>
-          </div>
-          <div class="showcase-mini-row" aria-label="Featured categories">
-            <span class="showcase-pill">New Arrivals</span>
-            <span class="showcase-pill">Private Styling</span>
-            <span class="showcase-pill">Local Pickup</span>
-            <span class="showcase-pill">Capsule Edits</span>
-          </div>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" aria-label="Hero — Spring Collection">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-scrim"></div>
+      <div class="hero-body">
+        <img class="hero-logo"
+             src="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png"
+             alt="Willow &amp; Thread Fashion Boutique" />
+        <p class="hero-sub">Spring Collection — Now In Boutique</p>
+        <a class="hero-cta" href="#shop">Explore the Collection &rarr;</a>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="hero-scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══ EDITORIAL BAND ═══ -->
+    <section class="editorial" aria-label="Spring Edit feature">
+      <div class="editorial-grid">
+        <div class="editorial-img">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=82"
+               alt="Spring capsule editorial" loading="lazy" />
         </div>
-        <div class="showcase-media">
-          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=82" alt="Boutique shopper holding curated fashion pieces" />
-          <div class="showcase-badge">
-            <strong>Spring Capsule</strong>
-            <span>Layered neutrals, soft tailoring, and weekend-ready accessories.</span>
+        <div class="editorial-text">
+          <span class="label label--light">The Spring Edit</span>
+          <blockquote class="editorial-quote">
+            &ldquo;Fewer pieces.<br>Better outfits.<br>That was the whole idea.&rdquo;
+          </blockquote>
+          <p>Soft tailoring, layered neutrals, and weekend-ready pieces curated for your actual life.</p>
+          <a class="link-arrow link-arrow--light" href="#shop">Shop the Edit &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SHOP ═══ -->
+    <section id="shop" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label">The Collection</span>
+          <span class="gold-rule"></span>
+          <h2>Shop by category</h2>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="Filter by category">
+          <button class="filter-btn" type="button" data-filter="all"         aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="dresses"     aria-pressed="false">Dresses</button>
+          <button class="filter-btn" type="button" data-filter="casual"      aria-pressed="false">Casual</button>
+          <button class="filter-btn" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
+          <button class="filter-btn" type="button" data-filter="shoes"       aria-pressed="false">Shoes</button>
+        </div>
+
+        <div class="product-grid">
+
+          <article class="product-card" data-category="dresses">
+            <div class="product-img-wrap">
+              <span class="product-badge badge--new">New</span>
+              <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=82"
+                   alt="Garden Brunch Dress" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Garden Brunch Dress" data-price="118" data-cat="Dresses"
+                data-img="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Garden Brunch Dress</h3>
+            <div class="product-foot">
+              <data class="product-price" value="118">$118</data>
+              <button class="add-btn" type="button"
+                data-name="Garden Brunch Dress" data-price="118" data-cat="Dresses"
+                data-img="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="dresses">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=700&q=82"
+                   alt="Evening Slip Dress" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Evening Slip Dress" data-price="145" data-cat="Dresses"
+                data-img="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Evening Slip Dress</h3>
+            <div class="product-foot">
+              <data class="product-price" value="145">$145</data>
+              <button class="add-btn" type="button"
+                data-name="Evening Slip Dress" data-price="145" data-cat="Dresses"
+                data-img="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="casual">
+            <div class="product-img-wrap">
+              <span class="product-badge badge--new">New</span>
+              <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=82"
+                   alt="Linen Weekend Set" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Linen Weekend Set" data-price="89" data-cat="Casual"
+                data-img="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Linen Weekend Set</h3>
+            <div class="product-foot">
+              <data class="product-price" value="89">$89</data>
+              <button class="add-btn" type="button"
+                data-name="Linen Weekend Set" data-price="89" data-cat="Casual"
+                data-img="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="casual">
+            <div class="product-img-wrap">
+              <span class="product-badge badge--limited">2 Left</span>
+              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=82"
+                   alt="Soft Knit Turtleneck" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Soft Knit Turtleneck" data-price="72" data-cat="Casual"
+                data-img="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Soft Knit Turtleneck</h3>
+            <div class="product-foot">
+              <data class="product-price" value="72">$72</data>
+              <button class="add-btn" type="button"
+                data-name="Soft Knit Turtleneck" data-price="72" data-cat="Casual"
+                data-img="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="accessories">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=82"
+                   alt="Everyday Gold Set" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Everyday Gold Set" data-price="46" data-cat="Accessories"
+                data-img="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Everyday Gold Set</h3>
+            <div class="product-foot">
+              <data class="product-price" value="46">$46</data>
+              <button class="add-btn" type="button"
+                data-name="Everyday Gold Set" data-price="46" data-cat="Accessories"
+                data-img="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="accessories">
+            <div class="product-img-wrap">
+              <span class="product-badge badge--new">New</span>
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=82"
+                   alt="Structured Tote" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Structured Tote" data-price="128" data-cat="Accessories"
+                data-img="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Structured Tote</h3>
+            <div class="product-foot">
+              <data class="product-price" value="128">$128</data>
+              <button class="add-btn" type="button"
+                data-name="Structured Tote" data-price="128" data-cat="Accessories"
+                data-img="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="shoes">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=82"
+                   alt="Sunday Block Heel" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Sunday Block Heel" data-price="92" data-cat="Shoes"
+                data-img="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Sunday Block Heel</h3>
+            <div class="product-foot">
+              <data class="product-price" value="92">$92</data>
+              <button class="add-btn" type="button"
+                data-name="Sunday Block Heel" data-price="92" data-cat="Shoes"
+                data-img="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="shoes">
+            <div class="product-img-wrap">
+              <span class="product-badge badge--limited">3 Left</span>
+              <img src="https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?auto=format&fit=crop&w=700&q=82"
+                   alt="Woven Mule Sandal" loading="lazy" />
+              <button class="quick-add" type="button"
+                data-name="Woven Mule Sandal" data-price="108" data-cat="Shoes"
+                data-img="https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?auto=format&fit=crop&w=700&q=82">
+                Add to Cart
+              </button>
+            </div>
+            <h3 class="product-name">Woven Mule Sandal</h3>
+            <div class="product-foot">
+              <data class="product-price" value="108">$108</data>
+              <button class="add-btn" type="button"
+                data-name="Woven Mule Sandal" data-price="108" data-cat="Shoes"
+                data-img="https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?auto=format&fit=crop&w=700&q=82">
+                Add
+              </button>
+            </div>
+          </article>
+
+        </div><!-- /product-grid -->
+      </div>
+    </section>
+
+    <!-- ═══ STORY ═══ -->
+    <section id="story" class="section section--parchment" style="padding:0;">
+      <div class="story-grid">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=900&q=82"
+               alt="Boutique interior with curated fashion pieces" loading="lazy" />
+        </div>
+        <div class="story-text">
+          <span class="label">Our Story</span>
+          <span class="gold-rule gold-rule--left"></span>
+          <blockquote class="story-pull">
+            A local styling studio for women who wanted fewer pieces and better outfits.
+          </blockquote>
+          <p>Willow &amp; Thread began as a conversation about why getting dressed felt so hard. The answer was always too much — too many options, not enough intention.</p>
+          <p>We built this boutique to fix that. Everything we carry is chosen with your real life in mind.</p>
+          <div class="founder">
+            <img class="founder-img"
+                 src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=100&q=80"
+                 alt="Claire Rousseau, founder" />
+            <div>
+              <div class="founder-name">Claire Rousseau</div>
+              <div class="founder-title">Founder &amp; Head Stylist</div>
+            </div>
+          </div>
+          <div class="values">
+            <div class="value">
+              <div class="value-icon">✦</div>
+              <div class="value-title">Locally Curated</div>
+              <div class="value-desc">Chosen for your community</div>
+            </div>
+            <div class="value">
+              <div class="value-icon">✦</div>
+              <div class="value-title">Quality First</div>
+              <div class="value-desc">Fewer, better pieces</div>
+            </div>
+            <div class="value">
+              <div class="value-icon">✦</div>
+              <div class="value-title">Styled for Life</div>
+              <div class="value-desc">Real outfits, not just looks</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="shop" class="showcase-section alt">
-      <div class="showcase-wrap">
-        <div class="showcase-head">
+    <!-- ═══ CART ═══ -->
+    <section id="cart" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label">Your Bag</span>
+          <span class="gold-rule"></span>
+          <h2>Review your selection</h2>
+        </div>
+        <div class="cart-layout">
           <div>
-            <p class="showcase-kicker">Shop page concept</p>
-            <h2>Shop by category, styled for browsing.</h2>
-            <p>Product cards are designed for quick category scanning, confident mobile shopping, and campaign-ready seasonal edits.</p>
+            <div class="cart-empty show" id="cartEmpty">
+              <div class="cart-empty-icon">✦</div>
+              <p>Your bag is empty — let&rsquo;s fix that.</p>
+              <a class="link-arrow link-arrow--wine" href="#shop">Return to Shop &rarr;</a>
+            </div>
+            <div class="cart-list hide" id="cartList"></div>
           </div>
-        </div>
-        <div class="showcase-filter-row" aria-label="Product filters">
-          <button class="showcase-pill showcase-filter" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="showcase-pill showcase-filter" type="button" data-filter="dresses" aria-pressed="false">Dresses</button>
-          <button class="showcase-pill showcase-filter" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
-          <button class="showcase-pill showcase-filter" type="button" data-filter="shoes" aria-pressed="false">Shoes</button>
-        </div>
-        <div class="showcase-grid-3">
-          <article class="showcase-card" data-category="dresses">
-            <img class="showcase-thumb" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=82" alt="Elegant boutique dress" />
-            <div class="showcase-card-body">
-              <h3>Garden Brunch Dress</h3>
-              <p>Flowy midi silhouette with a soft floral finish.</p>
-              <div class="showcase-card-actions">
-                <p class="price">$118</p>
-                <button class="showcase-link-button" type="button">Add to Cart</button>
-              </div>
-            </div>
-          </article>
-          <article class="showcase-card" data-category="accessories">
-            <img class="showcase-thumb" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=82" alt="Fashion accessories laid out" />
-            <div class="showcase-card-body">
-              <h3>Everyday Gold Set</h3>
-              <p>Layered earrings and bracelet pairing for capsule styling.</p>
-              <div class="showcase-card-actions">
-                <p class="price">$46</p>
-                <button class="showcase-link-button" type="button">Add to Cart</button>
-              </div>
-            </div>
-          </article>
-          <article class="showcase-card" data-category="shoes">
-            <img class="showcase-thumb" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=82" alt="Chic shoes displayed in boutique style" />
-            <div class="showcase-card-body">
-              <h3>Sunday Block Heel</h3>
-              <p>Low-profile comfort with a polished boutique finish.</p>
-              <div class="showcase-card-actions">
-                <p class="price">$92</p>
-                <button class="showcase-link-button" type="button">Add to Cart</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="story" class="showcase-section">
-      <div class="showcase-wrap showcase-grid-2">
-        <div class="showcase-panel">
-          <p class="showcase-kicker">About page concept</p>
-          <h2>A boutique with an edited point of view.</h2>
-          <p class="showcase-lead">Willow &amp; Thread began as a local styling studio for women who wanted fewer pieces and better outfits. The site turns that origin story into a warm, shoppable brand narrative.</p>
-          <ul class="showcase-list">
-            <li>Founder-led copy blocks for trust and local personality.</li>
-            <li>Mission language focused on confidence, quality, and everyday styling.</li>
-            <li>Visual calls to action that move shoppers back into product categories.</li>
-          </ul>
-        </div>
-        <div id="cart" class="showcase-panel">
-          <p class="showcase-kicker">Shopping cart concept</p>
-          <h2>Simple cart, fewer second guesses.</h2>
-          <div class="cart-preview">
-            <div class="cart-line"><span>Garden Brunch Dress</span><span class="price">$118</span></div>
-            <div class="cart-line"><span>Everyday Gold Set</span><span class="price">$46</span></div>
-            <div class="cart-line"><span>Local pickup</span><span class="price">Free</span></div>
-            <div class="cart-line"><strong>Total</strong><strong class="price">$164</strong></div>
-          </div>
-          <div class="showcase-actions">
-            <a class="showcase-cta" href="#contact">Checkout Preview</a>
+          <div class="cart-summary" id="cartSummary">
+            <h3 class="cart-summary-title">Order Summary</h3>
+            <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+            <div class="summary-line"><span>Local Pickup</span><span>Free</span></div>
+            <div class="summary-line total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+            <a class="checkout-btn" href="#contact">Proceed to Checkout</a>
+            <p class="pickup-note">Boutique pickup · Tue–Sat, 10 AM–6 PM</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="showcase-section alt">
-      <div class="showcase-wrap showcase-grid-2">
-        <div>
-          <p class="showcase-kicker">Footer contact concept</p>
-          <h2>Built for visits, orders, and private styling.</h2>
-          <p class="showcase-lead">Boutique footer content keeps essentials close: hours, location, newsletter capture, and styling appointment requests.</p>
-          <div class="showcase-contact-meta">
-            <span><strong>Hours:</strong> Tuesday-Saturday, 10 AM-6 PM</span>
-            <span><strong>Pickup:</strong> Local boutique pickup and seasonal styling appointments</span>
-            <span><strong>Newsletter:</strong> Capsule drops, private events, and new arrival previews</span>
-          </div>
-        </div>
-        <form class="showcase-panel showcase-form" action="mailto:contact@jjentertainmentsolutions.com?subject=Willow%20and%20Thread%20Design%20Showcase" method="post" enctype="text/plain">
-          <select aria-label="Appointment type" name="appointment_type">
-            <option>Private Styling Appointment</option>
-            <option>New arrival preview</option>
-            <option>Capsule wardrobe refresh</option>
-          </select>
-          <input type="email" placeholder="Email address" aria-label="Email address" />
-          <select aria-label="Preferred category">
-            <option>Dresses and event looks</option>
-            <option>Capsule wardrobe refresh</option>
-            <option>Accessories and shoes</option>
-          </select>
-          <button class="showcase-cta" type="submit">Request Styling</button>
-          <p class="showcase-form-note">A production version would connect this form to email, CRM, or appointment software.</p>
+    <!-- ═══ NEWSLETTER ═══ -->
+    <section class="newsletter">
+      <div class="newsletter-inner">
+        <span class="label label--light">Stay in the Loop</span>
+        <h2 class="newsletter-headline">First access to capsule drops &amp; private events.</h2>
+        <form class="newsletter-form" onsubmit="return false;" aria-label="Newsletter signup">
+          <input class="newsletter-input" type="email" placeholder="Your email address" aria-label="Email address" />
+          <button class="newsletter-submit" type="submit">Join</button>
         </form>
       </div>
     </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" class="section section--parchment">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <div class="contact-meta">
+            <span class="label">Visit Us</span>
+            <span class="gold-rule gold-rule--left"></span>
+            <h2>Built for visits, orders &amp; private styling.</h2>
+            <div class="contact-detail">
+              <span class="detail-label">Address</span>
+              <span class="detail-val">142 Magnolia Street<br>The Arts District, Suite 4</span>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-label">Hours</span>
+              <span class="detail-val">Tue – Sat, 10 AM – 6 PM<br>Closed Sunday &amp; Monday</span>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-label">Phone</span>
+              <span class="detail-val">(555) 012-3456</span>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-label">Email</span>
+              <span class="detail-val">hello@willowandthread.com</span>
+            </div>
+            <div class="socials">
+              <a class="social-link" href="#">Instagram</a>
+              <a class="social-link" href="#">Pinterest</a>
+              <a class="social-link" href="#">TikTok</a>
+            </div>
+          </div>
+
+          <form class="contact-form" onsubmit="return false;" aria-label="Styling appointment request">
+            <span class="label" style="display:block;margin-bottom:1.5rem;">Request a Styling Appointment</span>
+            <div class="form-group select-wrap">
+              <label class="form-label" for="apptType">Appointment Type</label>
+              <select class="form-field" id="apptType" name="appointment_type">
+                <option>Private Styling Session</option>
+                <option>New Arrival Preview</option>
+                <option>Capsule Wardrobe Refresh</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="emailAddr">Email Address</label>
+              <input class="form-field" type="email" id="emailAddr" placeholder="you@example.com" />
+            </div>
+            <div class="form-group select-wrap">
+              <label class="form-label" for="catPref">Category Interest</label>
+              <select class="form-field" id="catPref" name="category">
+                <option>Dresses &amp; Event Looks</option>
+                <option>Casual &amp; Everyday Wear</option>
+                <option>Accessories &amp; Shoes</option>
+                <option>Full Capsule Wardrobe</option>
+              </select>
+            </div>
+            <button class="form-submit" type="submit">Request Appointment</button>
+            <p class="form-note">Production version connects to email, CRM, or scheduling software.</p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="showcase-footer">
-    <div class="showcase-wrap showcase-footer-inner">
-      <span>Willow &amp; Thread Fashion Boutique</span>
-      <span class="showcase-credit">Design Showcase by <a href="/ai/">JJE Digital</a>.</span>
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png" alt="Willow &amp; Thread" />
+          <p>A curated boutique for women who want fewer pieces and better outfits.</p>
+          <div class="footer-social">
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">TikTok</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#shop">New Arrivals</a></li>
+            <li><a href="#shop">Dresses</a></li>
+            <li><a href="#shop">Casual</a></li>
+            <li><a href="#shop">Accessories</a></li>
+            <li><a href="#shop">Shoes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Boutique</h4>
+          <ul>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#contact">Private Styling</a></li>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Visit Us</h4>
+          <div class="footer-addr">
+            <strong>Address</strong>
+            142 Magnolia Street<br>The Arts District, Suite 4
+            <strong>Hours</strong>
+            Tuesday – Saturday<br>10 AM – 6 PM
+            <strong>Contact</strong>
+            (555) 012-3456<br>hello@willowandthread.com
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Willow &amp; Thread Fashion Boutique</span>
+        <span>Design Showcase by <a href="/ai/">JJE Digital</a> &middot; <a href="#">Privacy</a></span>
+      </div>
     </div>
   </footer>
+
   <script>
-    const filters = document.querySelectorAll('[data-filter]');
-    const products = document.querySelectorAll('[data-category]');
+    /* ─── CART STATE ─── */
+    let cart = [];
 
-    filters.forEach((filter) => {
-      filter.addEventListener('click', () => {
-        const category = filter.dataset.filter;
+    function addToCart(name, price, cat, img) {
+      const found = cart.find(i => i.name === name);
+      if (found) { found.qty++; } else { cart.push({ name, price: +price, cat, img, qty: 1 }); }
+      renderCart();
+      syncCount();
+    }
 
-        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
-        products.forEach((product) => {
-          product.hidden = category !== 'all' && product.dataset.category !== category;
+    function removeFromCart(name) {
+      cart = cart.filter(i => i.name !== name);
+      renderCart();
+      syncCount();
+    }
+
+    function syncCount() {
+      const n   = cart.reduce((s, i) => s + i.qty, 0);
+      const el  = document.getElementById('cartCount');
+      el.textContent = n;
+      el.classList.toggle('show', n > 0);
+    }
+
+    function renderCart() {
+      const listEl    = document.getElementById('cartList');
+      const emptyEl   = document.getElementById('cartEmpty');
+      const summaryEl = document.getElementById('cartSummary');
+
+      if (cart.length === 0) {
+        listEl.classList.add('hide');
+        emptyEl.classList.add('show');
+        summaryEl.classList.remove('show');
+        return;
+      }
+
+      listEl.classList.remove('hide');
+      emptyEl.classList.remove('show');
+      summaryEl.classList.add('show');
+
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      document.getElementById('cartSubtotal').textContent = '$' + total;
+      document.getElementById('cartTotal').textContent    = '$' + total;
+
+      listEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img class="cart-item-thumb" src="${item.img}" alt="${item.name}" />
+          <div>
+            <div class="cart-item-name">${item.name}${item.qty > 1 ? ' &times;' + item.qty : ''}</div>
+            <div class="cart-item-cat">${item.cat}</div>
+          </div>
+          <div>
+            <div class="cart-item-price">$${item.price * item.qty}</div>
+            <button class="cart-remove" onclick="removeFromCart('${item.name.replace(/'/g,"\\'")}')">Remove</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ─── BIND ADD-TO-CART BUTTONS ─── */
+    document.querySelectorAll('.add-btn, .quick-add').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const { name, price, cat, img } = btn.dataset;
+        addToCart(name, price, cat, img);
+        const orig = btn.textContent;
+        btn.textContent = '✓ Added';
+        btn.classList.add('added');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('added'); }, 1300);
+      });
+    });
+
+    /* ─── PRODUCT FILTERS ─── */
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.filter;
+        document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        document.querySelectorAll('[data-category]').forEach(p => {
+          p.hidden = cat !== 'all' && p.dataset.category !== cat;
         });
       });
     });
+
+    /* ─── NAV SCROLL SHADOW ─── */
+    const navEl = document.getElementById('nav');
+    window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 30), { passive: true });
+
+    /* ─── HERO IMAGE ENTRANCE ─── */
+    const heroBg = document.getElementById('heroBg');
+    const probe  = new Image();
+    probe.src    = 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=85';
+    probe.onload = () => heroBg.classList.add('ready');
+
+    /* init */
+    renderCart();
   </script>
 </body>
 </html>
