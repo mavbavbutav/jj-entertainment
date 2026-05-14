@@ -153,6 +153,13 @@
   margin: 1.25rem 0 0;
 }
 
+.showcase-brand-art {
+  width: min(100%, 340px);
+  border-radius: 18px;
+  margin: 0 0 1.2rem;
+  box-shadow: 0 16px 34px rgba(18, 24, 33, 0.12);
+}
+
 .showcase-actions {
   display: flex;
   flex-wrap: wrap;
