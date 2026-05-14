@@ -173,6 +173,109 @@
   display: none !important;
 }
 
+/* ── Trust / stats strip ─────────────────────────────────────────── */
+.flowright-stats-strip {
+  background: var(--site-accent);
+  padding: 1.4rem 0;
+}
+
+.flowright-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.flowright-stat strong {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #fff;
+  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+  line-height: 1;
+}
+
+.flowright-stat span {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 600;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 540px) {
+  .flowright-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Service card icon ────────────────────────────────────────────── */
+.flowright-service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--site-chip);
+  color: var(--site-accent);
+  margin-bottom: 1rem;
+}
+
+.flowright-service-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ── Dispatch board status badges ─────────────────────────────────── */
+.flowright-status-urgent {
+  color: #c0392b;
+}
+
+.flowright-status-scheduled {
+  color: #176f8c;
+}
+
+.flowright-status-quoted {
+  color: #2e7d32;
+}
+
+/* ── Reviewer avatar ──────────────────────────────────────────────── */
+.flowright-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.flowright-reviewer div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.flowright-reviewer div:last-child span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--site-muted);
+}
+
+.flowright-reviewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--site-accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
 /* ── Service card CTA button ──────────────────────────────────────── */
 .flowright-service-cta {
   display: flex;
