@@ -15,7 +15,9 @@
   <header class="showcase-topbar">
     <div class="showcase-wrap showcase-nav">
       <a class="showcase-brand" href="#top" aria-label="Willow and Thread home">
-        <span class="showcase-logo">WT</span>
+        <span class="showcase-logo showcase-logo-image" aria-hidden="true">
+          <img src="/ai/design-showcase/willow-thread/Willow%20%26%20Thread.png" alt="" />
+        </span>
         <span>Willow &amp; Thread</span>
       </a>
       <nav class="showcase-links" aria-label="Primary">
@@ -40,10 +42,10 @@
             <a class="showcase-cta showcase-ghost" href="#story">Our Story</a>
           </div>
           <div class="showcase-mini-row" aria-label="Featured categories">
-            <span class="showcase-pill">Dresses</span>
-            <span class="showcase-pill">Accessories</span>
-            <span class="showcase-pill">Shoes</span>
-            <span class="showcase-pill">Casual Edit</span>
+            <span class="showcase-pill">New Arrivals</span>
+            <span class="showcase-pill">Private Styling</span>
+            <span class="showcase-pill">Local Pickup</span>
+            <span class="showcase-pill">Capsule Edits</span>
           </div>
         </div>
         <div class="showcase-media">
@@ -61,33 +63,48 @@
         <div class="showcase-head">
           <div>
             <p class="showcase-kicker">Shop page concept</p>
-            <h2>Filterable gallery, styled for browsing.</h2>
+            <h2>Shop by category, styled for browsing.</h2>
             <p>Product cards are designed for quick category scanning, confident mobile shopping, and campaign-ready seasonal edits.</p>
           </div>
         </div>
+        <div class="showcase-filter-row" aria-label="Product filters">
+          <button class="showcase-pill showcase-filter" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="showcase-pill showcase-filter" type="button" data-filter="dresses" aria-pressed="false">Dresses</button>
+          <button class="showcase-pill showcase-filter" type="button" data-filter="accessories" aria-pressed="false">Accessories</button>
+          <button class="showcase-pill showcase-filter" type="button" data-filter="shoes" aria-pressed="false">Shoes</button>
+        </div>
         <div class="showcase-grid-3">
-          <article class="showcase-card">
+          <article class="showcase-card" data-category="dresses">
             <img class="showcase-thumb" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=82" alt="Elegant boutique dress" />
             <div class="showcase-card-body">
               <h3>Garden Brunch Dress</h3>
               <p>Flowy midi silhouette with a soft floral finish.</p>
-              <p class="price">$118</p>
+              <div class="showcase-card-actions">
+                <p class="price">$118</p>
+                <button class="showcase-link-button" type="button">Add to Cart</button>
+              </div>
             </div>
           </article>
-          <article class="showcase-card">
+          <article class="showcase-card" data-category="accessories">
             <img class="showcase-thumb" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=82" alt="Fashion accessories laid out" />
             <div class="showcase-card-body">
               <h3>Everyday Gold Set</h3>
               <p>Layered earrings and bracelet pairing for capsule styling.</p>
-              <p class="price">$46</p>
+              <div class="showcase-card-actions">
+                <p class="price">$46</p>
+                <button class="showcase-link-button" type="button">Add to Cart</button>
+              </div>
             </div>
           </article>
-          <article class="showcase-card">
+          <article class="showcase-card" data-category="shoes">
             <img class="showcase-thumb" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=82" alt="Chic shoes displayed in boutique style" />
             <div class="showcase-card-body">
               <h3>Sunday Block Heel</h3>
               <p>Low-profile comfort with a polished boutique finish.</p>
-              <p class="price">$92</p>
+              <div class="showcase-card-actions">
+                <p class="price">$92</p>
+                <button class="showcase-link-button" type="button">Add to Cart</button>
+              </div>
             </div>
           </article>
         </div>
@@ -128,16 +145,26 @@
           <p class="showcase-kicker">Footer contact concept</p>
           <h2>Built for visits, orders, and private styling.</h2>
           <p class="showcase-lead">Boutique footer content keeps essentials close: hours, location, newsletter capture, and styling appointment requests.</p>
+          <div class="showcase-contact-meta">
+            <span><strong>Hours:</strong> Tuesday-Saturday, 10 AM-6 PM</span>
+            <span><strong>Pickup:</strong> Local boutique pickup and seasonal styling appointments</span>
+            <span><strong>Newsletter:</strong> Capsule drops, private events, and new arrival previews</span>
+          </div>
         </div>
-        <form class="showcase-panel showcase-form">
-          <input type="text" value="Private Styling Appointment" aria-label="Appointment type" />
+        <form class="showcase-panel showcase-form" action="mailto:contact@jjentertainmentsolutions.com?subject=Willow%20and%20Thread%20Design%20Showcase" method="post" enctype="text/plain">
+          <select aria-label="Appointment type" name="appointment_type">
+            <option>Private Styling Appointment</option>
+            <option>New arrival preview</option>
+            <option>Capsule wardrobe refresh</option>
+          </select>
           <input type="email" placeholder="Email address" aria-label="Email address" />
           <select aria-label="Preferred category">
             <option>Dresses and event looks</option>
             <option>Capsule wardrobe refresh</option>
             <option>Accessories and shoes</option>
           </select>
-          <a class="showcase-cta" href="mailto:contact@jjentertainmentsolutions.com?subject=Willow%20and%20Thread%20Design%20Showcase">Request Styling</a>
+          <button class="showcase-cta" type="submit">Request Styling</button>
+          <p class="showcase-form-note">A production version would connect this form to email, CRM, or appointment software.</p>
         </form>
       </div>
     </section>
@@ -149,5 +176,20 @@
       <span class="showcase-credit">Design Showcase by <a href="/ai/">JJE Digital</a>.</span>
     </div>
   </footer>
+  <script>
+    const filters = document.querySelectorAll('[data-filter]');
+    const products = document.querySelectorAll('[data-category]');
+
+    filters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        const category = filter.dataset.filter;
+
+        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
+        products.forEach((product) => {
+          product.hidden = category !== 'all' && product.dataset.category !== category;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
