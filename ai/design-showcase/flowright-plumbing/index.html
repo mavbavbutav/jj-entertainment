@@ -6,21 +6,83 @@
   <title>FlowRight Plumbing Solutions | Design Showcase by JJE Digital</title>
   <meta name="description" content="A JJE Digital design showcase for a clean, trustworthy plumbing website with emergency service, packages, quote form, testimonials, and service area map." />
   <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Favicon (uses existing brand icon) -->
+  <link rel="icon" href="/ai/design-showcase/flowright-plumbing/flowright-icon-cropped.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/ai/design-showcase/flowright-plumbing/flowright-icon-cropped.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FlowRight Plumbing Solutions | Nashville's Trusted Plumber" />
+  <meta property="og:description" content="24/7 emergency plumbing, water heater installation, and drain cleaning across Nashville, Franklin, Brentwood, and Spring Hill." />
+  <meta property="og:image" content="/ai/design-showcase/flowright-plumbing/FLOWRIGHT.png" />
+  <meta property="og:url" content="https://flowright-plumbing.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FlowRight Plumbing Solutions" />
+  <meta name="twitter:description" content="24/7 emergency plumbing across Nashville &amp; surrounding areas." />
+  <meta name="twitter:image" content="/ai/design-showcase/flowright-plumbing/FLOWRIGHT.png" />
+
+  <!-- Schema.org LocalBusiness structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "FlowRight Plumbing Solutions",
+    "telephone": "+16155550198",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nashville",
+      "addressRegion": "TN",
+      "postalCode": "37201",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Nashville" },
+      { "@type": "City", "name": "Franklin" },
+      { "@type": "City", "name": "Brentwood" },
+      { "@type": "City", "name": "Spring Hill" }
+    ],
+    "openingHours": "Mo-Su 00:00-24:00",
+    "url": "https://flowright-plumbing.com"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Black&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
+  <!-- Page-specific styles (audit improvements + flowright overrides) -->
+  <link rel="stylesheet" href="/ai/design-showcase/flowright-plumbing/flowright.css" />
 </head>
 <body class="showcase-page flowright-theme">
+
+  <!-- Skip navigation: becomes visible on keyboard focus -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header class="showcase-topbar">
     <div class="showcase-wrap showcase-nav">
-      <a class="showcase-brand" href="#top" aria-label="FlowRight Plumbing home">
+      <a class="showcase-brand" href="#main-content" aria-label="FlowRight Plumbing home">
         <span class="showcase-logo flowright-nav-mark" aria-hidden="true">
           <img src="/ai/design-showcase/flowright-plumbing/flowright-icon-cropped.png" alt="" />
         </span>
         <span>FlowRight Plumbing</span>
       </a>
-      <nav class="showcase-links" aria-label="Primary">
+
+      <!-- Hamburger: visible only on mobile, toggles #primary-nav -->
+      <button
+        class="nav-hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="showcase-links" id="primary-nav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#quote">Quote</a>
         <a href="#reviews">Reviews</a>
@@ -29,11 +91,15 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="main-content">
     <section class="showcase-hero">
       <div class="showcase-wrap showcase-hero-grid">
         <div>
-          <img class="showcase-brand-art flowright-brand-art" src="/ai/design-showcase/flowright-plumbing/flowright-logo-cropped.png" alt="FlowRight Plumbing Services logo" />
+          <img
+            class="showcase-brand-art flowright-brand-art"
+            src="/ai/design-showcase/flowright-plumbing/flowright-logo-cropped.png"
+            alt="FlowRight Plumbing Services logo"
+          />
           <p class="showcase-kicker">Trusted local plumbing</p>
           <h1>Plumbing help, fast.</h1>
           <p class="showcase-lead">A bold service website for urgent homeowners: clear emergency calls, service routing, quote intake, reviews, and coverage visibility without the usual clutter.</p>
@@ -47,14 +113,30 @@
             <span class="showcase-pill">Same-Day Dispatch</span>
           </div>
         </div>
+
         <div class="showcase-media">
-          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1400&q=82" alt="Close-up of polished plumbing fixtures and a sink basin" />
+          <!-- picture element serves WebP to supporting browsers; jpg fallback for others.
+               width/height reserve layout space and prevent CLS. loading=lazy defers off-screen fetch. -->
+          <picture>
+            <source
+              srcset="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fm=webp&fit=crop&w=1400&q=82"
+              type="image/webp"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1400&q=82"
+              alt="Close-up of polished plumbing fixtures and a sink basin"
+              width="1400"
+              height="933"
+              loading="lazy"
+            />
+          </picture>
           <div class="showcase-badge">
             <strong>24/7 Emergency Routing</strong>
             <span>Phone calls, quote forms, and trust signals stay easy to find.</span>
           </div>
         </div>
       </div>
+
       <div class="showcase-wrap flowright-emergency-strip" aria-label="Fast plumbing service highlights">
         <div class="flowright-emergency-item">
           <strong>Call first</strong>
@@ -81,6 +163,7 @@
           </div>
         </div>
         <div class="showcase-grid-3">
+
           <article class="showcase-panel flowright-service-card">
             <span class="flowright-service-label">Repair</span>
             <h3>Plumbing Repair</h3>
@@ -90,7 +173,9 @@
               <li>Photo-ready intake</li>
               <li>Clear arrival windows</li>
             </ul>
+            <a class="showcase-cta flowright-service-cta" href="#quote">Get a Quote</a>
           </article>
+
           <article class="showcase-panel flowright-service-card">
             <span class="flowright-service-label">Install</span>
             <h3>Water Heaters</h3>
@@ -100,7 +185,9 @@
               <li>Quote-first workflow</li>
               <li>Maintenance reminders</li>
             </ul>
+            <a class="showcase-cta flowright-service-cta" href="#quote">Get a Quote</a>
           </article>
+
           <article class="showcase-panel flowright-service-card">
             <span class="flowright-service-label">Clear</span>
             <h3>Drain Cleaning</h3>
@@ -110,7 +197,9 @@
               <li>Service area routing</li>
               <li>Recurring issue notes</li>
             </ul>
+            <a class="showcase-cta flowright-service-cta" href="#quote">Get a Quote</a>
           </article>
+
         </div>
       </div>
     </section>
@@ -127,17 +216,74 @@
             <div class="quote-line"><span>Drain cleaning</span><span class="status">Dispatch</span></div>
           </div>
         </div>
-        <form class="showcase-panel showcase-form" action="mailto:contact@jjentertainmentsolutions.com?subject=FlowRight%20Design%20Showcase" method="post" enctype="text/plain">
-          <input type="text" placeholder="Name" aria-label="Name" />
-          <input type="tel" placeholder="Phone" aria-label="Phone" />
-          <select aria-label="Service needed">
-            <option>Emergency leak or repair</option>
-            <option>Water heater installation</option>
-            <option>Drain cleaning</option>
-          </select>
-          <textarea placeholder="Tell us what is happening" aria-label="Project details"></textarea>
+
+        <!--
+          Production note: replace action URL with your Formspree endpoint
+          (https://formspree.io/f/YOUR_ID), a Netlify Forms action, or your
+          own server route. The JS at the bottom of this file intercepts
+          submission for the showcase demo and shows the success message.
+        -->
+        <form
+          class="showcase-panel showcase-form"
+          id="quote-form"
+          action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID"
+          method="POST"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="field-name">Name</label>
+            <input
+              type="text"
+              id="field-name"
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="field-phone">Phone</label>
+            <input
+              type="tel"
+              id="field-phone"
+              name="phone"
+              placeholder="(615) 555-0100"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="field-service">Service needed</label>
+            <select id="field-service" name="service">
+              <option value="" disabled selected>Select a service&hellip;</option>
+              <option value="emergency">Emergency leak or repair</option>
+              <option value="water-heater">Water heater installation</option>
+              <option value="drain">Drain cleaning</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="field-message">Tell us what&rsquo;s happening</label>
+            <textarea
+              id="field-message"
+              name="message"
+              placeholder="Describe the issue&hellip;"
+              required
+            ></textarea>
+          </div>
+
           <button class="showcase-cta" type="submit">Send Quote Request</button>
-          <p class="showcase-form-note">A production version could route emergency requests to phone, email, CRM, or dispatch software.</p>
+
+          <p class="showcase-form-note">
+            Replace the form action URL with your Formspree, Netlify Forms, or backend endpoint before going live. For emergencies, call us directly.
+          </p>
+
+          <!-- Shown after successful submission; hidden by default -->
+          <div class="form-success" role="alert" aria-live="polite" hidden>
+            <strong>Thank you!</strong> We&rsquo;ll be in touch within the hour. For emergencies, call <a href="tel:+16155550198">(615) 555-0198</a>.
+          </div>
         </form>
       </div>
     </section>
@@ -148,16 +294,28 @@
           <p class="showcase-kicker">Testimonials</p>
           <h2>Trust cues where buyers need them.</h2>
           <div class="showcase-grid-2">
+
             <article class="showcase-panel">
-              <h3>"Clean, quick, and honest."</h3>
+              <div class="flowright-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3>&ldquo;Clean, quick, and honest.&rdquo;</h3>
               <p>They explained the issue clearly and had our kitchen back by dinner.</p>
+              <footer class="flowright-review-meta">
+                <strong>Sarah M.</strong> &middot; Nashville, TN &middot; March 2025
+              </footer>
             </article>
+
             <article class="showcase-panel">
-              <h3>"Answered at midnight."</h3>
+              <div class="flowright-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h3>&ldquo;Answered at midnight.&rdquo;</h3>
               <p>The emergency badge was real. A tech arrived fast and fixed the leak.</p>
+              <footer class="flowright-review-meta">
+                <strong>David K.</strong> &middot; Franklin, TN &middot; January 2025
+              </footer>
             </article>
+
           </div>
         </div>
+
         <div>
           <p class="showcase-kicker">Service area map</p>
           <h2>Coverage at a glance.</h2>
@@ -179,5 +337,78 @@
       <span class="showcase-credit">Design Showcase by <a href="/ai/">JJE Digital</a>.</span>
     </div>
   </footer>
+
+  <script>
+    // ── Hamburger / mobile nav drawer ─────────────────────────────────
+    (function () {
+      const btn = document.querySelector('.nav-hamburger');
+      const nav = document.getElementById('primary-nav');
+      if (!btn || !nav) return;
+
+      function setOpen(open) {
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        nav.classList.toggle('is-open', open);
+      }
+
+      btn.addEventListener('click', function () {
+        setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      });
+
+      // Close when any nav link is tapped
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+
+      // Close on outside click / tap
+      document.addEventListener('click', function (e) {
+        if (!btn.contains(e.target) && !nav.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          btn.focus();
+        }
+      });
+    }());
+
+    // ── Quote form — showcase demo handler ────────────────────────────
+    //    Intercepts submit, validates, and shows a success state.
+    //    In production: remove this block and let the form POST to your
+    //    Formspree / Netlify Forms / server endpoint naturally.
+    (function () {
+      var form       = document.getElementById('quote-form');
+      var success    = form && form.querySelector('.form-success');
+      var submitBtn  = form && form.querySelector('button[type="submit"]');
+      var formNote   = form && form.querySelector('.showcase-form-note');
+      if (!form || !success || !submitBtn) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Use browser-native constraint validation
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Simulate async submission for the showcase
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        setTimeout(function () {
+          submitBtn.hidden = true;
+          if (formNote) formNote.hidden = true;
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 900);
+      });
+    }());
+  </script>
+
 </body>
 </html>
