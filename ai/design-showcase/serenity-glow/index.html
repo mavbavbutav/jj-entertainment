@@ -449,9 +449,17 @@
 
     <section class="showcase-section serenity-final-cta" aria-labelledby="final-cta-title">
       <div class="showcase-wrap serenity-final-cta-inner">
-        <div>
-          <p class="showcase-kicker">Begin with a conversation</p>
-          <h2 id="final-cta-title">A calmer way to plan what comes next.</h2>
+        <div class="serenity-final-cta-copy">
+          <span class="serenity-final-mark" aria-hidden="true">
+            <img src="/ai/design-showcase/serenity-glow/serenity-mark-cropped.png" alt="" />
+          </span>
+          <div>
+            <p class="showcase-kicker">Begin with a conversation</p>
+            <h2 id="final-cta-title">A calmer way to plan what comes next.</h2>
+          </div>
+        </div>
+        <div class="serenity-final-cta-note">
+          Tell us what you want to improve, what feels sensitive, and what timeline matters. We will help shape the first step.
         </div>
         <div class="serenity-final-cta-actions">
           <a class="showcase-cta" href="#booking">Reserve a Consultation</a>
@@ -519,7 +527,7 @@
         e.preventDefault();
         if (!form.checkValidity()) { form.reportValidity(); return; }
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+        submitBtn.textContent = 'Sending...';
         setTimeout(function () {
           submitBtn.hidden = true;
           if (formNote) formNote.hidden = true;
