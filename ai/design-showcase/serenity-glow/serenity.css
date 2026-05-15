@@ -29,6 +29,32 @@ html {
 
 body { overflow-x: hidden; }
 
+.serenity-theme {
+  background:
+    linear-gradient(90deg, rgba(25, 51, 49, 0.035) 0 1px, transparent 1px 100%),
+    var(--site-bg);
+  background-size: calc((100vw - min(calc(100vw - 2rem), var(--showcase-max))) / 2 + 1px) 100%;
+}
+
+.serenity-theme .showcase-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.serenity-theme .showcase-head {
+  align-items: center;
+  margin-bottom: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.serenity-theme .showcase-head > div {
+  max-width: 760px;
+}
+
+.serenity-theme .showcase-head p {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 /* ── Skip navigation ─────────────────────────────────────────────────── */
 .skip-link {
   position: absolute;
@@ -132,34 +158,48 @@ body { overflow-x: hidden; }
    ══════════════════════════════════════════════════════════════════════ */
 
 .serenity-stats-strip {
-  background: var(--site-ink);
-  border-top: 1px solid rgba(201, 154, 58, 0.2);
-  border-bottom: 1px solid rgba(201, 154, 58, 0.2);
-  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 243, 0.92), rgba(245, 239, 229, 0.86)),
+    var(--site-bg);
+  border-top: 1px solid rgba(201, 154, 58, 0.22);
+  border-bottom: 1px solid rgba(201, 154, 58, 0.22);
+  padding: 0;
 }
 
 .serenity-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  text-align: center;
+  gap: 0;
+  text-align: left;
+}
+
+.serenity-stat {
+  min-height: 124px;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  border-left: 1px solid rgba(201, 154, 58, 0.22);
+}
+
+.serenity-stat:last-child {
+  border-right: 1px solid rgba(201, 154, 58, 0.22);
 }
 
 .serenity-stat strong {
   display: block;
-  font-size: 1.6rem;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
   font-weight: 400;
-  color: var(--site-accent);
+  color: var(--site-ink);
   font-family: "Marcellus", "Cormorant Garamond", Georgia, serif;
-  line-height: 1;
+  line-height: 0.95;
   letter-spacing: 0.04em;
 }
 .serenity-stat span {
   display: block;
   font-size: 0.76rem;
-  color: rgba(255, 250, 243, 0.6);
+  color: var(--site-muted);
   font-weight: 700;
-  margin-top: 0.4rem;
+  margin-top: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
@@ -167,8 +207,84 @@ body { overflow-x: hidden; }
 @media (max-width: 540px) {
   .serenity-stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
   }
+
+  .serenity-stat:nth-child(odd) {
+    border-left: 1px solid rgba(201, 154, 58, 0.22);
+  }
+}
+
+/* Approach bridge */
+.serenity-approach-section {
+  background:
+    linear-gradient(135deg, rgba(255, 250, 243, 0.96), rgba(238, 225, 202, 0.62)),
+    var(--site-bg);
+}
+
+.serenity-approach-section::before {
+  content: "GLOW";
+  position: absolute;
+  right: -0.1em;
+  bottom: -0.18em;
+  color: rgba(25, 51, 49, 0.045);
+  font-family: var(--site-serif);
+  font-size: clamp(6rem, 18vw, 17rem);
+  letter-spacing: 0.06em;
+  line-height: 0.8;
+}
+
+.serenity-approach-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(1.8rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.serenity-approach-copy {
+  position: sticky;
+  top: 106px;
+}
+
+.serenity-approach-copy h2 {
+  max-width: 10.5ch;
+}
+
+.serenity-approach-steps {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(25, 51, 49, 0.16);
+}
+
+.serenity-approach-steps article {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 0.44fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: baseline;
+  padding: clamp(1.2rem, 2.6vw, 1.75rem) 0;
+  border-bottom: 1px solid rgba(25, 51, 49, 0.16);
+}
+
+.serenity-approach-steps span {
+  color: var(--site-accent);
+  font-family: var(--site-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1;
+}
+
+.serenity-approach-steps h3 {
+  font-family: var(--site-serif);
+  font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.serenity-approach-steps p {
+  margin: 0;
+  color: var(--site-muted);
+  line-height: 1.65;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -197,6 +313,84 @@ body { overflow-x: hidden; }
 .serenity-treatment-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 28px 52px rgba(10, 20, 19, 0.16);
+}
+
+.serenity-services-section {
+  background:
+    linear-gradient(180deg, rgba(25, 51, 49, 0.96), rgba(18, 38, 36, 0.98)),
+    var(--site-ink);
+}
+
+.serenity-services-section::before {
+  content: "TREATMENTS";
+  position: absolute;
+  top: 0.08em;
+  left: -0.05em;
+  color: rgba(255, 250, 243, 0.045);
+  font-family: var(--site-serif);
+  font-size: clamp(4rem, 15vw, 13rem);
+  letter-spacing: 0.06em;
+  line-height: 0.8;
+}
+
+.serenity-services-section .showcase-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.serenity-services-section .showcase-head {
+  padding-bottom: clamp(1rem, 2vw, 1.4rem);
+  border-bottom: 1px solid rgba(255, 250, 243, 0.14);
+}
+
+.serenity-services-section .serenity-treatment-grid {
+  gap: clamp(0.8rem, 1.8vw, 1.25rem);
+}
+
+.serenity-services-section .serenity-treatment-card {
+  min-height: 300px;
+  padding: clamp(1.2rem, 2vw, 1.55rem);
+  border-radius: 0;
+  border-color: rgba(201, 154, 58, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 243, 0.98), rgba(250, 243, 232, 0.94));
+}
+
+.serenity-services-section .serenity-treatment-card:first-child {
+  grid-column: span 2;
+  justify-content: flex-end;
+  min-height: 340px;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 243, 0.98), rgba(238, 225, 202, 0.78)),
+    var(--site-paper);
+}
+
+.serenity-services-section .serenity-treatment-card:first-child::after {
+  content: "SIGNATURE";
+  position: absolute;
+  right: 0.14em;
+  bottom: -0.14em;
+  color: rgba(25, 51, 49, 0.055);
+  font-family: var(--site-serif);
+  font-size: clamp(3.5rem, 9vw, 7.2rem);
+  letter-spacing: 0.08em;
+  line-height: 0.8;
+  pointer-events: none;
+}
+
+.serenity-services-section .serenity-treatment-card:first-child > * {
+  position: relative;
+  z-index: 1;
+}
+
+.serenity-services-section .serenity-treatment-card:first-child h3 {
+  max-width: 7ch;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 0.9;
+}
+
+.serenity-services-section .serenity-treatment-card:first-child p {
+  max-width: 44ch;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -297,6 +491,64 @@ body { overflow-x: hidden; }
 }
 [hidden] { display: none !important; }
 
+.serenity-booking-section {
+  background:
+    linear-gradient(90deg, rgba(255, 250, 243, 0.86), rgba(245, 239, 229, 0.95)),
+    var(--site-bg);
+}
+
+.serenity-booking-grid {
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid rgba(201, 154, 58, 0.24);
+  box-shadow: 0 26px 70px rgba(25, 51, 49, 0.1);
+}
+
+.serenity-booking-grid .showcase-panel {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.serenity-consult-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.serenity-consult-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.serenity-consult-panel::after {
+  content: "";
+  position: absolute;
+  right: -76px;
+  bottom: -76px;
+  width: 210px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 154, 58, 0.3);
+  border-radius: 999px;
+}
+
+.serenity-consult-panel h2 {
+  max-width: 9ch;
+}
+
+.serenity-form {
+  border-left: 0;
+}
+
+.serenity-form .showcase-kicker {
+  margin-bottom: 0.25rem;
+}
+
+.serenity-form input:focus,
+.serenity-form select:focus,
+.serenity-form textarea:focus {
+  background: #fffaf3;
+  border-color: rgba(201, 154, 58, 0.62);
+}
+
 /* ══════════════════════════════════════════════════════════════════════
    JOURNAL ARTICLES — hover lift
    ══════════════════════════════════════════════════════════════════════ */
@@ -307,6 +559,89 @@ body { overflow-x: hidden; }
 .serenity-journal-list .showcase-panel:hover {
   transform: translateY(-3px);
   box-shadow: 0 20px 40px rgba(25, 51, 49, 0.1);
+}
+
+.serenity-results-section {
+  background:
+    linear-gradient(145deg, rgba(25, 51, 49, 0.98), rgba(18, 38, 36, 0.96)),
+    var(--site-ink);
+}
+
+.serenity-results-section::after {
+  content: "";
+  position: absolute;
+  inset: auto -8rem -13rem auto;
+  width: min(36vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 154, 58, 0.18);
+  border-radius: 999px;
+}
+
+.serenity-results-section .showcase-grid-2 {
+  position: relative;
+  z-index: 1;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.serenity-results-section .serenity-result-grid {
+  gap: 0;
+  border: 1px solid rgba(201, 154, 58, 0.22);
+}
+
+.serenity-results-section .serenity-result-card {
+  border-radius: 0;
+  border: 0;
+  border-left: 0;
+  box-shadow: none;
+}
+
+.serenity-results-section .serenity-result-card + .serenity-result-card {
+  border-left: 1px solid rgba(201, 154, 58, 0.22);
+}
+
+.serenity-care-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.serenity-card-number {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  color: rgba(201, 154, 58, 0.32);
+  font-family: var(--site-serif);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 0.8;
+}
+
+.serenity-care-card h2 {
+  max-width: 9ch;
+}
+
+.serenity-journal-section {
+  background:
+    linear-gradient(180deg, #f8f1e7, #f3eadc);
+}
+
+.serenity-journal-section .showcase-head {
+  border-bottom: 1px solid rgba(25, 51, 49, 0.14);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.serenity-journal-list {
+  gap: 0;
+  border: 1px solid rgba(201, 154, 58, 0.24);
+}
+
+.serenity-journal-list .showcase-panel {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: rgba(255, 250, 243, 0.7);
+}
+
+.serenity-journal-list .showcase-panel + .showcase-panel {
+  border-left: 1px solid rgba(201, 154, 58, 0.24);
 }
 
 /* Redesign pass: editorial first viewport inspired by boutique med-spa sites */
@@ -332,7 +667,7 @@ body { overflow-x: hidden; }
 }
 
 .serenity-hero {
-  min-height: calc(100svh - 74px);
+  min-height: clamp(720px, calc(100svh - 74px), 900px);
   padding: clamp(0.8rem, 1.8vw, 1.6rem) 0 0;
   text-align: left;
   background:
@@ -351,7 +686,7 @@ body { overflow-x: hidden; }
     "menu menu";
   gap: clamp(1.4rem, 3vw, 2.8rem);
   align-items: stretch;
-  min-height: calc(100svh - 74px);
+  min-height: clamp(720px, calc(100svh - 74px), 900px);
 }
 
 .serenity-hero-copy {
@@ -546,10 +881,6 @@ body { overflow-x: hidden; }
   font-style: normal;
 }
 
-.serenity-stats-strip {
-  padding: 1.3rem 0;
-}
-
 .serenity-form .showcase-cta:disabled {
   cursor: wait;
   opacity: 0.72;
@@ -588,11 +919,62 @@ body { overflow-x: hidden; }
   .serenity-hero-media img {
     min-height: 430px;
   }
+
+  .serenity-approach-grid,
+  .serenity-booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .serenity-approach-copy {
+    position: relative;
+    top: auto;
+  }
+
+  .serenity-approach-copy h2 {
+    max-width: 12ch;
+  }
+
+  .serenity-approach-steps article {
+    grid-template-columns: 4rem minmax(0, 1fr);
+  }
+
+  .serenity-approach-steps p {
+    grid-column: 2;
+  }
+
+  .serenity-services-section .serenity-treatment-card:first-child {
+    grid-column: span 2;
+    grid-template-columns: 1fr;
+  }
+
+  .serenity-services-section .serenity-treatment-card:first-child .serenity-treatment-icon,
+  .serenity-services-section .serenity-treatment-card:first-child .serenity-treatment-meta,
+  .serenity-services-section .serenity-treatment-card:first-child h3,
+  .serenity-services-section .serenity-treatment-card:first-child p,
+  .serenity-services-section .serenity-treatment-card:first-child a {
+    grid-column: 1;
+  }
+
+  .serenity-form {
+    border-left: 1px solid rgba(201, 154, 58, 0.24);
+    border-top: 0;
+  }
+
+  .serenity-results-section .serenity-result-card + .serenity-result-card,
+  .serenity-journal-list .showcase-panel + .showcase-panel {
+    border-left: 0;
+    border-top: 1px solid rgba(201, 154, 58, 0.22);
+  }
 }
 
 @media (max-width: 700px) {
   .serenity-hero {
     padding-top: 0.6rem;
+    overflow: visible;
+  }
+
+  .serenity-hero-copy {
+    width: 100%;
   }
 
   .serenity-hero-copy::before {
@@ -604,6 +986,11 @@ body { overflow-x: hidden; }
     max-width: 100%;
     font-size: clamp(2.55rem, 11.5vw, 3.4rem);
     line-height: 0.94;
+  }
+
+  .serenity-hero .showcase-lead {
+    max-width: 32ch;
+    font-size: 1rem;
   }
 
   .serenity-hero-menu {
@@ -618,6 +1005,29 @@ body { overflow-x: hidden; }
 
   .serenity-hero-menu a:last-child {
     border-bottom: 0;
+  }
+
+  .serenity-approach-steps article {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .serenity-approach-steps p {
+    grid-column: 1;
+  }
+
+  .serenity-services-section .serenity-treatment-card:first-child,
+  .serenity-treatment-grid {
+    grid-column: auto;
+  }
+
+  .serenity-services-section .serenity-treatment-card:first-child {
+    grid-column: 1;
+  }
+
+  .serenity-booking-grid {
+    border-left: 0;
+    border-right: 0;
   }
 }
 
