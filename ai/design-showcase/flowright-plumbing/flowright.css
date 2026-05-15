@@ -1,22 +1,14 @@
 /*
- * flowright.css
- * FlowRight Plumbing — page-specific styles and audit improvements.
- * Loaded after showcase.css; overrides are intentional and scoped to
- * .flowright-theme where possible to avoid bleed into other showcases.
- *
- * Covers:
- *  - Skip navigation link
- *  - :focus-visible styles
- *  - Heading line-height fix (raised from 0.95 / 0.96)
- *  - Mobile hamburger menu + nav drawer
- *  - Visible form labels & form-group layout
- *  - Form success message
- *  - Service card CTA button
- *  - Star ratings
- *  - Review attribution footer
- */
+  FlowRight Plumbing
+  Design polish pass:
+  - Stronger hero composition
+  - Cleaner nav and mobile drawer
+  - Elevated service/review/form cards
+  - Better visual hierarchy and spacing
+  - Keeps existing markup and behavior intact
+*/
 
-/* ── Skip navigation link ─────────────────────────────────────────── */
+/* Base accessibility and interaction */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -25,34 +17,126 @@
   padding: 0.75rem 1.25rem;
   background: #0aa7d7;
   color: #fff;
-  font-weight: 800;
-  font-family: "Archivo", system-ui, sans-serif;
+  font: 800 0.9rem/1 "Archivo", system-ui, sans-serif;
   border-radius: 0 0 12px 12px;
   text-decoration: none;
-  transition: top 0.15s ease;
+  transition: top 0.18s ease;
 }
+
 .skip-link:focus {
   top: 0;
 }
 
-/* ── Focus visible — all interactive elements ─────────────────────── */
 .flowright-theme *:focus-visible {
   outline: 3px solid #0aa7d7;
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* ── Fix heading line-height (raised from 0.95 / 0.96) ───────────── */
-/*    These override the values in the .flowright-theme block in       */
-/*    showcase.css, which were set too tight for multi-line safety.    */
+[hidden] {
+  display: none !important;
+}
+
+/* Theme tuning */
+.flowright-theme {
+  --fr-navy: #071a2e;
+  --fr-ink: #0d2238;
+  --fr-muted: #4f6477;
+  --fr-blue: #0aa7d7;
+  --fr-blue-deep: #0f7faa;
+  --fr-sky: #e6f6fc;
+  --fr-line: rgba(9, 31, 52, 0.14);
+  --fr-panel-shadow: 0 18px 48px rgba(9, 31, 52, 0.12);
+  --fr-panel-shadow-strong: 0 24px 62px rgba(9, 31, 52, 0.18);
+}
+
 .flowright-theme h1 {
-  line-height: 1.05;
-}
-.flowright-theme h2 {
-  line-height: 1.1;
+  line-height: 1.03;
 }
 
-/* ── Mobile hamburger button ──────────────────────────────────────── */
+.flowright-theme h2 {
+  line-height: 1.08;
+}
+
+/* Top bar */
+.flowright-theme .showcase-topbar {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.92));
+  border-bottom: 1px solid var(--fr-line);
+  box-shadow: 0 10px 24px rgba(9, 31, 52, 0.08);
+}
+
+.flowright-theme .showcase-nav {
+  min-height: 78px;
+  position: relative;
+}
+
+.flowright-theme .showcase-brand {
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fr-ink);
+}
+
+.flowright-nav-mark {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(9, 31, 52, 0.2);
+  box-shadow: 0 10px 24px rgba(9, 31, 52, 0.12);
+}
+
+.flowright-nav-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.23);
+  transform-origin: 42% 48%;
+}
+
+.flowright-theme .showcase-links {
+  gap: 1.05rem;
+  color: var(--fr-muted);
+  font-weight: 800;
+}
+
+.flowright-theme .showcase-links a {
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.flowright-theme .showcase-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.08rem;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--fr-blue);
+  transition: transform 0.22s ease;
+}
+
+.flowright-theme .showcase-links a:hover::after,
+.flowright-theme .showcase-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.flowright-theme .showcase-links .showcase-cta {
+  background: linear-gradient(135deg, var(--fr-blue), var(--fr-blue-deep));
+  border-color: transparent;
+  box-shadow: 0 12px 26px rgba(10, 167, 215, 0.34);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flowright-theme .showcase-links .showcase-cta:hover,
+.flowright-theme .showcase-links .showcase-cta:focus-visible {
+  transform: translateY(-1px);
+}
+
+/* Mobile navigation */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -60,189 +144,353 @@
   gap: 5px;
   width: 42px;
   height: 42px;
-  background: transparent;
-  border: 1px solid rgba(8, 13, 18, 0.18);
+  padding: 9px 8px;
+  background: #fff;
+  border: 1px solid rgba(9, 31, 52, 0.22);
   border-radius: 10px;
   cursor: pointer;
-  padding: 9px 8px;
   flex-shrink: 0;
 }
+
 .nav-hamburger span {
   display: block;
   height: 2px;
-  background: var(--site-ink);
+  background: var(--fr-ink);
   border-radius: 2px;
   transition: transform 0.22s ease, opacity 0.18s ease;
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile nav drawer ────────────────────────────────────────────── */
-@media (max-width: 860px) {
-  .nav-hamburger {
-    display: flex;
-  }
-
-  /* showcase.css hides nav links on mobile with display:none.
-     We override to a closed drawer state; .is-open reveals it. */
-  .showcase-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(8, 13, 18, 0.12);
-    padding: 0.5rem 1.25rem 1rem;
-    z-index: 20;
-    box-shadow: 0 16px 40px rgba(8, 13, 18, 0.12);
-  }
-
-  .showcase-links.is-open {
-    display: flex;
-  }
-
-  /* Show all nav links inside the open drawer */
-  .showcase-links a,
-  .showcase-links a:not(.showcase-cta) {
-    display: block !important;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid rgba(8, 13, 18, 0.07);
-    color: var(--site-ink) !important;
-    font-size: 1rem;
-  }
-
-  .showcase-links .showcase-cta {
-    display: flex !important;
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.6rem;
-    border-bottom: 0;
-  }
+/* Hero */
+.flowright-theme .showcase-hero {
+  background:
+    radial-gradient(120% 80% at 2% -10%, rgba(10, 167, 215, 0.18), transparent 60%),
+    radial-gradient(100% 70% at 100% 0%, rgba(15, 127, 170, 0.1), transparent 58%),
+    linear-gradient(180deg, #f6fbfe 0%, #eef6fb 100%);
+  border-bottom: 1px solid var(--fr-line);
+  padding-top: clamp(3.2rem, 5vw, 5.2rem);
+  padding-bottom: clamp(2.6rem, 4.6vw, 4.5rem);
 }
 
-/* ── Visible form labels ──────────────────────────────────────────── */
-.form-group {
+.flowright-theme .showcase-kicker {
+  color: var(--fr-blue-deep);
+  letter-spacing: 0.14em;
+}
+
+.flowright-theme .showcase-lead {
+  color: var(--fr-muted);
+  max-width: 52ch;
+}
+
+.flowright-theme .flowright-brand-art {
+  background: #fff;
+  border: 2px solid rgba(9, 31, 52, 0.86);
+  border-radius: 14px;
+  padding: 0.55rem;
+  box-shadow: 0 18px 40px rgba(9, 31, 52, 0.13);
+}
+
+.flowright-theme .showcase-actions .showcase-cta {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flowright-theme .showcase-actions .showcase-ghost {
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(9, 31, 52, 0.18);
+  color: var(--fr-ink);
+  box-shadow: 0 10px 24px rgba(9, 31, 52, 0.08);
+}
+
+.flowright-theme .showcase-mini-row {
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+}
+
+.flowright-theme .showcase-pill {
+  background: #fff;
+  border: 1px solid rgba(9, 31, 52, 0.14);
+  color: var(--fr-ink);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.flowright-theme .showcase-media {
+  border: 1px solid rgba(9, 31, 52, 0.1);
+  border-radius: 20px;
+  box-shadow: var(--fr-panel-shadow-strong);
+}
+
+.flowright-theme .showcase-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 24, 41, 0.03), rgba(4, 24, 41, 0.2));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flowright-theme .showcase-badge {
+  z-index: 2;
+  border-radius: 16px;
+  border: 1px solid rgba(9, 31, 52, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Emergency strip */
+.flowright-emergency-strip {
   display: grid;
-  gap: 0.4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.5rem;
 }
 
-.form-group label {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--site-ink);
+.flowright-emergency-item {
+  border-radius: 14px;
+  padding: 1rem 1rem 1.05rem;
+  background: linear-gradient(150deg, #0b2037, #132f4b);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(9, 31, 52, 0.16);
 }
 
-/* Form fields already styled by showcase.css; this keeps them full-
-   width inside the new .form-group wrapper. */
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
+.flowright-emergency-item strong,
+.flowright-emergency-item span {
+  display: block;
 }
 
-/* ── Form success message ─────────────────────────────────────────── */
-.form-success {
-  background: #e6f4ea;
-  border: 1px solid #9ecfaa;
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  font-size: 0.95rem;
-  color: #1a4d2e;
-  line-height: 1.5;
+.flowright-emergency-item strong {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.form-success a {
-  color: #0aa7d7;
-  text-decoration: underline;
+.flowright-emergency-item span {
+  margin-top: 0.24rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
 }
 
-/* Ensure hidden attribute is respected (ARIA pattern) */
-[hidden] {
-  display: none !important;
-}
-
-/* ── Trust / stats strip ─────────────────────────────────────────── */
+/* Stats strip */
 .flowright-stats-strip {
-  background: var(--site-accent);
+  background: linear-gradient(90deg, #0e202f, #153145);
   padding: 1.4rem 0;
 }
 
 .flowright-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   text-align: center;
 }
 
 .flowright-stat strong {
   display: block;
-  font-size: 1.65rem;
-  font-weight: 900;
+  font: 900 1.7rem/1 "Archivo Black", "Archivo", system-ui, sans-serif;
   color: #fff;
-  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
-  line-height: 1;
 }
 
 .flowright-stat span {
   display: block;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 600;
-  margin-top: 0.3rem;
+  margin-top: 0.28rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.78);
 }
 
-@media (max-width: 540px) {
-  .flowright-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Services */
+.flowright-service-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(9, 31, 52, 0.09);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+  box-shadow: var(--fr-panel-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
-/* ── Service card icon ────────────────────────────────────────────── */
+.flowright-service-card:hover,
+.flowright-service-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--fr-panel-shadow-strong);
+  border-color: rgba(10, 167, 215, 0.34);
+}
+
+.flowright-service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--fr-blue), var(--fr-blue-deep));
+}
+
+.flowright-service-label {
+  display: inline-flex;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  padding: 0.34rem 0.7rem;
+  background: var(--fr-sky);
+  color: var(--fr-blue-deep);
+  font-size: 0.73rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
 .flowright-service-icon {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: var(--site-chip);
-  color: var(--site-accent);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #e7f8fe, #d6f1fb);
+  color: var(--fr-blue-deep);
   margin-bottom: 1rem;
+  border: 1px solid rgba(10, 167, 215, 0.3);
 }
 
 .flowright-service-icon svg {
-  width: 26px;
-  height: 26px;
+  width: 27px;
+  height: 27px;
 }
 
-/* ── Dispatch board status badges ─────────────────────────────────── */
+.flowright-service-card .showcase-list {
+  margin-top: 1rem;
+}
+
+.flowright-service-cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  font-size: 0.86rem;
+  background: var(--fr-ink);
+  border-color: var(--fr-ink);
+}
+
+.flowright-service-cta:hover,
+.flowright-service-cta:focus-visible {
+  background: #0f2d49;
+  border-color: #0f2d49;
+}
+
+/* Quote + form */
+.flowright-dispatch-board {
+  margin-top: 1.2rem;
+  border: 1px solid rgba(9, 31, 52, 0.1);
+  background: linear-gradient(180deg, #ffffff, #f7fafc);
+}
+
 .flowright-status-urgent {
-  color: #c0392b;
+  color: #be2f2f;
 }
 
 .flowright-status-scheduled {
-  color: #176f8c;
+  color: #186b86;
 }
 
 .flowright-status-quoted {
-  color: #2e7d32;
+  color: #247336;
 }
 
-/* ── Reviewer avatar ──────────────────────────────────────────────── */
+.form-group {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--fr-ink);
+  letter-spacing: 0.02em;
+}
+
+.flowright-theme .showcase-form {
+  border: 1px solid rgba(9, 31, 52, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 252, 255, 0.98));
+  box-shadow: var(--fr-panel-shadow);
+}
+
+.flowright-theme .showcase-form input,
+.flowright-theme .showcase-form select,
+.flowright-theme .showcase-form textarea {
+  width: 100%;
+  border: 1px solid rgba(9, 31, 52, 0.18);
+  background: #fff;
+}
+
+.flowright-theme .showcase-form input:focus,
+.flowright-theme .showcase-form select:focus,
+.flowright-theme .showcase-form textarea:focus {
+  border-color: var(--fr-blue);
+  box-shadow: 0 0 0 4px rgba(10, 167, 215, 0.16);
+  outline: none;
+}
+
+.flowright-theme .showcase-form-note {
+  color: var(--fr-muted);
+}
+
+.flowright-theme .showcase-form-note a {
+  color: var(--fr-blue-deep);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.form-success {
+  background: #e7f6ec;
+  border: 1px solid #9dcfac;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1b4d2e;
+}
+
+.form-success a {
+  color: #0a7da3;
+  text-decoration: underline;
+}
+
+/* Reviews */
+.flowright-stars {
+  color: #f5a623;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.55rem;
+  line-height: 1;
+}
+
+.flowright-theme #reviews .showcase-panel {
+  border: 1px solid rgba(9, 31, 52, 0.1);
+  background: linear-gradient(180deg, #ffffff, #f8fbfd);
+}
+
+.flowright-review-meta {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(9, 31, 52, 0.1);
+  font-size: 0.84rem;
+  color: var(--fr-muted);
+}
+
 .flowright-reviewer {
   display: flex;
   align-items: center;
@@ -258,14 +506,14 @@
 .flowright-reviewer div:last-child span {
   display: block;
   font-size: 0.8rem;
-  color: var(--site-muted);
+  color: var(--fr-muted);
 }
 
 .flowright-reviewer-avatar {
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  background: var(--site-accent);
+  background: linear-gradient(135deg, var(--fr-blue), var(--fr-blue-deep));
   color: #fff;
   font-size: 0.78rem;
   font-weight: 900;
@@ -276,41 +524,78 @@
   flex-shrink: 0;
 }
 
-/* ── Service card CTA button ──────────────────────────────────────── */
-.flowright-service-cta {
+.flowright-map-list {
   display: flex;
-  width: 100%;
-  margin-top: 1.25rem;
-  font-size: 0.88rem;
-  background: var(--site-accent);
-  border-color: var(--site-accent);
-  justify-content: center;
-  transition: opacity 0.15s ease;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
 }
 
-.flowright-service-cta:hover,
-.flowright-service-cta:focus-visible {
-  opacity: 0.85;
+.flowright-theme .map-block {
+  border: 1px solid rgba(9, 31, 52, 0.13);
+  box-shadow: var(--fr-panel-shadow);
 }
 
-/* ── Star ratings ─────────────────────────────────────────────────── */
-.flowright-stars {
-  color: #f5a623;
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.55rem;
-  line-height: 1;
+/* Footer */
+.flowright-theme .showcase-footer {
+  background: #f0f6fa;
+  color: #4f6477;
 }
 
-/* ── Review attribution footer ────────────────────────────────────── */
-.flowright-review-meta {
-  margin-top: 0.9rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(8, 13, 18, 0.09);
-  font-size: 0.84rem;
-  color: var(--site-muted);
+.flowright-theme .showcase-credit a {
+  color: var(--fr-blue-deep);
 }
 
-.flowright-review-meta strong {
-  color: var(--site-ink);
+/* Responsive */
+@media (max-width: 860px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .showcase-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.55rem 1.25rem 1rem;
+    background: rgba(255, 255, 255, 0.99);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(9, 31, 52, 0.15);
+    z-index: 20;
+    box-shadow: 0 16px 40px rgba(9, 31, 52, 0.15);
+  }
+
+  .showcase-links.is-open {
+    display: flex;
+  }
+
+  .showcase-links a,
+  .showcase-links a:not(.showcase-cta) {
+    display: block !important;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(9, 31, 52, 0.08);
+    color: var(--fr-ink) !important;
+    font-size: 1rem;
+  }
+
+  .showcase-links .showcase-cta {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.6rem;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .flowright-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flowright-emergency-strip {
+    grid-template-columns: 1fr;
+  }
 }
