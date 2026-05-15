@@ -17,6 +17,11 @@
   --oak-shadow: 0 22px 54px rgba(50, 40, 30, 0.14);
 }
 
+.oak-theme::selection {
+  background: var(--oak-gold);
+  color: var(--oak-bark);
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -54,6 +59,17 @@
   box-shadow: 0 10px 30px rgba(62, 47, 36, 0.08);
 }
 
+.oak-theme .showcase-topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--oak-moss), var(--oak-gold), var(--oak-clay));
+  opacity: 0.42;
+}
+
 .oak-theme .showcase-nav {
   min-height: 78px;
 }
@@ -79,6 +95,7 @@
 .oak-theme .showcase-links a {
   position: relative;
   font-weight: 800;
+  transition: color 0.18s ease;
 }
 
 .oak-theme .showcase-links a::after {
@@ -97,6 +114,11 @@
 .oak-theme .showcase-links a:hover::after,
 .oak-theme .showcase-links a:focus-visible::after {
   transform: scaleX(1);
+}
+
+.oak-theme .showcase-links a:not(.showcase-cta):hover,
+.oak-theme .showcase-links a:not(.showcase-cta):focus-visible {
+  color: var(--oak-bark);
 }
 
 .oak-theme .showcase-links .showcase-cta {
@@ -503,6 +525,7 @@
 .oak-action-tile:focus-visible {
   transform: translateY(-4px);
   background: #fffaf4;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
 }
 
 .oak-action-tile span {
@@ -661,6 +684,10 @@
   box-shadow: 0 18px 36px rgba(62, 47, 36, 0.14);
 }
 
+.oak-theme .showcase-panel h3 {
+  text-wrap: balance;
+}
+
 /* Menu cards with stronger visual identity */
 .oak-menu-card {
   position: relative;
@@ -696,6 +723,14 @@
   opacity: 0.7;
 }
 
+.oak-menu-card h3 {
+  margin-bottom: 0.24rem;
+}
+
+.oak-menu-card .order-preview {
+  margin-top: 0.35rem;
+}
+
 .oak-menu-label {
   display: inline-flex;
   align-self: flex-start;
@@ -713,6 +748,23 @@
 
 .oak-theme .order-line {
   border-bottom-color: rgba(62, 47, 36, 0.12);
+  margin-inline: -0.35rem;
+  border-radius: 7px;
+  padding: 0.58rem 0.35rem 0.72rem;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.oak-theme .order-line:hover {
+  background: rgba(109, 122, 95, 0.08);
+  transform: translateX(2px);
+}
+
+.oak-theme .price,
+.oak-theme .status {
+  border-radius: 999px;
+  padding: 0.12rem 0.36rem;
+  background: rgba(240, 200, 139, 0.2);
+  color: var(--oak-bark);
 }
 
 /* Gallery feature section */
@@ -761,6 +813,13 @@
   min-height: 280px;
   object-fit: cover;
   display: block;
+  filter: saturate(0.94) contrast(1.02);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.oak-gallery-card:hover img {
+  filter: saturate(1.04) contrast(1.06);
+  transform: scale(1.025);
 }
 
 .oak-gallery-wide {
@@ -829,6 +888,21 @@
   background:
     linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(245, 228, 210, 0.98));
   color: var(--oak-ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.oak-review-featured::before {
+  content: "\201C";
+  position: absolute;
+  right: 1rem;
+  top: -0.5rem;
+  color: rgba(183, 119, 75, 0.18);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 9rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .oak-reviews-stack {
@@ -999,6 +1073,11 @@
   transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(108, 93, 82, 0.72);
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -1071,13 +1150,19 @@
 
 /* Footer tone */
 .oak-theme .showcase-footer {
-  background: #f4e6d7;
-  border-top: 1px solid rgba(62, 47, 36, 0.16);
-  color: #6b5849;
+  background:
+    linear-gradient(90deg, rgba(36, 49, 39, 0.96), rgba(62, 47, 36, 0.96)),
+    linear-gradient(180deg, #f4e6d7, #f4e6d7);
+  border-top: 1px solid rgba(240, 200, 139, 0.26);
+  color: rgba(255, 250, 244, 0.74);
 }
 
 .oak-theme .showcase-credit a {
-  color: #5e3d24;
+  color: var(--oak-gold);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 200, 139, 0.38);
+  text-underline-offset: 0.18em;
 }
 
 /* Mobile nav */
