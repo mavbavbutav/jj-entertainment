@@ -3,40 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oak &amp; Ember Coffee Co. | Artisan Coffee, Bakery, and Community Events</title>
-  <meta name="description" content="Oak &amp; Ember Coffee Co. serves small-batch coffee, fresh bakery favorites, and weekly community events in a warm neighborhood setting." />
-  <meta name="robots" content="index,follow" />
+  <title>Oak &amp; Ember Coffee Co. | Small-Batch Coffee &amp; Bakery in Nashville, TN</title>
+  <meta name="description" content="Oak &amp; Ember Coffee Co. roasts small-batch coffee every Thursday, bakes fresh daily, and hosts live music and community events in East Nashville." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/ai/design-showcase/oak-ember/oak-ember-mark-cropped.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/ai/design-showcase/oak-ember/oak-ember-mark-cropped.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Oak &amp; Ember Coffee Co. | Small-Batch Coffee in Nashville, TN" />
+  <meta property="og:description" content="Roasted Thursday mornings, baked fresh daily. Small-batch coffee, local pastries, and live music in East Nashville." />
+  <meta property="og:image" content="/ai/design-showcase/oak-ember/Oak & ember coffee.png" />
+  <meta property="og:url" content="https://oakandembercoffee.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Oak &amp; Ember Coffee Co." />
+  <meta name="twitter:description" content="Small-batch roasting, fresh-baked pastries, and community events in East Nashville." />
+  <meta name="twitter:image" content="/ai/design-showcase/oak-ember/Oak & ember coffee.png" />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Oak & Ember Coffee Co.",
+    "description": "Small-batch coffee roastery and neighborhood cafe in East Nashville. Roasting every Thursday, fresh bakery daily, live music and community events weekly.",
+    "telephone": "+16155550147",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "127 Main Street",
+      "addressLocality": "Nashville",
+      "addressRegion": "TN",
+      "postalCode": "37206",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "06:30",
+        "closes": "17:00"
+      }
+    ],
+    "servesCuisine": ["Coffee", "Bakery"],
+    "url": "https://oakandembercoffee.com",
+    "priceRange": "$$"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Manrope:wght@400;600;700;800;900&family=Rubik+Dirt&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
+  <link rel="stylesheet" href="/ai/design-showcase/oak-ember/oak-ember.css" />
 </head>
 <body class="showcase-page oak-theme">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header class="showcase-topbar">
     <div class="showcase-wrap showcase-nav">
-      <a class="showcase-brand" href="#top" aria-label="Oak and Ember Coffee home">
+      <a class="showcase-brand" href="#main-content" aria-label="Oak and Ember Coffee home">
         <span class="showcase-logo oak-nav-mark" aria-hidden="true">
           <img src="/ai/design-showcase/oak-ember/oak-ember-mark-cropped.png" alt="" />
         </span>
         <span>Oak &amp; Ember Coffee</span>
       </a>
-      <nav class="showcase-links" aria-label="Primary">
+
+      <button
+        class="nav-hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="showcase-links" id="primary-nav" aria-label="Primary navigation">
         <a href="#menu">Menu</a>
         <a href="#story">Roasting</a>
         <a href="#events">Events</a>
-        <a class="showcase-cta" href="#order">Order</a>
+        <a class="showcase-cta" href="#order">Order Ahead</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main-content">
     <section class="showcase-hero">
       <div class="showcase-wrap showcase-hero-grid">
         <div>
-          <img class="showcase-brand-art oak-brand-art" src="/ai/design-showcase/oak-ember/oak-ember-logo-cropped.png" alt="Oak &amp; Ember Coffee premium quality made with love logo" />
+          <img
+            class="showcase-brand-art oak-brand-art"
+            src="/ai/design-showcase/oak-ember/oak-ember-logo-cropped.png"
+            alt="Oak &amp; Ember Coffee Co. — Premium quality, made with love"
+          />
           <p class="showcase-kicker">Premium quality &middot; Made with love</p>
           <h1>Coffee with a little smoke and a lot of soul.</h1>
-          <p class="showcase-lead">A rustic neighborhood coffee shop built around hand-drawn branding, small-batch roasting, community events, and quick pickup ordering for daily regulars.</p>
+          <p class="showcase-lead">We roast every Thursday, bake every morning, and keep the door open all day. Pull up a chair, order ahead for pickup, or grab a bag of beans to take home &mdash; whatever kind of visit you need.</p>
           <div class="showcase-actions">
             <a class="showcase-cta" href="#menu">View Menu</a>
             <a class="showcase-cta showcase-ghost" href="#events">This Week</a>
@@ -48,25 +116,36 @@
           </div>
         </div>
         <div class="showcase-media">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=82" alt="Friends enjoying coffee in a warm cafe" />
+          <picture>
+            <source
+              srcset="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fm=webp&fit=crop&w=1400&q=82"
+              type="image/webp"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=82"
+              alt="Friends enjoying coffee together in a warm, welcoming cafe"
+              width="1400"
+              height="933"
+            />
+          </picture>
           <div class="showcase-badge">
-            <strong>Seasonal special</strong>
+            <strong>This week&rsquo;s special</strong>
             <span>Brown sugar oat latte with house-made vanilla and smoked cinnamon.</span>
           </div>
         </div>
       </div>
-      <div class="showcase-wrap oak-stamp-strip" aria-label="Coffee shop highlights">
+      <div class="showcase-wrap oak-stamp-strip" aria-label="Why regulars keep coming back">
         <div class="oak-stamp">
-          <strong>Roasted weekly</strong>
-          <span>Fresh beans, visible origin notes, and rotating house blends.</span>
+          <strong>Roasted in-house</strong>
+          <span>Fresh beans every Thursday. Origin notes and roast profiles on the board.</span>
         </div>
         <div class="oak-stamp">
           <strong>Community table</strong>
-          <span>Events, music, and regular reasons to come back.</span>
+          <span>Open mic nights, live music, and a seat that&rsquo;s always yours.</span>
         </div>
         <div class="oak-stamp">
-          <strong>Pickup ready</strong>
-          <span>Fast online ordering for drinks, beans, and growlers.</span>
+          <strong>Order ahead</strong>
+          <span>Skip the counter line for drinks, beans, and cold brew growlers.</span>
         </div>
       </div>
     </section>
@@ -75,12 +154,14 @@
       <div class="showcase-wrap">
         <div class="showcase-head">
           <div>
-            <p class="showcase-kicker">Digital Menu</p>
-            <h2>Readable like a menu board, warm like the shop.</h2>
-            <p>A practical menu surface keeps drinks, bakery items, and seasonal specials easy to scan on a phone at the counter.</p>
+            <p class="showcase-kicker">The Menu</p>
+            <h2>Everything we make, made with care.</h2>
+            <p>Espresso bar classics, rotating house specials, and a fresh bakery case every morning. Ask your barista what&rsquo;s on the board today.</p>
           </div>
+          <a class="showcase-cta showcase-ghost" href="#order">Order for Pickup</a>
         </div>
         <div class="showcase-grid-3">
+
           <article class="showcase-panel oak-menu-card">
             <span class="oak-menu-label">Espresso</span>
             <h3>Bar Classics</h3>
@@ -90,6 +171,7 @@
               <div class="order-line"><span>Classic Cappuccino</span><span class="price">$4.85</span></div>
             </div>
           </article>
+
           <article class="showcase-panel oak-menu-card">
             <span class="oak-menu-label">Seasonal</span>
             <h3>House Specials</h3>
@@ -99,81 +181,257 @@
               <div class="order-line"><span>Citrus Matcha</span><span class="price">$6.10</span></div>
             </div>
           </article>
+
           <article class="showcase-panel oak-menu-card">
             <span class="oak-menu-label">Bakery</span>
             <h3>Morning Case</h3>
             <div class="order-preview">
               <div class="order-line"><span>Cheddar Biscuit</span><span class="price">$4.25</span></div>
               <div class="order-line"><span>Blueberry Scone</span><span class="price">$4.75</span></div>
-              <div class="order-line"><span>Breakfast Toast</span><span class="price">$8.50</span></div>
+              <div class="order-line"><span>Avocado Toast</span><span class="price">$8.50</span></div>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="story" class="showcase-section">
+    <!-- Reviews -->
+    <section class="showcase-section">
+      <div class="showcase-wrap">
+        <div class="showcase-head">
+          <div>
+            <p class="showcase-kicker">4.8 &#9733; on Google</p>
+            <h2>The neighborhood keeps coming back.</h2>
+          </div>
+        </div>
+        <div class="showcase-grid-3">
+
+          <article class="showcase-panel">
+            <span class="oak-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <h3>&ldquo;The brown sugar oat latte has ruined every other coffee shop for me.&rdquo;</h3>
+            <p>I&rsquo;m not sorry about it. Oak &amp; Ember is just that good. I come in four mornings a week and the baristas know my name.</p>
+            <div class="oak-reviewer">
+              <div class="oak-reviewer-avatar" aria-hidden="true">SC</div>
+              <div class="oak-reviewer-info">
+                <strong>Sarah C.</strong>
+                <span>East Nashville &middot; Regular since 2022</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="showcase-panel">
+            <span class="oak-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <h3>&ldquo;Thursday roast mornings are something you have to experience in person.&rdquo;</h3>
+            <p>The shop smells incredible. The fresh-batch pour-over on roast day is in a completely different league from anything you&rsquo;ll get elsewhere.</p>
+            <div class="oak-reviewer">
+              <div class="oak-reviewer-avatar" aria-hidden="true">MJ</div>
+              <div class="oak-reviewer-info">
+                <strong>Marcus J.</strong>
+                <span>Germantown &middot; Open Mic regular</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="showcase-panel">
+            <span class="oak-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <h3>&ldquo;We order ahead every single morning. It&rsquo;s always ready when they say.&rdquo;</h3>
+            <p>The pickup flow is seamless. And the cheddar biscuit is worth the drive on its own. Our whole office runs on Oak &amp; Ember.</p>
+            <div class="oak-reviewer">
+              <div class="oak-reviewer-avatar" aria-hidden="true">LP</div>
+              <div class="oak-reviewer-info">
+                <strong>Leslie P.</strong>
+                <span>12South &middot; Five days a week</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="showcase-section alt">
       <div class="showcase-wrap showcase-grid-2">
-        <img class="showcase-card" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=82" alt="Coffee beans being prepared for roasting" loading="lazy" />
+        <picture>
+          <source
+            srcset="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fm=webp&fit=crop&w=1100&q=82"
+            type="image/webp"
+          />
+          <img
+            class="showcase-card"
+            src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=82"
+            alt="Coffee cherries on the branch, ready for harvest"
+            width="1100"
+            height="733"
+            loading="lazy"
+          />
+        </picture>
         <div class="showcase-panel">
           <p class="showcase-kicker">Our Roasting Story</p>
-          <h2>Local sourcing with a hand-stamped soul.</h2>
-          <p class="showcase-lead">The brand already feels handmade, so the website should make the process visible: weekly roasts, bean origins, local bakery partners, and the care behind the cup.</p>
+          <h2>From the farm to your cup &mdash; every Thursday.</h2>
+          <p class="showcase-lead">Every bag of Oak &amp; Ember coffee starts as a conversation with the farmer. We source single-origin beans directly and roast them here every Thursday morning &mdash; so what&rsquo;s in your cup was likely roasted less than a week ago.</p>
           <div class="oak-roast-note">
-            <div class="order-line"><span>Featured origin</span><span class="status">Colombia</span></div>
+            <div class="order-line"><span>Featured origin</span><span class="status">Colombia &mdash; Huila</span></div>
             <div class="order-line"><span>Roast profile</span><span class="status">Medium</span></div>
-            <div class="order-line"><span>Tasting notes</span><span class="status">Cocoa / Citrus</span></div>
+            <div class="order-line"><span>Tasting notes</span><span class="status">Cocoa &middot; Citrus &middot; Brown sugar</span></div>
           </div>
           <ul class="showcase-list">
-            <li>Roaster notes and origin highlights for featured beans.</li>
-            <li>Supplier callouts for local bakeries and farms.</li>
-            <li>Photography-led sections that feel warm without getting cluttered.</li>
+            <li>We log every roast batch by origin, processing method, and tasting profile &mdash; ask your barista what&rsquo;s on the board today.</li>
+            <li>Our pastries come from local Nashville bakers. Ask us who made the scone you&rsquo;re eating.</li>
+            <li>We rotate our house blend seasonally and feature a new single-origin at the counter each month.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="events" class="showcase-section alt">
+    <section id="events" class="showcase-section">
       <div class="showcase-wrap showcase-grid-2">
         <div>
           <p class="showcase-kicker">Community Events</p>
-          <h2>Give regulars a reason to come back.</h2>
+          <h2>Something on every week.</h2>
           <div class="showcase-grid-2">
             <article class="showcase-panel">
               <span class="oak-event-date">Thu</span>
+              <span class="oak-event-time">7:00&ndash;9:30 pm</span>
               <h3>Open Mic Night</h3>
-              <p>Signups at the counter, house drip refills, and a rotating pastry special.</p>
+              <p>Signups at the counter from 6 pm. House drip refills all evening, rotating pastry special, and a room full of good energy.</p>
             </article>
             <article class="showcase-panel">
               <span class="oak-event-date">Sat</span>
+              <span class="oak-event-time">5:00&ndash;8:00 pm</span>
               <h3>Live Music Saturdays</h3>
-              <p>Local acoustic sets, seasonal drinks, and evening bakery case drops.</p>
+              <p>Local acoustic sets, seasonal cocktails and mocktails, and evening bakery case drops. No cover, just come as you are.</p>
             </article>
           </div>
         </div>
-        <div id="order" class="showcase-panel">
-          <p class="showcase-kicker">Online Ordering</p>
-          <h2>Pickup drinks and beans without breaking the line.</h2>
-          <div class="order-preview">
-            <div class="order-line"><span>Two lattes, pickup at 8:45</span><span class="status">Ready</span></div>
-            <div class="order-line"><span>Ember Blend, 12 oz bag</span><span class="price">$18</span></div>
-            <div class="order-line"><span>Cold brew growler refill</span><span class="price">$14</span></div>
+
+        <form
+          id="order"
+          class="showcase-panel"
+          action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID"
+          method="POST"
+          novalidate
+        >
+          <p class="showcase-kicker">Pickup Order</p>
+          <h2>Skip the wait. Order ahead.</h2>
+
+          <div class="form-group">
+            <label for="order-name">Your name</label>
+            <input
+              type="text"
+              id="order-name"
+              name="name"
+              placeholder="Alex"
+              autocomplete="name"
+              required
+            />
           </div>
-          <div class="oak-order-actions">
-            <a class="showcase-cta" href="mailto:orders@oakandembercoffee.com?subject=Online%20Pickup%20Order">Order Online</a>
-            <a class="showcase-cta showcase-ghost" href="#menu">Back to Menu</a>
+
+          <div class="form-group">
+            <label for="order-item">What are you ordering?</label>
+            <select id="order-item" name="item">
+              <option value="" disabled selected>Choose a category&hellip;</option>
+              <option value="drinks">Drinks &amp; espresso</option>
+              <option value="beans">Bagged beans</option>
+              <option value="growler">Cold brew growler</option>
+              <option value="bakery">Bakery items</option>
+            </select>
           </div>
-          <p class="showcase-form-note">Order ahead for fast pickup, custom drink notes, and fresh bagged beans.</p>
-        </div>
+
+          <div class="form-group">
+            <label for="order-notes">Order details &amp; pickup time</label>
+            <textarea
+              id="order-notes"
+              name="notes"
+              rows="3"
+              placeholder="E.g. &ldquo;Two oak lattes, oat milk &mdash; pickup around 8:45 am&rdquo;"
+            ></textarea>
+          </div>
+
+          <button class="showcase-cta" type="submit">Place Pickup Order</button>
+
+          <p class="showcase-form-note">
+            Find us at <a href="https://maps.google.com" target="_blank" rel="noopener">127 Main Street, East Nashville</a>.
+            Open daily 6:30&nbsp;am&ndash;5&nbsp;pm &nbsp;&middot;&nbsp; <a href="tel:+16155550147">(615) 555-0147</a>
+          </p>
+
+          <div class="form-success" role="alert" aria-live="polite" hidden>
+            <strong>Order received!</strong> We&rsquo;ll have everything ready at your requested pickup time. See you soon &mdash; call us at <a href="tel:+16155550147">(615) 555-0147</a> if anything changes.
+          </div>
+        </form>
+
       </div>
     </section>
   </main>
 
   <footer class="showcase-footer">
     <div class="showcase-wrap showcase-footer-inner">
-      <span>Oak &amp; Ember Coffee Co.</span>
-      <span class="showcase-credit">Open daily in Nashville, Tennessee.</span>
+      <span>
+        Oak &amp; Ember Coffee Co. &nbsp;&middot;&nbsp;
+        127 Main Street, East Nashville, TN &nbsp;&middot;&nbsp;
+        Open daily 6:30&nbsp;am&ndash;5&nbsp;pm
+      </span>
+      <span class="showcase-credit">
+        <a href="tel:+16155550147">(615) 555-0147</a>
+      </span>
     </div>
   </footer>
+
+  <script>
+    // ── Hamburger / mobile nav drawer ─────────────────────────────────
+    (function () {
+      var btn = document.querySelector('.nav-hamburger');
+      var nav = document.getElementById('primary-nav');
+      if (!btn || !nav) return;
+
+      function setOpen(open) {
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        nav.classList.toggle('is-open', open);
+      }
+
+      btn.addEventListener('click', function () {
+        setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!btn.contains(e.target) && !nav.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          btn.focus();
+        }
+      });
+    }());
+
+    // ── Pickup order form demo handler ────────────────────────────────
+    (function () {
+      var form      = document.getElementById('order');
+      var success   = form && form.querySelector('.form-success');
+      var submitBtn = form && form.querySelector('button[type="submit"]');
+      var formNote  = form && form.querySelector('.showcase-form-note');
+      if (!form || !success || !submitBtn) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        setTimeout(function () {
+          submitBtn.hidden = true;
+          if (formNote) formNote.hidden = true;
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 900);
+      });
+    }());
+  </script>
+
 </body>
 </html>

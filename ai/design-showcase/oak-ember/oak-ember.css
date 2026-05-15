@@ -1,0 +1,221 @@
+/*
+ * oak-ember.css
+ * Oak & Ember Coffee Co. — page-specific styles and polish.
+ * Loaded after showcase.css. All overrides scoped to .oak-theme
+ * or new component classes to avoid bleeding into other showcases.
+ */
+
+/* ── Skip navigation link ─────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: #322f2b;
+  color: #fffaf4;
+  font-weight: 800;
+  font-family: "Manrope", system-ui, sans-serif;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Focus visible — warm amber outline ───────────────────────────── */
+.oak-theme *:focus-visible {
+  outline: 3px solid #8a5a34;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Heading line-height (Rubik Dirt needs breathing room) ────────── */
+.oak-theme h1 {
+  line-height: 1.0;
+}
+.oak-theme h2 {
+  line-height: 1.05;
+}
+
+/* ── Mobile hamburger button ──────────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid rgba(50, 47, 43, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 9px 8px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--site-ink);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .showcase-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(251, 243, 237, 0.98);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(50, 47, 43, 0.14);
+    padding: 0.5rem 1.25rem 1rem;
+    z-index: 20;
+    box-shadow: 0 16px 40px rgba(50, 47, 43, 0.12);
+  }
+
+  .showcase-links.is-open {
+    display: flex;
+  }
+
+  .showcase-links a,
+  .showcase-links a:not(.showcase-cta) {
+    display: block !important;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(50, 47, 43, 0.09);
+    color: var(--site-ink) !important;
+    font-size: 1rem;
+  }
+
+  .showcase-links .showcase-cta {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.6rem;
+    border-bottom: 0;
+  }
+}
+
+/* ── Event time sub-label ─────────────────────────────────────────── */
+.oak-event-time {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--site-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Visible form labels ──────────────────────────────────────────── */
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--site-ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+}
+
+/* ── Form success message ─────────────────────────────────────────── */
+.form-success {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  font-size: 0.95rem;
+  color: #1b4f27;
+  line-height: 1.5;
+}
+
+.form-success a {
+  color: #8a5a34;
+  text-decoration: underline;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ── Star ratings — warm amber ────────────────────────────────────── */
+.oak-stars {
+  display: block;
+  color: #c07c2a;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.55rem;
+  line-height: 1;
+}
+
+/* ── Reviewer attribution ─────────────────────────────────────────── */
+.oak-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(50, 47, 43, 0.1);
+}
+
+.oak-reviewer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.oak-reviewer-info strong {
+  font-size: 0.88rem;
+  color: var(--site-ink);
+  display: block;
+}
+
+.oak-reviewer-info span {
+  font-size: 0.78rem;
+  color: var(--site-muted);
+  display: block;
+}
+
+.oak-reviewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--site-ink);
+  color: var(--site-paper);
+  font-size: 0.75rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  border: 1px solid rgba(50, 47, 43, 0.3);
+  font-family: "Manrope", system-ui, sans-serif;
+}
