@@ -83,7 +83,7 @@
         <a href="#services">Services</a>
         <a href="#quote">Get a Quote</a>
         <a href="#reviews">Reviews</a>
-        <a class="showcase-cta" href="tel:+16155550198">Call 24/7</a>
+        <a class="showcase-cta flowright-cta-orange" href="tel:+16155550198">Call 24/7</a>
       </nav>
     </div>
   </header>
@@ -102,7 +102,7 @@
           <p class="showcase-lead">When a pipe bursts or the water won&rsquo;t heat, you need someone you can trust &mdash; right now. We pick up the phone, show up on time, and fix it right the first time.</p>
           <div class="showcase-actions">
             <a class="showcase-cta" href="#quote">Get a Free Quote</a>
-            <a class="showcase-cta showcase-ghost" href="tel:+16155550198">Call (615) 555-0198</a>
+            <a class="showcase-cta flowright-cta-orange" href="tel:+16155550198">Call (615) 555-0198</a>
           </div>
           <div class="showcase-mini-row">
             <span class="showcase-pill">24/7 Emergency Service</span>
@@ -122,7 +122,9 @@
               alt="Close-up of polished plumbing fixtures and a sink basin"
               width="1400"
               height="933"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </picture>
           <div class="showcase-badge">
@@ -419,7 +421,7 @@
       });
     }());
 
-    // Quote form demo handler
+    // Quote form handler
     (function () {
       var form      = document.getElementById('quote-form');
       var success   = form && form.querySelector('.form-success');
