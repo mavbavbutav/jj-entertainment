@@ -98,7 +98,7 @@ body { overflow-x: hidden; }
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: rgba(245, 239, 229, 0.98);
+    background: var(--site-bg);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(201, 154, 58, 0.2);
     padding: 0.5rem 1.25rem 1rem;
@@ -123,6 +123,7 @@ body { overflow-x: hidden; }
     justify-content: center;
     margin-top: 0.6rem;
     border-bottom: 0;
+    color: var(--site-paper) !important;
   }
 }
 
