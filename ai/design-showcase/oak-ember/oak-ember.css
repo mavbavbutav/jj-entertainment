@@ -1374,3 +1374,40 @@
     min-height: 220px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   FLIPPED HERO — board/photo widget moves to the LEFT column,
+   bold headline text moves to the RIGHT column. Creates a completely
+   different visual rhythm from the left-aligned showcase templates.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.oak-hero-reimagined .oak-hero-grid {
+  grid-template-columns: minmax(240px, 0.46fr) minmax(0, 0.95fr);
+}
+
+.oak-hero-copy {
+  order: 2;
+}
+
+.oak-hero-board {
+  order: 1;
+  margin-top: clamp(2rem, 5vw, 4.5rem);
+}
+
+/* Move the decorative polaroid photo to the left side to match the board */
+.oak-hero-photo {
+  right: auto;
+  left: clamp(0.75rem, 4vw, 3.6rem);
+}
+
+@media (max-width: 860px) {
+  /* Restore natural DOM order on mobile (text first, board below) */
+  .oak-hero-copy {
+    order: 1;
+  }
+
+  .oak-hero-board {
+    order: 2;
+    margin-top: 0;
+  }
+}
