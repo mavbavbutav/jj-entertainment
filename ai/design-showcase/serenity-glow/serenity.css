@@ -384,12 +384,15 @@ body { overflow-x: hidden; }
 }
 
 .serenity-services-section .serenity-treatment-card:first-child h3 {
+  align-self: flex-start;
+  width: min(100%, 7ch);
   max-width: 7ch;
   font-size: clamp(2.4rem, 5.5vw, 4.2rem);
   line-height: 0.9;
 }
 
 .serenity-services-section .serenity-treatment-card:first-child p {
+  align-self: flex-start;
   max-width: 44ch;
 }
 
