@@ -1233,8 +1233,40 @@ html { scroll-behavior: smooth; }
   color: rgba(180, 215, 235, 0.82);
 }
 
+.flowright-quote-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+.flowright-quote-chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 2.35rem;
+  padding: 0.54rem 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flowright-quote-chips span::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--fr-orange);
+  box-shadow: 0 0 12px rgba(242, 100, 25, 0.68);
+}
+
 .flowright-quote-copy .flowright-dispatch-board {
-  margin-top: 2rem;
+  margin-top: 1.6rem;
 }
 
 .flowright-theme .flowright-intake-form {
@@ -1579,6 +1611,10 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.02em;
 }
 
+.flowright-mobile-call {
+  display: none;
+}
+
 /* ════════════════════════════════════════════════════════════════════
    MOBILE NAV DRAWER
    ════════════════════════════════════════════════════════════════════ */
@@ -1713,6 +1749,52 @@ html { scroll-behavior: smooth; }
 
   .flowright-theme .showcase-hero h1 {
     max-width: 11ch;
+  }
+}
+
+@media (max-width: 700px) {
+  body.flowright-theme {
+    padding-bottom: 5.75rem;
+  }
+
+  .flowright-mobile-call {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--fr-orange), var(--fr-orange-deep));
+    box-shadow: 0 20px 46px rgba(242, 100, 25, 0.42);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .flowright-mobile-call span,
+  .flowright-mobile-call strong {
+    display: block;
+  }
+
+  .flowright-mobile-call span {
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    opacity: 0.86;
+    text-transform: uppercase;
+  }
+
+  .flowright-mobile-call strong {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 }
 
