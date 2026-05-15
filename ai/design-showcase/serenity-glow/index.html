@@ -3,25 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Serenity Glow Med Spa | Design Showcase by JJE Digital</title>
-  <meta name="description" content="A JJE Digital design showcase for a serene med spa website with treatments, consultation-led booking, testimonials, and skincare education." />
+  <title>Serenity Glow Med Spa | Nashville&rsquo;s Premier Medical Spa</title>
+  <meta name="description" content="Nashville's premier medical spa. Licensed providers, consultation-first care, and personalized treatments including custom facials, laser therapy, injectables, and massage. Serving Nashville, Franklin, and Brentwood." />
   <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/ai/design-showcase/serenity-glow/serenity-mark-cropped.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/ai/design-showcase/serenity-glow/serenity-mark-cropped.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Serenity Glow Med Spa | Nashville&rsquo;s Premier Medical Spa" />
+  <meta property="og:description" content="Consultation-first care from licensed providers. Custom facials, laser therapy, injectables, and massage in Nashville, TN." />
+  <meta property="og:image" content="/ai/design-showcase/serenity-glow/serenity.png" />
+  <meta property="og:url" content="https://serenityglow.com" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Serenity Glow Med Spa" />
+  <meta name="twitter:description" content="Nashville&rsquo;s premier medical spa. Consultation-first care from licensed providers." />
+  <meta name="twitter:image" content="/ai/design-showcase/serenity-glow/serenity.png" />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Serenity Glow Med Spa",
+    "description": "Nashville's premier medical spa offering consultation-first skincare, laser therapy, injectables, and massage.",
+    "telephone": "+16155550210",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4820 Hillsboro Pike, Suite 200",
+      "addressLocality": "Nashville",
+      "addressRegion": "TN",
+      "postalCode": "37215",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Nashville" },
+      { "@type": "City", "name": "Franklin" },
+      { "@type": "City", "name": "Brentwood" }
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "18:00" }
+    ],
+    "url": "https://serenityglow.com",
+    "priceRange": "$$"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;600;700;800;900&family=Marcellus&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
+  <link rel="stylesheet" href="/ai/design-showcase/serenity-glow/serenity.css" />
 </head>
 <body class="showcase-page serenity-theme">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header class="showcase-topbar">
     <div class="showcase-wrap showcase-nav">
-      <a class="showcase-brand" href="#top" aria-label="Serenity Glow Med Spa home">
+      <a class="showcase-brand" href="#main-content" aria-label="Serenity Glow Med Spa home">
         <span class="showcase-logo serenity-nav-mark" aria-hidden="true">
           <img src="/ai/design-showcase/serenity-glow/serenity-mark-cropped.png" alt="" />
         </span>
         <span>Serenity Glow</span>
       </a>
-      <nav class="showcase-links" aria-label="Primary">
-        <a href="#services">Services</a>
+
+      <button
+        class="nav-hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="showcase-links" id="primary-nav" aria-label="Primary">
+        <a href="#services">Treatments</a>
         <a href="#booking">Book</a>
         <a href="#results">Results</a>
         <a href="#journal">Journal</a>
@@ -30,78 +93,150 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="main-content">
     <section class="showcase-hero serenity-hero">
       <div class="showcase-wrap showcase-hero-grid">
         <div>
-          <img class="showcase-brand-art serenity-brand-art" src="/ai/design-showcase/serenity-glow/serenity-logo-cropped.png" alt="Serenity Glow Med Spa logo" />
-          <p class="showcase-kicker">Luxury med spa / calm clinical care</p>
+          <img
+            class="showcase-brand-art serenity-brand-art"
+            src="/ai/design-showcase/serenity-glow/serenity-logo-cropped.png"
+            alt="Serenity Glow Med Spa"
+          />
+          <p class="showcase-kicker">Nashville&rsquo;s premier med spa</p>
           <h1>Your skin, restored with calm precision.</h1>
-          <p class="showcase-lead">A refined med spa website concept built around consultation-first treatment education, easy scheduling, credible results, and a brand presence that feels quiet, polished, and trustworthy.</p>
+          <p class="showcase-lead">At Serenity Glow, every treatment begins with a conversation. Our licensed providers take the time to understand your skin, your goals, and your lifestyle &mdash; so the care you receive is genuinely yours.</p>
           <div class="showcase-actions">
-            <a class="showcase-cta" href="#booking">Book Consultation</a>
+            <a class="showcase-cta" href="#booking">Book a Consultation</a>
             <a class="showcase-cta showcase-ghost" href="#services">Explore Treatments</a>
           </div>
-          <div class="serenity-proof-strip" aria-label="Serenity Glow client assurances">
+          <div class="serenity-proof-strip" aria-label="Why clients choose Serenity Glow">
             <div class="serenity-proof">
               <strong>Licensed providers</strong>
-              <span>Clear credentials and treatment guidance.</span>
+              <span>Board-certified aestheticians and nurse practitioners on every service.</span>
             </div>
             <div class="serenity-proof">
               <strong>Consultation first</strong>
-              <span>Clients choose care with confidence.</span>
+              <span>Every treatment plan begins with a complimentary one-on-one consultation.</span>
             </div>
             <div class="serenity-proof">
               <strong>Skin health plans</strong>
-              <span>Education supports repeat visits.</span>
+              <span>Custom home-care guidance and seasonal plans for lasting results.</span>
             </div>
           </div>
         </div>
+
         <div class="showcase-media serenity-hero-media">
-          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=82" alt="Serene spa treatment room with towels and natural light" />
+          <picture>
+            <source
+              srcset="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fm=webp&fit=crop&w=1400&q=82"
+              type="image/webp"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=82"
+              alt="Serene treatment room with warm lighting and pristine white linens"
+              width="1400"
+              height="933"
+              loading="lazy"
+            />
+          </picture>
           <div class="showcase-badge serenity-badge">
-            <strong>Consultation-first flow</strong>
-            <span>Visitors can learn, compare, and book without feeling rushed.</span>
+            <strong>Physician-grade skincare</strong>
+            <span>Medical expertise delivered with a serene touch &mdash; from first consultation to lasting results.</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Trust & credentials strip -->
+    <div class="serenity-stats-strip" aria-label="Serenity Glow by the numbers">
+      <div class="showcase-wrap serenity-stats-grid">
+        <div class="serenity-stat">
+          <strong>8+ Years</strong>
+          <span>Serving Nashville</span>
+        </div>
+        <div class="serenity-stat">
+          <strong>2,400+</strong>
+          <span>Treatments performed</span>
+        </div>
+        <div class="serenity-stat">
+          <strong>4.9 &#9733;</strong>
+          <span>Google rating</span>
+        </div>
+        <div class="serenity-stat">
+          <strong>5 Providers</strong>
+          <span>Licensed &amp; certified</span>
+        </div>
+      </div>
+    </div>
+
     <section id="services" class="showcase-section alt">
       <div class="showcase-wrap">
         <div class="showcase-head">
           <div>
-            <p class="showcase-kicker">Treatment menu</p>
-            <h2>Services organized for confident decisions.</h2>
-            <p>Each service path gives enough context to reduce uncertainty while keeping the interface calm and premium.</p>
+            <p class="showcase-kicker">Our treatments</p>
+            <h2>Expertly tailored for every skin type.</h2>
+            <p>From your first facial to advanced laser therapy &mdash; every service is guided by a licensed provider who listens.</p>
           </div>
-          <a class="showcase-cta showcase-ghost" href="#booking">Plan a Visit</a>
+          <a class="showcase-cta showcase-ghost" href="#booking">Schedule a Consultation</a>
         </div>
         <div class="serenity-treatment-grid">
+
           <article class="serenity-treatment-card">
-            <span class="serenity-treatment-meta">60-90 min / Glow reset</span>
+            <div class="serenity-treatment-icon" aria-hidden="true">
+              <!-- Leaf / botanical icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+            </div>
+            <span class="serenity-treatment-meta">60&ndash;90 min &middot; Glow reset</span>
             <h3>Custom Facials</h3>
-            <p>Personalized hydration, texture, and tone treatments with product guidance for home care.</p>
-            <a href="#booking">Request consult</a>
+            <p>Personalized hydration, texture, and tone treatments with professional-grade products and a tailored home-care plan.</p>
+            <a href="#booking">Reserve a facial</a>
           </article>
+
           <article class="serenity-treatment-card">
+            <div class="serenity-treatment-icon" aria-hidden="true">
+              <!-- Sparkle / light icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v1M12 20v1M4.22 4.22l.7.7M18.36 18.36l.7.7M3 12h1M20 12h1M4.22 19.78l.7-.7M18.36 5.64l.7-.7"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
             <span class="serenity-treatment-meta">Consult required</span>
             <h3>Laser Therapy</h3>
-            <p>Education-led laser options for tone, texture, and maintenance with realistic next steps.</p>
-            <a href="#booking">View availability</a>
+            <p>Provider-guided laser treatments for tone, texture, and pigmentation &mdash; with realistic timelines and clear aftercare.</p>
+            <a href="#booking">Check availability</a>
           </article>
+
           <article class="serenity-treatment-card">
+            <div class="serenity-treatment-icon" aria-hidden="true">
+              <!-- Droplet icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </div>
             <span class="serenity-treatment-meta">Provider consult</span>
             <h3>Injectables</h3>
-            <p>Subtle, plan-based injectable consultations with emphasis on natural-looking balance.</p>
-            <a href="#booking">Start with consult</a>
+            <p>Subtle, natural-looking injectable treatments with an emphasis on balance, informed consent, and honest expectations.</p>
+            <a href="#booking">Start with a consult</a>
           </article>
+
           <article class="serenity-treatment-card">
-            <span class="serenity-treatment-meta">50-80 min / Restore</span>
+            <div class="serenity-treatment-icon" aria-hidden="true">
+              <!-- Wave / wellness icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1 1.5 1 2 1"/>
+                <path d="M2 7c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1 1.5 1 2 1"/>
+                <path d="M2 17c.5-1 1.5-1 2-1s1.5 0 2 1 1.5 1 2 1 1.5 0 2-1 1.5-1 2-1 1.5 0 2 1 1.5 1 2 1"/>
+              </svg>
+            </div>
+            <span class="serenity-treatment-meta">50&ndash;80 min &middot; Restore</span>
             <h3>Massage Therapy</h3>
-            <p>Restorative bodywork appointments positioned as part of a complete wellness routine.</p>
+            <p>Restorative bodywork by licensed therapists, integrated into your overall wellness and skin health routine.</p>
             <a href="#booking">Find a time</a>
           </article>
+
         </div>
       </div>
     </section>
@@ -109,41 +244,92 @@
     <section id="booking" class="showcase-section">
       <div class="showcase-wrap showcase-grid-2">
         <div class="showcase-panel serenity-consult-panel">
-          <p class="showcase-kicker">Booking experience</p>
-          <h2>A scheduler that feels calm before the first visit.</h2>
-          <p class="showcase-lead">This area is designed to connect with a real scheduler later while previewing treatment duration, next availability, consultation pathways, and high-intent lead capture.</p>
-          <div class="serenity-time-grid" aria-label="Sample appointment openings">
+          <p class="showcase-kicker">Schedule your visit</p>
+          <h2>Reserve your consultation.</h2>
+          <p class="showcase-lead">Select a treatment, share your goals, and we&rsquo;ll match you with the right provider. Most initial consultations are complimentary.</p>
+          <div class="serenity-time-grid" aria-label="Next available appointments">
             <div class="booking-line">
               <span>Glow Consultation</span>
-              <span class="status">Today 3:30</span>
+              <span class="status">Today &mdash; 3:30 pm</span>
             </div>
             <div class="booking-line">
               <span>Signature Facial</span>
-              <span class="status">Fri 11:00</span>
+              <span class="status">Fri &mdash; 11:00 am</span>
             </div>
             <div class="booking-line">
               <span>Laser Consult</span>
-              <span class="status">Fri 2:15</span>
+              <span class="status">Fri &mdash; 2:15 pm</span>
             </div>
             <div class="booking-line">
               <span>Massage Therapy</span>
-              <span class="status">Sat 9:15</span>
+              <span class="status">Sat &mdash; 9:15 am</span>
             </div>
           </div>
         </div>
-        <form class="showcase-panel showcase-form serenity-form" action="mailto:contact@jjentertainmentsolutions.com" method="post" enctype="text/plain">
-          <p class="showcase-kicker">Reserve a consultation</p>
-          <input type="text" name="name" placeholder="Name" aria-label="Name" />
-          <input type="email" name="email" placeholder="Email" aria-label="Email" />
-          <select name="treatment" aria-label="Treatment interest">
-            <option>Custom facial consultation</option>
-            <option>Laser therapy consultation</option>
-            <option>Injectables consultation</option>
-            <option>Massage therapy</option>
-          </select>
-          <textarea name="goals" placeholder="Skin goals or preferred appointment window" aria-label="Skin goals or preferred appointment window"></textarea>
-          <button class="showcase-cta" type="submit">Reserve Appointment</button>
-          <p class="showcase-form-note">A live version could connect to Square, Fresha, Vagaro, Boulevard, or a custom intake flow.</p>
+
+        <form
+          class="showcase-panel showcase-form serenity-form"
+          id="booking-form"
+          action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID"
+          method="POST"
+          novalidate
+        >
+          <p class="showcase-kicker">Reserve your consultation</p>
+
+          <div class="form-group">
+            <label for="field-name">Your name</label>
+            <input
+              type="text"
+              id="field-name"
+              name="name"
+              placeholder="Jane Smith"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="field-email">Email address</label>
+            <input
+              type="email"
+              id="field-email"
+              name="email"
+              placeholder="jane@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="field-treatment">Treatment interest</label>
+            <select id="field-treatment" name="treatment">
+              <option value="" disabled selected>Choose a treatment&hellip;</option>
+              <option value="facial">Custom facial consultation</option>
+              <option value="laser">Laser therapy consultation</option>
+              <option value="injectables">Injectables consultation</option>
+              <option value="massage">Massage therapy</option>
+              <option value="unsure">Not sure &mdash; I&rsquo;d like guidance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="field-goals">Skin goals or preferred appointment window</label>
+            <textarea
+              id="field-goals"
+              name="goals"
+              placeholder="E.g. &ldquo;Looking to reduce redness and improve texture. Mornings work best for me&hellip;&rdquo;"
+            ></textarea>
+          </div>
+
+          <button class="showcase-cta" type="submit">Reserve My Appointment</button>
+
+          <p class="showcase-form-note">
+            Prefer to call? Reach our front desk at <a href="tel:+16155550210">(615) 555-0210</a>, Tuesday&ndash;Saturday 9&nbsp;am&ndash;6&nbsp;pm.
+          </p>
+
+          <div class="form-success" role="alert" aria-live="polite" hidden>
+            <strong>Thank you!</strong> We&rsquo;ll be in touch within one business day to confirm your consultation. Questions? Call <a href="tel:+16155550210">(615) 555-0210</a>.
+          </div>
         </form>
       </div>
     </section>
@@ -151,28 +337,48 @@
     <section id="results" class="showcase-section alt">
       <div class="showcase-wrap showcase-grid-2">
         <div>
-          <p class="showcase-kicker">Results and trust</p>
-          <h2>Credibility without overpromising.</h2>
-          <p class="showcase-lead">The results area keeps the tone responsible: testimonial language, provider notes, and care timelines can build confidence without making medical claims.</p>
+          <p class="showcase-kicker">Client results</p>
+          <h2>Real results, real clients.</h2>
+          <p class="showcase-lead">Our providers share honest timelines, realistic expectations, and personalized aftercare &mdash; because lasting results begin with transparency.</p>
           <div class="showcase-grid-2 serenity-result-grid">
+
             <article class="showcase-panel serenity-result-card">
-              <h3>"My skin finally feels balanced."</h3>
-              <p>The consultation helped me understand what I actually needed and how to maintain it.</p>
+              <span class="serenity-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <h3>&ldquo;My skin finally feels balanced.&rdquo;</h3>
+              <p>The consultation helped me understand what my skin actually needed &mdash; and why. I left with a plan I understood, and the results have been remarkable.</p>
+              <div class="serenity-reviewer">
+                <div class="serenity-reviewer-avatar" aria-hidden="true">JR</div>
+                <div class="serenity-reviewer-info">
+                  <strong>Jennifer R.</strong>
+                  <span>Nashville, TN &middot; Custom Facial &middot; Jan 2025</span>
+                </div>
+              </div>
             </article>
+
             <article class="showcase-panel serenity-result-card">
-              <h3>"Professional and calming."</h3>
-              <p>The site made it easy to compare treatments before scheduling my first appointment.</p>
+              <span class="serenity-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <h3>&ldquo;Professional and genuinely calming.&rdquo;</h3>
+              <p>I was nervous about injectables, but my provider walked me through every step beforehand. The results are subtle, natural, and exactly what I wanted.</p>
+              <div class="serenity-reviewer">
+                <div class="serenity-reviewer-avatar" aria-hidden="true">MT</div>
+                <div class="serenity-reviewer-info">
+                  <strong>Marcus T.</strong>
+                  <span>Brentwood, TN &middot; Injectables &middot; Dec 2024</span>
+                </div>
+              </div>
             </article>
+
           </div>
         </div>
+
         <div class="showcase-panel serenity-care-card">
-          <p class="showcase-kicker">Care pathway</p>
-          <h2>From first visit to maintenance.</h2>
+          <p class="showcase-kicker">Your care plan</p>
+          <h2>Your skin journey, step by step.</h2>
           <ul class="showcase-list serenity-care-list">
-            <li>Intake and skin goals reviewed before booking advanced services.</li>
-            <li>Provider recommendations paired with clear pre-care instructions.</li>
-            <li>Follow-up reminders and home care notes keep clients engaged.</li>
-            <li>Seasonal treatment plans encourage thoughtful return visits.</li>
+            <li>A thorough intake review before any advanced service, so your provider understands your skin and your goals.</li>
+            <li>Personalized treatment recommendations with written pre- and post-care instructions.</li>
+            <li>Follow-up check-ins and a custom home-care routine to support your results between visits.</li>
+            <li>Seasonal treatment plans designed to maintain and build on your results over time.</li>
           </ul>
         </div>
       </div>
@@ -182,27 +388,31 @@
       <div class="showcase-wrap">
         <div class="showcase-head">
           <div>
-            <p class="showcase-kicker">Skin journal</p>
-            <h2>Education that brings clients back.</h2>
-            <p>Short, useful articles turn the website into a resource between appointments and create search-friendly content for the business.</p>
+            <p class="showcase-kicker">Skin education</p>
+            <h2>Knowledge for healthier skin.</h2>
+            <p>Practical guides from our licensed providers &mdash; on building your routine, understanding treatments, and caring for your skin between visits.</p>
           </div>
         </div>
         <div class="showcase-grid-3 serenity-journal-list">
+
           <article class="showcase-panel">
             <span class="serenity-treatment-meta">First visit</span>
             <h3>What to expect before your first facial</h3>
-            <p>Prep notes, timeline, and how to choose the right consultation path.</p>
+            <p>Prep notes and what to share with your provider about your skin history, lifestyle, and goals before your appointment.</p>
           </article>
+
           <article class="showcase-panel">
             <span class="serenity-treatment-meta">Maintenance</span>
-            <h3>How to maintain glow between appointments</h3>
-            <p>A simple home care checklist written for real client routines.</p>
+            <h3>How to maintain your glow between appointments</h3>
+            <p>A provider-approved morning and evening routine, tailored to your specific treatment type and skin concerns.</p>
           </article>
+
           <article class="showcase-panel">
-            <span class="serenity-treatment-meta">Seasonal care</span>
+            <span class="serenity-treatment-meta">Sensitive skin</span>
             <h3>Calming sensitive skin after travel</h3>
-            <p>Timely education that can support campaigns and email follow-up.</p>
+            <p>Practical guidance on restoring hydration, reducing redness, and protecting your skin barrier after time in transit.</p>
           </article>
+
         </div>
       </div>
     </section>
@@ -210,9 +420,72 @@
 
   <footer class="showcase-footer serenity-footer">
     <div class="showcase-wrap showcase-footer-inner">
-      <span>Serenity Glow Med Spa</span>
-      <span class="showcase-credit">Design Showcase by <a href="/ai/">JJE Digital</a>.</span>
+      <span>
+        Serenity Glow Med Spa &nbsp;&middot;&nbsp;
+        Nashville, TN &nbsp;&middot;&nbsp;
+        Tue&ndash;Sat 9&nbsp;am&ndash;6&nbsp;pm
+      </span>
+      <span class="showcase-credit">
+        <a href="tel:+16155550210">(615) 555-0210</a>
+      </span>
     </div>
   </footer>
+
+  <script>
+    // ── Hamburger / mobile nav drawer ─────────────────────────────────
+    (function () {
+      var btn = document.querySelector('.nav-hamburger');
+      var nav = document.getElementById('primary-nav');
+      if (!btn || !nav) return;
+
+      function setOpen(open) {
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        nav.classList.toggle('is-open', open);
+      }
+
+      btn.addEventListener('click', function () {
+        setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!btn.contains(e.target) && !nav.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          btn.focus();
+        }
+      });
+    }());
+
+    // ── Booking form demo handler ─────────────────────────────────────
+    (function () {
+      var form      = document.getElementById('booking-form');
+      var success   = form && form.querySelector('.form-success');
+      var submitBtn = form && form.querySelector('button[type="submit"]');
+      var formNote  = form && form.querySelector('.showcase-form-note');
+      if (!form || !success || !submitBtn) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        setTimeout(function () {
+          submitBtn.hidden = true;
+          if (formNote) formNote.hidden = true;
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 900);
+      });
+    }());
+  </script>
+
 </body>
 </html>

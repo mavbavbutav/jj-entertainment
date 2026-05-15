@@ -1,0 +1,277 @@
+/*
+ * serenity.css
+ * Serenity Glow Med Spa — page-specific styles and polish.
+ * Loaded after showcase.css. All rules are scoped to .serenity-theme
+ * or new component classes to avoid affecting other showcases.
+ */
+
+/* ── Skip navigation link ─────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: #c99a3a;
+  color: #193331;
+  font-weight: 800;
+  font-family: "Manrope", system-ui, sans-serif;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Focus visible (gold outline) ─────────────────────────────────── */
+.serenity-theme *:focus-visible {
+  outline: 3px solid #c99a3a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Fix heading line-height (raised from 0.98 / 1.0) ────────────── */
+.serenity-theme h1 {
+  line-height: 1.05;
+}
+.serenity-theme h2 {
+  line-height: 1.1;
+}
+
+/* ── Mobile hamburger button ──────────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid rgba(25, 51, 49, 0.22);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 9px 8px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--site-ink);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .showcase-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(245, 239, 229, 0.98);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(201, 154, 58, 0.22);
+    padding: 0.5rem 1.25rem 1rem;
+    z-index: 20;
+    box-shadow: 0 16px 40px rgba(25, 51, 49, 0.12);
+  }
+
+  .showcase-links.is-open {
+    display: flex;
+  }
+
+  .showcase-links a,
+  .showcase-links a:not(.showcase-cta) {
+    display: block !important;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(25, 51, 49, 0.1);
+    color: var(--site-ink) !important;
+    font-size: 1rem;
+  }
+
+  .showcase-links .showcase-cta {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.6rem;
+    border-bottom: 0;
+  }
+}
+
+/* ── Trust / stats strip ──────────────────────────────────────────── */
+.serenity-stats-strip {
+  background: var(--site-ink);
+  border-top: 1px solid rgba(201, 154, 58, 0.2);
+  border-bottom: 1px solid rgba(201, 154, 58, 0.2);
+  padding: 1.4rem 0;
+}
+
+.serenity-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.serenity-stat strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c99a3a;
+  font-family: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.serenity-stat span {
+  display: block;
+  font-size: 0.76rem;
+  color: rgba(255, 250, 243, 0.65);
+  font-weight: 700;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 540px) {
+  .serenity-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ── Treatment card icon ──────────────────────────────────────────── */
+.serenity-treatment-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(201, 154, 58, 0.1);
+  color: #c99a3a;
+  border: 1px solid rgba(201, 154, 58, 0.24);
+  margin-bottom: 0.9rem;
+  flex-shrink: 0;
+}
+
+.serenity-treatment-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ── Visible form labels ──────────────────────────────────────────── */
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--site-ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+}
+
+/* Labels inside the dark consult panel */
+.serenity-consult-panel .form-group label {
+  color: rgba(255, 250, 243, 0.8);
+}
+
+/* ── Form success message ─────────────────────────────────────────── */
+.form-success {
+  background: rgba(201, 154, 58, 0.1);
+  border: 1px solid rgba(201, 154, 58, 0.38);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  font-size: 0.95rem;
+  color: var(--site-ink);
+  line-height: 1.55;
+}
+
+.form-success a {
+  color: #c99a3a;
+  text-decoration: underline;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ── Star ratings ─────────────────────────────────────────────────── */
+.serenity-stars {
+  color: #c99a3a;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.55rem;
+  line-height: 1;
+  display: block;
+}
+
+/* ── Reviewer attribution ─────────────────────────────────────────── */
+.serenity-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(25, 51, 49, 0.1);
+}
+
+.serenity-reviewer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.serenity-reviewer-info strong {
+  font-size: 0.88rem;
+  color: var(--site-ink);
+  display: block;
+}
+
+.serenity-reviewer-info span {
+  font-size: 0.78rem;
+  color: var(--site-muted);
+  display: block;
+}
+
+.serenity-reviewer-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--site-ink);
+  color: #c99a3a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  border: 1px solid rgba(201, 154, 58, 0.36);
+  font-family: "Marcellus", Georgia, serif;
+}
