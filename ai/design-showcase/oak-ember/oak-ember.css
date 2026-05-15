@@ -243,6 +243,253 @@
   color: var(--oak-muted);
 }
 
+/* Reimagined hero: editorial, useful, and coffee-shop specific */
+.oak-hero-reimagined {
+  isolation: isolate;
+  position: relative;
+  min-height: auto;
+  overflow: hidden;
+  padding-top: clamp(1.7rem, 3vw, 2.6rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+  color: #fffaf4;
+  background: #251b16;
+}
+
+.oak-hero-reimagined::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(23, 17, 14, 0.96) 0%, rgba(30, 21, 16, 0.82) 42%, rgba(30, 21, 16, 0.18) 74%),
+    linear-gradient(180deg, rgba(23, 17, 14, 0.1), rgba(23, 17, 14, 0.72)),
+    url("https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1900&q=82") center / cover;
+}
+
+.oak-hero-reimagined::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255, 250, 244, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 250, 244, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 82%);
+}
+
+.oak-hero-photo {
+  position: absolute;
+  right: clamp(0.75rem, 4vw, 3.6rem);
+  top: clamp(8.1rem, 12vw, 10rem);
+  z-index: -1;
+  width: min(38vw, 480px);
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(255, 250, 244, 0.32);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(47, 33, 24, 0.08), rgba(47, 33, 24, 0.42)),
+    url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=82") center / cover;
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.35);
+  transform: rotate(1.7deg);
+}
+
+.oak-hero-photo::before,
+.oak-hero-photo::after {
+  content: "";
+  position: absolute;
+  background: #f6d6a6;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+}
+
+.oak-hero-photo::before {
+  width: 96px;
+  height: 28px;
+  left: 38px;
+  top: -13px;
+  transform: rotate(-7deg);
+}
+
+.oak-hero-photo::after {
+  width: 118px;
+  height: 30px;
+  right: 42px;
+  bottom: -13px;
+  transform: rotate(-5deg);
+}
+
+.oak-hero-reimagined .oak-hero-grid {
+  grid-template-columns: minmax(0, 0.95fr) minmax(270px, 0.46fr);
+  gap: clamp(1rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.oak-hero-copy {
+  max-width: 760px;
+  padding-top: 0;
+}
+
+.oak-sign-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: clamp(1rem, 2vw, 1.45rem);
+}
+
+.oak-hero-reimagined .oak-brand-art {
+  width: clamp(150px, 18vw, 236px);
+  margin: 0;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 250, 244, 0.38);
+  background: rgba(251, 243, 237, 0.96);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
+  transform: rotate(-2.2deg);
+}
+
+.oak-sign-tag {
+  position: absolute;
+  right: -1.8rem;
+  bottom: 0.45rem;
+  transform: rotate(4deg);
+  border: 1px solid rgba(255, 250, 244, 0.42);
+  background: #6d7a5f;
+  color: #fffaf4;
+  padding: 0.45rem 0.62rem;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.oak-hero-reimagined .showcase-kicker {
+  color: #f0c88b;
+}
+
+.oak-hero-reimagined h1 {
+  max-width: 12.6ch;
+  color: #fffaf4;
+  font-size: clamp(2.9rem, 4.85vw, 5.05rem);
+  line-height: 0.88;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.38);
+}
+
+.oak-hero-reimagined .showcase-lead {
+  max-width: 50ch;
+  color: rgba(255, 250, 244, 0.82);
+}
+
+.oak-hero-reimagined .showcase-cta {
+  background: #f0c88b;
+  border-color: #f0c88b;
+  color: #2b221d;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+.oak-hero-reimagined .showcase-ghost {
+  background: rgba(255, 250, 244, 0.09);
+  border-color: rgba(255, 250, 244, 0.36);
+  color: #fffaf4;
+  backdrop-filter: blur(12px);
+}
+
+.oak-hero-board {
+  margin: clamp(5rem, 10vw, 8rem) 0 0;
+  border: 1px solid rgba(240, 200, 139, 0.38);
+  border-radius: 8px;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  background:
+    linear-gradient(180deg, rgba(36, 49, 39, 0.95), rgba(27, 34, 29, 0.96)),
+    repeating-linear-gradient(0deg, transparent 0 14px, rgba(255, 250, 244, 0.035) 15px 16px);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.32);
+  transform: rotate(1.2deg);
+  position: relative;
+  z-index: 1;
+}
+
+.oak-board-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 250, 244, 0.2);
+  padding-bottom: 0.75rem;
+  color: #f0c88b;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.oak-board-menu {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.oak-board-menu div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(255, 250, 244, 0.74);
+}
+
+.oak-board-menu strong {
+  color: #fffaf4;
+  text-align: right;
+}
+
+.oak-hero-board p {
+  margin: 0;
+  color: rgba(255, 250, 244, 0.74);
+  font-size: 0.92rem;
+}
+
+.oak-action-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.oak-action-tile {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 126px;
+  border: 1px solid rgba(255, 250, 244, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 250, 244, 0.92);
+  color: #2b221d;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.oak-action-tile:hover,
+.oak-action-tile:focus-visible {
+  transform: translateY(-4px);
+  background: #fffaf4;
+}
+
+.oak-action-tile span {
+  color: #8a5a34;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.oak-action-tile strong {
+  max-width: 14ch;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.42rem);
+  line-height: 1;
+  color: #3e2f24;
+}
+
+.oak-action-tile small {
+  color: #6c5d52;
+  font-size: 0.86rem;
+  line-height: 1.42;
+}
+
 .oak-photo-band {
   padding-top: 1.2rem;
 }
@@ -598,6 +845,41 @@
     grid-template-columns: 1fr;
   }
 
+  .oak-hero-reimagined {
+    min-height: auto;
+    padding-top: 2rem;
+  }
+
+  .oak-hero-reimagined::before {
+    background:
+      linear-gradient(180deg, rgba(23, 17, 14, 0.9) 0%, rgba(23, 17, 14, 0.76) 52%, rgba(23, 17, 14, 0.94) 100%),
+      url("https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1300&q=82") center / cover;
+  }
+
+  .oak-hero-photo {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: min(100%, 520px);
+    margin: 1.6rem auto 0;
+    grid-row: auto;
+    opacity: 0.96;
+  }
+
+  .oak-hero-reimagined .oak-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oak-hero-board {
+    max-width: 520px;
+    margin: 0;
+    transform: none;
+  }
+
+  .oak-action-strip {
+    grid-template-columns: 1fr;
+  }
+
   .oak-photo-tall {
     grid-row: auto;
   }
@@ -613,6 +895,34 @@
 }
 
 @media (max-width: 540px) {
+  .oak-hero-reimagined h1 {
+    font-size: 3.15rem;
+    max-width: 10.5ch;
+  }
+
+  .oak-sign-tag {
+    right: -0.75rem;
+    bottom: -0.45rem;
+  }
+
+  .oak-hero-reimagined .oak-brand-art {
+    width: min(100%, 220px);
+  }
+
+  .oak-board-header,
+  .oak-board-menu div {
+    display: grid;
+    gap: 0.22rem;
+  }
+
+  .oak-board-menu strong {
+    text-align: left;
+  }
+
+  .oak-action-tile {
+    min-height: 126px;
+  }
+
   .oak-stamp-strip {
     grid-template-columns: 1fr;
   }
