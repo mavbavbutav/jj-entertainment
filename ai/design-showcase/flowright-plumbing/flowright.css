@@ -837,26 +837,71 @@ html { scroll-behavior: smooth; }
   text-transform: none;
 }
 
+.flowright-theme .showcase-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.flowright-theme .showcase-head {
+  margin-bottom: clamp(1.8rem, 3vw, 2.7rem);
+}
+
+.flowright-theme .showcase-head h2,
+.flowright-quote-copy h2,
+.flowright-review-column h2,
+.flowright-map-column h2 {
+  max-width: 17ch;
+  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.flowright-theme .showcase-head p:not(.showcase-kicker),
+.flowright-review-column > p:not(.showcase-kicker),
+.flowright-map-column > p:not(.showcase-kicker) {
+  max-width: 48ch;
+  color: var(--fr-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
 /* ════════════════════════════════════════════════════════════════════
    STATS STRIP
    ════════════════════════════════════════════════════════════════════ */
 
 .flowright-stats-strip {
-  background: linear-gradient(90deg, #0b1e30, #122d47);
-  padding: 1.5rem 0;
+  background:
+    linear-gradient(rgba(79, 200, 232, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 200, 232, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, #061523, #102a42);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  padding: 1.15rem 0;
   border-bottom: 1px solid rgba(10, 167, 215, 0.18);
 }
 
 .flowright-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  text-align: center;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  text-align: left;
+}
+
+.flowright-stat {
+  padding: 1rem clamp(1rem, 2vw, 1.35rem);
+}
+
+.flowright-stat + .flowright-stat {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .flowright-stat strong {
   display: block;
-  font: 900 1.7rem/1 "Archivo Black", "Archivo", system-ui, sans-serif;
+  font: 900 clamp(1.45rem, 2vw, 2rem)/1 "Archivo Black", "Archivo", system-ui, sans-serif;
   color: var(--fr-blue-light);
 }
 
@@ -881,6 +926,24 @@ html { scroll-behavior: smooth; }
   align-items: stretch;
 }
 
+.flowright-services-section {
+  background:
+    radial-gradient(circle at 88% 20%, rgba(10, 167, 215, 0.12), transparent 32%),
+    linear-gradient(180deg, #edf5f9 0%, #f8fbfd 100%);
+}
+
+.flowright-services-section::before {
+  content: "";
+  position: absolute;
+  left: max(-18vw, -260px);
+  bottom: -210px;
+  width: min(42vw, 520px);
+  aspect-ratio: 1;
+  border: 42px solid rgba(10, 167, 215, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 .flowright-service-stack {
   display: grid;
   gap: clamp(1rem, 2vw, 1.35rem);
@@ -891,6 +954,7 @@ html { scroll-behavior: smooth; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-radius: 28px;
   border: 1px solid rgba(9, 31, 52, 0.1);
   border-left: 4px solid var(--fr-blue);
   background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
@@ -949,6 +1013,16 @@ html { scroll-behavior: smooth; }
   color: var(--fr-blue-deep);
   margin-bottom: 1rem;
   border: 1px solid rgba(10, 167, 215, 0.28);
+}
+
+.flowright-service-featured .flowright-service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--fr-orange), var(--fr-orange-deep));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 18px 34px rgba(242, 100, 25, 0.28);
 }
 
 .flowright-service-icon svg {
@@ -1069,6 +1143,76 @@ html { scroll-behavior: smooth; }
   50%       { opacity: 0.15; }
 }
 
+.flowright-quote-section {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(10, 167, 215, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 72%, rgba(242, 100, 25, 0.12), transparent 34%),
+    linear-gradient(145deg, #061523 0%, #0b2034 58%, #071827 100%);
+  color: #fff;
+}
+
+.flowright-quote-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  background:
+    linear-gradient(rgba(79, 200, 232, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 200, 232, 0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+.flowright-quote-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+  gap: clamp(1.4rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.flowright-quote-copy .showcase-kicker {
+  color: var(--fr-blue-light);
+}
+
+.flowright-quote-copy h2 {
+  color: #fff;
+}
+
+.flowright-quote-copy .showcase-lead {
+  color: rgba(180, 215, 235, 0.82);
+}
+
+.flowright-quote-copy .flowright-dispatch-board {
+  margin-top: 2rem;
+}
+
+.flowright-theme .flowright-intake-form {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(243, 250, 253, 0.98));
+  box-shadow:
+    0 36px 90px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.flowright-theme .flowright-intake-form::before {
+  content: "Priority intake";
+  display: block;
+  margin: -0.2rem -0.2rem 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--fr-orange), var(--fr-blue));
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 /* ── Quote form ──────────────────────────────────────────────────── */
 .form-group {
   display: grid;
@@ -1093,7 +1237,9 @@ html { scroll-behavior: smooth; }
 .flowright-theme .showcase-form textarea {
   width: 100%;
   border: 1px solid rgba(9, 31, 52, 0.16);
+  border-radius: 14px;
   background: #fff;
+  box-shadow: inset 0 1px 0 rgba(9, 31, 52, 0.04);
 }
 
 .flowright-theme .showcase-form input:focus,
@@ -1144,6 +1290,53 @@ html { scroll-behavior: smooth; }
   color: var(--fr-blue-deep);
   font-weight: 800;
   text-decoration: underline;
+}
+
+.flowright-proof-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(10, 167, 215, 0.1), transparent 30%),
+    linear-gradient(180deg, #edf5f9 0%, #ffffff 100%);
+}
+
+.flowright-proof-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(1.4rem, 4vw, 3.2rem);
+  align-items: start;
+}
+
+.flowright-review-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.35rem);
+  margin-top: 1.5rem;
+}
+
+.flowright-map-column {
+  position: relative;
+  padding: clamp(1.2rem, 2.4vw, 1.8rem);
+  border: 1px solid rgba(10, 167, 215, 0.2);
+  border-radius: 30px;
+  background:
+    linear-gradient(rgba(79, 200, 232, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 200, 232, 0.055) 1px, transparent 1px),
+    linear-gradient(160deg, #071a2e, #0d2b45);
+  background-size: 26px 26px, 26px 26px, 100% 100%;
+  box-shadow: 0 28px 70px rgba(9, 31, 52, 0.18);
+}
+
+.flowright-map-column .showcase-kicker,
+.flowright-map-column h2 {
+  color: #fff;
+}
+
+.flowright-map-column h2 {
+  max-width: 12ch;
+  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+}
+
+.flowright-map-column > p:not(.showcase-kicker) {
+  color: rgba(180, 215, 235, 0.74);
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1219,8 +1412,8 @@ html { scroll-behavior: smooth; }
    ════════════════════════════════════════════════════════════════════ */
 
 .flowright-theme .map-block {
-  min-height: 168px;
-  border-radius: 14px;
+  min-height: 220px;
+  border-radius: 22px;
   border: 1px solid rgba(10, 167, 215, 0.22);
   box-shadow: var(--fr-panel-shadow);
   background:
@@ -1230,6 +1423,16 @@ html { scroll-behavior: smooth; }
   background-size: 28px 28px, 28px 28px, 100% 100%;
   position: relative;
   overflow: hidden;
+}
+
+.flowright-map-column .flowright-map-list {
+  margin-top: 1.1rem;
+}
+
+.flowright-map-column .showcase-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 /* Pulsing ring — the "we're here" indicator */
@@ -1416,6 +1619,15 @@ html { scroll-behavior: smooth; }
     grid-template-columns: 1fr;
   }
 
+  .flowright-quote-shell,
+  .flowright-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flowright-map-column {
+    order: -1;
+  }
+
   .flowright-hero-grid {
     grid-template-columns: 1fr;
   }
@@ -1498,6 +1710,18 @@ html { scroll-behavior: smooth; }
 
   .flowright-stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flowright-stat:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .flowright-stat:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .flowright-review-cards {
+    grid-template-columns: 1fr;
   }
 
   .flowright-emergency-strip {
