@@ -10,6 +10,8 @@
   --oak-paper: #fdf4ea;
   --oak-clay: #b7774b;
   --oak-moss: #6d7a5f;
+  --oak-moss-dark: #243127;
+  --oak-gold: #f0c88b;
   --oak-bark: #3e2f24;
   --oak-line: rgba(62, 47, 36, 0.18);
   --oak-shadow: 0 22px 54px rgba(50, 40, 30, 0.14);
@@ -491,21 +493,26 @@
 }
 
 .oak-photo-band {
-  padding-top: 1.2rem;
+  position: relative;
+  padding: clamp(1.4rem, 3vw, 2.4rem) 0 clamp(2.2rem, 4vw, 3.6rem);
+  background:
+    linear-gradient(180deg, #fff5eb 0%, #f4e4d3 100%);
+  border-bottom: 1px solid rgba(62, 47, 36, 0.14);
 }
 
 .oak-photo-band-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 0.85rem;
+  grid-template-columns: 1.18fr 0.9fr 0.9fr;
+  gap: clamp(0.8rem, 2vw, 1.1rem);
 }
 
 .oak-photo-card {
+  position: relative;
   margin: 0;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(62, 47, 36, 0.18);
-  box-shadow: 0 12px 30px rgba(62, 47, 36, 0.12);
+  box-shadow: 0 22px 54px rgba(62, 47, 36, 0.15);
 }
 
 .oak-photo-card img {
@@ -514,6 +521,42 @@
   min-height: 250px;
   object-fit: cover;
   display: block;
+  filter: saturate(0.92) contrast(1.03);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.oak-photo-card:hover img {
+  filter: saturate(1.02) contrast(1.06);
+  transform: scale(1.035);
+}
+
+.oak-photo-card::after {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 1;
+  border: 1px solid rgba(255, 250, 244, 0.36);
+  border-radius: 999px;
+  padding: 0.42rem 0.68rem;
+  background: rgba(36, 49, 39, 0.78);
+  color: #fffaf4;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.oak-photo-card:nth-child(1)::after {
+  content: "Morning regulars";
+}
+
+.oak-photo-card:nth-child(2)::after {
+  content: "Bar flow";
+}
+
+.oak-photo-card:nth-child(3)::after {
+  content: "Front room";
 }
 
 .oak-photo-tall {
@@ -521,21 +564,48 @@
 }
 
 /* Sections and cards */
+.oak-theme .showcase-section {
+  position: relative;
+}
+
 .oak-theme .showcase-section.alt {
   background:
-    linear-gradient(180deg, rgba(255, 244, 232, 0.85), rgba(248, 231, 214, 0.9));
+    radial-gradient(70% 80% at 96% 12%, rgba(109, 122, 95, 0.14), transparent 60%),
+    linear-gradient(180deg, rgba(255, 244, 232, 0.92), rgba(248, 231, 214, 0.98));
   border-top: 1px solid rgba(62, 47, 36, 0.14);
   border-bottom: 1px solid rgba(62, 47, 36, 0.14);
 }
 
+.oak-theme .showcase-head {
+  align-items: center;
+}
+
+.oak-theme .showcase-head > div {
+  position: relative;
+  padding-left: clamp(1rem, 2vw, 1.4rem);
+}
+
+.oak-theme .showcase-head > div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  bottom: 0.15rem;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--oak-clay), var(--oak-moss));
+}
+
 .oak-theme .showcase-head h2 {
-  max-width: 13ch;
+  max-width: 14ch;
 }
 
 .oak-theme .showcase-panel {
-  border: 1px solid rgba(62, 47, 36, 0.14);
-  background: linear-gradient(180deg, #fffaf4 0%, #fff3e8 100%);
-  box-shadow: 0 12px 28px rgba(62, 47, 36, 0.08);
+  border: 1px solid rgba(62, 47, 36, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.96) 0%, rgba(255, 243, 232, 0.96) 100%);
+  box-shadow: 0 16px 36px rgba(62, 47, 36, 0.1);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
@@ -549,6 +619,9 @@
 .oak-menu-card {
   position: relative;
   overflow: hidden;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
 }
 
 .oak-menu-card::before {
@@ -561,8 +634,24 @@
   opacity: 0.9;
 }
 
+.oak-menu-card::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -42px;
+  width: 132px;
+  height: 132px;
+  border: 1px solid rgba(109, 122, 95, 0.24);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(109, 122, 95, 0.18) 0 28%, transparent 29%),
+    repeating-radial-gradient(circle, rgba(62, 47, 36, 0.1) 0 1px, transparent 2px 12px);
+  opacity: 0.7;
+}
+
 .oak-menu-label {
   display: inline-flex;
+  align-self: flex-start;
   margin-bottom: 0.88rem;
   border: 1px solid rgba(62, 47, 36, 0.24);
   border-radius: 999px;
@@ -581,24 +670,42 @@
 
 /* Gallery feature section */
 .oak-gallery-section {
+  position: relative;
+  overflow: hidden;
   background:
-    radial-gradient(90% 80% at 10% 0%, rgba(183, 119, 75, 0.15), transparent 56%),
-    linear-gradient(180deg, #fff8f1 0%, #f9eee1 100%);
+    radial-gradient(80% 80% at 8% 0%, rgba(183, 119, 75, 0.14), transparent 56%),
+    radial-gradient(70% 70% at 96% 80%, rgba(109, 122, 95, 0.18), transparent 56%),
+    linear-gradient(180deg, #fff8f1 0%, #f7eadc 100%);
+}
+
+.oak-gallery-section::before {
+  content: "Oak & Ember";
+  position: absolute;
+  right: -0.4rem;
+  top: 0.4rem;
+  color: rgba(62, 47, 36, 0.055);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  font-weight: 800;
+  line-height: 0.85;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .oak-gallery-grid {
   display: grid;
   grid-template-columns: 1.25fr 1fr 1fr;
-  gap: 0.9rem;
+  gap: clamp(0.8rem, 2vw, 1.15rem);
 }
 
 .oak-gallery-card {
+  position: relative;
   margin: 0;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(62, 47, 36, 0.18);
   background: #f5e6d5;
-  box-shadow: 0 14px 34px rgba(62, 47, 36, 0.12);
+  box-shadow: 0 22px 52px rgba(62, 47, 36, 0.14);
 }
 
 .oak-gallery-card img {
@@ -618,20 +725,47 @@
 }
 
 .oak-gallery-card figcaption {
+  position: absolute;
+  left: 0.8rem;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  border: 1px solid rgba(255, 250, 244, 0.2);
+  border-radius: 7px;
   padding: 0.75rem 0.9rem;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 800;
-  color: #5d4432;
-  background: rgba(255, 248, 240, 0.94);
-  border-top: 1px solid rgba(62, 47, 36, 0.14);
+  color: #fffaf4;
+  background: rgba(43, 34, 29, 0.72);
+  backdrop-filter: blur(14px);
 }
 
 /* Reviews */
+.oak-reviews-section {
+  overflow: hidden;
+  color: #fffaf4;
+  background:
+    linear-gradient(90deg, rgba(36, 49, 39, 0.95), rgba(43, 34, 29, 0.94)),
+    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1800&q=78") center / cover;
+}
+
+.oak-reviews-section .showcase-head > div::before {
+  background: linear-gradient(180deg, var(--oak-gold), var(--oak-clay));
+}
+
+.oak-reviews-section .showcase-kicker,
+.oak-reviews-section .showcase-head p {
+  color: rgba(255, 250, 244, 0.72);
+}
+
+.oak-reviews-section h2 {
+  color: #fffaf4;
+}
+
 .oak-stars {
   display: block;
-  color: #bf7d29;
+  color: var(--oak-gold);
   font-size: 1rem;
   letter-spacing: 0.04em;
   margin-bottom: 0.55rem;
@@ -645,6 +779,9 @@
 
 .oak-review-featured {
   min-height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(245, 228, 210, 0.98));
+  color: var(--oak-ink);
 }
 
 .oak-reviews-stack {
@@ -686,9 +823,85 @@
   color: var(--oak-muted);
 }
 
+.oak-reviews-section .oak-reviews-stack .showcase-panel {
+  background: rgba(255, 250, 244, 0.1);
+  border-color: rgba(255, 250, 244, 0.18);
+  color: #fffaf4;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.oak-reviews-section .oak-reviews-stack .showcase-panel p,
+.oak-reviews-section .oak-reviews-stack .oak-reviewer-info span {
+  color: rgba(255, 250, 244, 0.76);
+}
+
+.oak-reviews-section .oak-reviews-stack .oak-reviewer {
+  border-top-color: rgba(255, 250, 244, 0.18);
+}
+
+/* Roasting story */
+.oak-story-section .showcase-grid-2 {
+  gap: clamp(1rem, 3vw, 1.45rem);
+  align-items: stretch;
+}
+
+.oak-story-photo {
+  position: relative;
+  display: block;
+}
+
+.oak-story-photo::before {
+  content: "Roasted every Thursday";
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1;
+  border-radius: 999px;
+  padding: 0.5rem 0.75rem;
+  background: rgba(240, 200, 139, 0.92);
+  color: #2b221d;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.oak-story-photo .showcase-card {
+  height: 100%;
+  min-height: 540px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 24px 58px rgba(62, 47, 36, 0.16);
+}
+
+.oak-story-section .showcase-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 6px solid var(--oak-moss);
+}
+
 /* Events and order form area */
+.oak-events-section {
+  background:
+    radial-gradient(80% 70% at 0% 0%, rgba(109, 122, 95, 0.12), transparent 56%),
+    linear-gradient(180deg, #fff8f1, #f4e6d7);
+}
+
+.oak-events-copy {
+  border-radius: 8px;
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.72), rgba(255, 250, 244, 0.35));
+  border: 1px solid rgba(62, 47, 36, 0.12);
+}
+
 .oak-event-date {
   margin-bottom: 0.5rem;
+  background: var(--oak-moss-dark);
+  box-shadow: inset 0 0 0 3px rgba(240, 200, 139, 0.18);
 }
 
 .oak-event-time {
@@ -703,12 +916,13 @@
 
 .form-group {
   display: grid;
-  gap: 0.4rem;
+  gap: 0.42rem;
+  margin-top: 0.72rem;
 }
 
 .form-group label {
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--oak-ink);
 }
 
@@ -716,12 +930,58 @@
 .form-group select,
 .form-group textarea {
   width: 100%;
+  border: 1px solid rgba(62, 47, 36, 0.22);
+  border-radius: 7px;
+  padding: 0.82rem 0.9rem;
+  background: rgba(255, 250, 244, 0.82);
+  color: var(--oak-ink);
+  font: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(109, 122, 95, 0.7);
+  background: #fffaf4;
+  box-shadow: 0 0 0 4px rgba(109, 122, 95, 0.16);
+  outline: 0;
+}
+
+.form-group textarea {
+  min-height: 114px;
+  resize: vertical;
 }
 
 .oak-theme form.showcase-panel {
   border: 1px solid rgba(62, 47, 36, 0.18);
   background:
     linear-gradient(180deg, rgba(255, 248, 240, 0.98), rgba(251, 238, 223, 0.98));
+}
+
+.oak-order-form {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.oak-order-form::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--oak-moss) 0 12px, var(--oak-gold) 12px 24px, var(--oak-clay) 24px 36px);
+}
+
+.oak-order-form .showcase-cta {
+  margin-top: 1rem;
+}
+
+.oak-order-form .showcase-form-note {
+  max-width: 54ch;
+  margin-top: 0.9rem;
+  line-height: 1.55;
 }
 
 .oak-theme form.showcase-panel .showcase-cta {
