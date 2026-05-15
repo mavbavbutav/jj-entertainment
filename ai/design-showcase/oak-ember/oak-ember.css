@@ -1,45 +1,456 @@
 /*
- * oak-ember.css
- * Oak & Ember Coffee Co. — page-specific styles and polish.
- * Loaded after showcase.css. All overrides scoped to .oak-theme
- * or new component classes to avoid bleeding into other showcases.
- */
+  Oak & Ember
+  Custom visual pass to make the page feel brand-specific, tactile, and less template-like.
+*/
 
-/* ── Skip navigation link ─────────────────────────────────────────── */
+.oak-theme {
+  --oak-ink: #2b221d;
+  --oak-muted: #6c5d52;
+  --oak-cream: #fff8f1;
+  --oak-paper: #fdf4ea;
+  --oak-clay: #b7774b;
+  --oak-moss: #6d7a5f;
+  --oak-bark: #3e2f24;
+  --oak-line: rgba(62, 47, 36, 0.18);
+  --oak-shadow: 0 22px 54px rgba(50, 40, 30, 0.14);
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
   left: 1rem;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: #322f2b;
-  color: #fffaf4;
-  font-weight: 800;
-  font-family: "Manrope", system-ui, sans-serif;
+  background: var(--oak-bark);
+  color: #fff;
+  font: 800 0.9rem/1 "Manrope", system-ui, sans-serif;
   border-radius: 0 0 12px 12px;
   text-decoration: none;
   transition: top 0.15s ease;
 }
+
 .skip-link:focus {
   top: 0;
 }
 
-/* ── Focus visible — warm amber outline ───────────────────────────── */
 .oak-theme *:focus-visible {
   outline: 3px solid #8a5a34;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ── Heading line-height (Rubik Dirt needs breathing room) ────────── */
-.oak-theme h1 {
-  line-height: 1.0;
-}
-.oak-theme h2 {
-  line-height: 1.05;
+[hidden] {
+  display: none !important;
 }
 
-/* ── Mobile hamburger button ──────────────────────────────────────── */
+/* Topbar: less generic, more artisanal */
+.oak-theme .showcase-topbar {
+  background:
+    linear-gradient(180deg, rgba(253, 244, 234, 0.96), rgba(253, 244, 234, 0.9));
+  border-bottom: 1px solid rgba(62, 47, 36, 0.16);
+  box-shadow: 0 10px 30px rgba(62, 47, 36, 0.08);
+}
+
+.oak-theme .showcase-nav {
+  min-height: 78px;
+}
+
+.oak-theme .showcase-brand {
+  color: var(--oak-bark);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.oak-nav-mark {
+  border-radius: 10px;
+  border: 1px solid rgba(62, 47, 36, 0.2);
+  box-shadow: 0 8px 20px rgba(62, 47, 36, 0.12);
+}
+
+.oak-theme .showcase-links {
+  color: var(--oak-muted);
+  gap: 1.05rem;
+}
+
+.oak-theme .showcase-links a {
+  position: relative;
+  font-weight: 800;
+}
+
+.oak-theme .showcase-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.16rem;
+  height: 2px;
+  background: var(--oak-clay);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.oak-theme .showcase-links a:hover::after,
+.oak-theme .showcase-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.oak-theme .showcase-links .showcase-cta {
+  background: linear-gradient(135deg, #8a5a34, #6e4528);
+  border-color: transparent;
+  box-shadow: 0 12px 26px rgba(110, 69, 40, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+}
+
+/* Hero with layered texture and asymmetry */
+.oak-theme .showcase-hero {
+  background:
+    radial-gradient(100% 75% at 0% 0%, rgba(182, 138, 102, 0.24), transparent 58%),
+    radial-gradient(85% 65% at 100% 12%, rgba(147, 115, 83, 0.18), transparent 55%),
+    linear-gradient(180deg, #fff6ec 0%, #f7e9db 100%);
+  border-bottom: 1px solid var(--oak-line);
+  padding-top: clamp(3.2rem, 6vw, 5.8rem);
+  padding-bottom: clamp(2.8rem, 5vw, 4.8rem);
+}
+
+.oak-theme .showcase-hero-grid {
+  align-items: start;
+}
+
+.oak-theme .showcase-brand-art {
+  width: min(100%, 300px);
+  background: #f8ede2;
+  border: 1px solid rgba(62, 47, 36, 0.24);
+  border-radius: 22px;
+  padding: 1rem;
+  box-shadow: 0 16px 40px rgba(62, 47, 36, 0.12);
+}
+
+.oak-theme .showcase-kicker {
+  color: #7f5c40;
+  letter-spacing: 0.16em;
+}
+
+.oak-theme h1 {
+  max-width: 11ch;
+  line-height: 1.02;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.oak-theme .showcase-lead {
+  max-width: 56ch;
+  color: var(--oak-muted);
+}
+
+.oak-theme .showcase-actions {
+  gap: 0.75rem;
+}
+
+.oak-theme .showcase-actions .showcase-cta {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.82rem;
+}
+
+.oak-theme .showcase-actions .showcase-ghost {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(62, 47, 36, 0.2);
+  color: var(--oak-bark);
+}
+
+.oak-theme .showcase-pill {
+  border: 1px solid rgba(62, 47, 36, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--oak-ink);
+  font-weight: 800;
+}
+
+.oak-theme .showcase-media {
+  border-radius: 28px;
+  border: 1px solid rgba(62, 47, 36, 0.16);
+  box-shadow: var(--oak-shadow);
+  overflow: hidden;
+}
+
+.oak-theme .showcase-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(60, 38, 23, 0.08), rgba(60, 38, 23, 0.3));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.oak-theme .showcase-badge {
+  z-index: 2;
+  border-radius: 14px;
+  border: 1px solid rgba(62, 47, 36, 0.16);
+  background: rgba(255, 249, 241, 0.9);
+}
+
+/* Brand strip cards */
+.oak-stamp-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.oak-stamp {
+  border-radius: 16px;
+  border: 1px solid rgba(62, 47, 36, 0.18);
+  background: linear-gradient(180deg, #fff7ee, #f8e8d8);
+  padding: 1rem;
+  box-shadow: 0 12px 28px rgba(62, 47, 36, 0.1);
+}
+
+.oak-stamp strong,
+.oak-stamp span {
+  display: block;
+}
+
+.oak-stamp strong {
+  text-transform: uppercase;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  color: var(--oak-bark);
+}
+
+.oak-stamp span {
+  margin-top: 0.22rem;
+  font-size: 0.9rem;
+  color: var(--oak-muted);
+}
+
+/* Sections and cards */
+.oak-theme .showcase-section.alt {
+  background:
+    linear-gradient(180deg, rgba(255, 244, 232, 0.85), rgba(248, 231, 214, 0.9));
+  border-top: 1px solid rgba(62, 47, 36, 0.14);
+  border-bottom: 1px solid rgba(62, 47, 36, 0.14);
+}
+
+.oak-theme .showcase-head h2 {
+  max-width: 13ch;
+}
+
+.oak-theme .showcase-panel {
+  border: 1px solid rgba(62, 47, 36, 0.14);
+  background: linear-gradient(180deg, #fffaf4 0%, #fff3e8 100%);
+  box-shadow: 0 12px 28px rgba(62, 47, 36, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.oak-theme .showcase-panel:hover,
+.oak-theme .showcase-panel:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(62, 47, 36, 0.14);
+}
+
+/* Menu cards with stronger visual identity */
+.oak-menu-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.oak-menu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 7px;
+  background:
+    repeating-linear-gradient(90deg, #5a3a23 0 9px, #b7774b 9px 18px, transparent 18px 26px);
+  opacity: 0.9;
+}
+
+.oak-menu-label {
+  display: inline-flex;
+  margin-bottom: 0.88rem;
+  border: 1px solid rgba(62, 47, 36, 0.24);
+  border-radius: 999px;
+  padding: 0.34rem 0.66rem;
+  background: #f2e1cf;
+  color: #5a3a23;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.oak-theme .order-line {
+  border-bottom-color: rgba(62, 47, 36, 0.12);
+}
+
+/* Gallery feature section */
+.oak-gallery-section {
+  background:
+    radial-gradient(90% 80% at 10% 0%, rgba(183, 119, 75, 0.15), transparent 56%),
+    linear-gradient(180deg, #fff8f1 0%, #f9eee1 100%);
+}
+
+.oak-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.oak-gallery-card {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(62, 47, 36, 0.18);
+  background: #f5e6d5;
+  box-shadow: 0 14px 34px rgba(62, 47, 36, 0.12);
+}
+
+.oak-gallery-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.oak-gallery-wide {
+  grid-row: span 2;
+}
+
+.oak-gallery-wide img {
+  min-height: 100%;
+}
+
+.oak-gallery-card figcaption {
+  padding: 0.75rem 0.9rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: #5d4432;
+  background: rgba(255, 248, 240, 0.94);
+  border-top: 1px solid rgba(62, 47, 36, 0.14);
+}
+
+/* Reviews */
+.oak-stars {
+  display: block;
+  color: #bf7d29;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.55rem;
+}
+
+.oak-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(62, 47, 36, 0.12);
+}
+
+.oak-reviewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7a4e2e, #4d3220);
+  color: #fff;
+  font: 900 0.75rem/1 "Manrope", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(62, 47, 36, 0.35);
+}
+
+.oak-reviewer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.oak-reviewer-info span {
+  font-size: 0.78rem;
+  color: var(--oak-muted);
+}
+
+/* Events and order form area */
+.oak-event-date {
+  margin-bottom: 0.5rem;
+}
+
+.oak-event-time {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b603f;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--oak-ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+}
+
+.oak-theme form.showcase-panel {
+  border: 1px solid rgba(62, 47, 36, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 240, 0.98), rgba(251, 238, 223, 0.98));
+}
+
+.oak-theme form.showcase-panel .showcase-cta {
+  background: linear-gradient(135deg, #7a4e2e, #5e3d24);
+  border-color: transparent;
+}
+
+.oak-theme form.showcase-panel .showcase-cta:hover,
+.oak-theme form.showcase-panel .showcase-cta:focus-visible {
+  background: linear-gradient(135deg, #6d462a, #4f331e);
+}
+
+.form-success {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  font-size: 0.95rem;
+  color: #1b4f27;
+  line-height: 1.5;
+}
+
+.form-success a {
+  color: #8a5a34;
+  text-decoration: underline;
+}
+
+/* Footer tone */
+.oak-theme .showcase-footer {
+  background: #f4e6d7;
+  border-top: 1px solid rgba(62, 47, 36, 0.16);
+  color: #6b5849;
+}
+
+.oak-theme .showcase-credit a {
+  color: #5e3d24;
+}
+
+/* Mobile nav */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -54,6 +465,7 @@
   padding: 9px 8px;
   flex-shrink: 0;
 }
+
 .nav-hamburger span {
   display: block;
   height: 2px;
@@ -61,18 +473,20 @@
   border-radius: 2px;
   transition: transform 0.22s ease, opacity 0.18s ease;
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
+
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile nav drawer ────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .nav-hamburger {
     display: flex;
@@ -114,108 +528,31 @@
     margin-top: 0.6rem;
     border-bottom: 0;
   }
+
+  .oak-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .oak-gallery-wide {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
 }
 
-/* ── Event time sub-label ─────────────────────────────────────────── */
-.oak-event-time {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--site-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-}
+@media (max-width: 540px) {
+  .oak-stamp-strip {
+    grid-template-columns: 1fr;
+  }
 
-/* ── Visible form labels ──────────────────────────────────────────── */
-.form-group {
-  display: grid;
-  gap: 0.4rem;
-}
+  .oak-gallery-grid {
+    grid-template-columns: 1fr;
+  }
 
-.form-group label {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--site-ink);
-}
+  .oak-gallery-wide {
+    grid-row: auto;
+  }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-}
-
-/* ── Form success message ─────────────────────────────────────────── */
-.form-success {
-  background: #e8f5e9;
-  border: 1px solid #a5d6a7;
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  font-size: 0.95rem;
-  color: #1b4f27;
-  line-height: 1.5;
-}
-
-.form-success a {
-  color: #8a5a34;
-  text-decoration: underline;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-/* ── Star ratings — warm amber ────────────────────────────────────── */
-.oak-stars {
-  display: block;
-  color: #c07c2a;
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.55rem;
-  line-height: 1;
-}
-
-/* ── Reviewer attribution ─────────────────────────────────────────── */
-.oak-reviewer {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(50, 47, 43, 0.1);
-}
-
-.oak-reviewer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.oak-reviewer-info strong {
-  font-size: 0.88rem;
-  color: var(--site-ink);
-  display: block;
-}
-
-.oak-reviewer-info span {
-  font-size: 0.78rem;
-  color: var(--site-muted);
-  display: block;
-}
-
-.oak-reviewer-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  background: var(--site-ink);
-  color: var(--site-paper);
-  font-size: 0.75rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 0.04em;
-  flex-shrink: 0;
-  border: 1px solid rgba(50, 47, 43, 0.3);
-  font-family: "Manrope", system-ui, sans-serif;
+  .oak-gallery-card img {
+    min-height: 220px;
+  }
 }
