@@ -1376,6 +1376,41 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   LOGO RIGHT OF HEADLINE — oak-sign-wrap (logo + East Nashville tag)
+   sits to the right of the headline text instead of above it.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.oak-hero-copy {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.oak-copy-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.oak-sign-wrap {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding-top: 0.25rem; /* nudge to optically align with kicker text */
+}
+
+@media (max-width: 540px) {
+  /* On very small screens stack logo back above text */
+  .oak-hero-copy {
+    flex-direction: column;
+  }
+
+  .oak-sign-wrap {
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    FLIPPED HERO — board/photo widget moves to the LEFT column,
    bold headline text moves to the RIGHT column. Creates a completely
    different visual rhythm from the left-aligned showcase templates.
