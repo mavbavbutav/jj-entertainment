@@ -1,11 +1,21 @@
 /*
  * serenity.css
- * Serenity Glow Med Spa — page-specific styles and polish.
- * Loaded after showcase.css. All rules are scoped to .serenity-theme
- * or new component classes to avoid affecting other showcases.
+ * Serenity Glow Med Spa — dark teal theme matching the logo palette.
+ * Logo background: #1d3835  |  Gold: #c99a3a  |  Text: #fdfaf4
+ * Loaded after showcase.css. Overrides CSS variables and components.
  */
 
-/* ── Skip navigation link ─────────────────────────────────────────── */
+/* ── Dark palette — override showcase.css variables ─────────────────── */
+.serenity-theme {
+  --site-bg:     #1d3835;                   /* logo background — deep forest teal */
+  --site-ink:    #fdfaf4;                   /* warm off-white for headings & text  */
+  --site-muted:  rgba(253, 250, 244, 0.56); /* muted body text                    */
+  --site-accent: #c99a3a;                   /* gold (unchanged)                    */
+  --site-chip:   rgba(201, 154, 58, 0.12);  /* gold-tint chip / icon bg            */
+  --site-border: rgba(201, 154, 58, 0.22);  /* gold-tinted borders                 */
+}
+
+/* ── Skip navigation link ────────────────────────────────────────────── */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -13,7 +23,7 @@
   z-index: 100;
   padding: 0.75rem 1.25rem;
   background: #c99a3a;
-  color: #193331;
+  color: #1d3835;
   font-weight: 800;
   font-family: "Manrope", system-ui, sans-serif;
   border-radius: 0 0 12px 12px;
@@ -24,22 +34,202 @@
   top: 0;
 }
 
-/* ── Focus visible (gold outline) ─────────────────────────────────── */
+/* ── Focus visible (gold outline) ────────────────────────────────────── */
 .serenity-theme *:focus-visible {
   outline: 3px solid #c99a3a;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ── Fix heading line-height (raised from 0.98 / 1.0) ────────────── */
-.serenity-theme h1 {
-  line-height: 1.05;
+/* ── Heading colors & line-height ────────────────────────────────────── */
+.serenity-theme h1,
+.serenity-theme h2,
+.serenity-theme h3 {
+  color: #fdfaf4;
 }
-.serenity-theme h2 {
-  line-height: 1.1;
+.serenity-theme h1 { line-height: 1.05; }
+.serenity-theme h2 { line-height: 1.1;  }
+
+/* ── Body text ───────────────────────────────────────────────────────── */
+.serenity-theme p {
+  color: rgba(253, 250, 244, 0.8);
 }
 
-/* ── Mobile hamburger button ──────────────────────────────────────── */
+/* ── Kicker labels — gold ────────────────────────────────────────────── */
+.serenity-theme .showcase-kicker {
+  color: #c99a3a;
+}
+
+/* ── Nav bar — translucent teal + blur ───────────────────────────────── */
+.serenity-theme .showcase-topbar {
+  background: rgba(22, 48, 46, 0.94);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(201, 154, 58, 0.18);
+}
+
+.serenity-theme .showcase-topbar a:not(.showcase-cta) {
+  color: rgba(253, 250, 244, 0.75);
+}
+.serenity-theme .showcase-topbar a:not(.showcase-cta):hover {
+  color: #fdfaf4;
+}
+.serenity-theme .showcase-brand {
+  color: #fdfaf4 !important;
+}
+
+/* Remove any light bg/border the shared stylesheet puts on the nav logo mark */
+.serenity-theme .showcase-logo,
+.serenity-theme .serenity-nav-mark {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ── CTA button — solid gold ─────────────────────────────────────────── */
+.serenity-theme .showcase-cta {
+  background: #c99a3a;
+  color: #1d3835;
+  border-color: #c99a3a;
+  font-weight: 700;
+}
+.serenity-theme .showcase-cta:hover,
+.serenity-theme .showcase-cta:focus-visible {
+  background: #b5882e;
+  border-color: #b5882e;
+  color: #1d3835;
+}
+
+/* ── Ghost CTA — gold outline ────────────────────────────────────────── */
+.serenity-theme .showcase-ghost {
+  background: transparent;
+  color: #c99a3a;
+  border-color: rgba(201, 154, 58, 0.55);
+}
+.serenity-theme .showcase-ghost:hover,
+.serenity-theme .showcase-ghost:focus-visible {
+  background: rgba(201, 154, 58, 0.1);
+  border-color: #c99a3a;
+}
+
+/* ── Alternate sections — slightly deeper teal ───────────────────────── */
+.serenity-theme .showcase-section.alt {
+  background: #172e2c;
+}
+
+/* ── Panels / cards ──────────────────────────────────────────────────── */
+.serenity-theme .showcase-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 154, 58, 0.2);
+  border-radius: 16px;
+}
+
+/* ── Showcase lead text ──────────────────────────────────────────────── */
+.serenity-theme .showcase-lead {
+  color: rgba(253, 250, 244, 0.78);
+}
+
+/* ── List items ──────────────────────────────────────────────────────── */
+.serenity-theme .showcase-list li {
+  color: rgba(253, 250, 244, 0.8);
+  border-color: rgba(201, 154, 58, 0.18);
+}
+.serenity-theme .showcase-list li::before {
+  color: #c99a3a;
+}
+
+/* ── Form inputs on dark background ─────────────────────────────────── */
+.serenity-theme input,
+.serenity-theme select,
+.serenity-theme textarea {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(201, 154, 58, 0.28);
+  color: #fdfaf4;
+}
+.serenity-theme input::placeholder,
+.serenity-theme textarea::placeholder {
+  color: rgba(253, 250, 244, 0.32);
+}
+.serenity-theme select option {
+  background: #1d3835;
+  color: #fdfaf4;
+}
+.serenity-theme input:focus,
+.serenity-theme select:focus,
+.serenity-theme textarea:focus {
+  border-color: #c99a3a;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* ── Form group labels ───────────────────────────────────────────────── */
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: rgba(253, 250, 244, 0.8);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+}
+
+/* ── Form note ───────────────────────────────────────────────────────── */
+.serenity-theme .showcase-form-note {
+  color: rgba(253, 250, 244, 0.48);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+.serenity-theme .showcase-form-note a {
+  color: #c99a3a;
+}
+
+/* ── Form success message ────────────────────────────────────────────── */
+.form-success {
+  background: rgba(201, 154, 58, 0.1);
+  border: 1px solid rgba(201, 154, 58, 0.38);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  font-size: 0.95rem;
+  color: #fdfaf4;
+  line-height: 1.55;
+}
+.form-success a {
+  color: #c99a3a;
+  text-decoration: underline;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* ── Consult / booking panel — gold-tinted to stand out ─────────────── */
+.serenity-consult-panel {
+  background: rgba(201, 154, 58, 0.07) !important;
+  border: 1px solid rgba(201, 154, 58, 0.26) !important;
+}
+
+/* ── Booking availability lines ──────────────────────────────────────── */
+.serenity-theme .booking-line {
+  color: rgba(253, 250, 244, 0.8);
+}
+.serenity-theme .booking-line .status {
+  color: #c99a3a;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.serenity-theme .showcase-footer {
+  background: #121f1e;
+  border-top: 1px solid rgba(201, 154, 58, 0.18);
+  color: rgba(253, 250, 244, 0.5);
+}
+.serenity-theme .showcase-footer a {
+  color: #c99a3a;
+}
+
+/* ── Mobile hamburger button ─────────────────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -48,7 +238,7 @@
   width: 42px;
   height: 42px;
   background: transparent;
-  border: 1px solid rgba(25, 51, 49, 0.22);
+  border: 1px solid rgba(253, 250, 244, 0.22);
   border-radius: 10px;
   cursor: pointer;
   padding: 9px 8px;
@@ -57,7 +247,7 @@
 .nav-hamburger span {
   display: block;
   height: 2px;
-  background: var(--site-ink);
+  background: #fdfaf4;
   border-radius: 2px;
   transition: transform 0.22s ease, opacity 0.18s ease;
 }
@@ -72,7 +262,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile nav drawer ────────────────────────────────────────────── */
+/* ── Mobile nav drawer ───────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .nav-hamburger {
     display: flex;
@@ -86,12 +276,12 @@
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: rgba(245, 239, 229, 0.98);
+    background: rgba(22, 46, 44, 0.98);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(201, 154, 58, 0.22);
     padding: 0.5rem 1.25rem 1rem;
     z-index: 20;
-    box-shadow: 0 16px 40px rgba(25, 51, 49, 0.12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
   }
 
   .showcase-links.is-open {
@@ -102,8 +292,8 @@
   .showcase-links a:not(.showcase-cta) {
     display: block !important;
     padding: 0.85rem 0;
-    border-bottom: 1px solid rgba(25, 51, 49, 0.1);
-    color: var(--site-ink) !important;
+    border-bottom: 1px solid rgba(201, 154, 58, 0.12);
+    color: rgba(253, 250, 244, 0.88) !important;
     font-size: 1rem;
   }
 
@@ -116,12 +306,128 @@
   }
 }
 
-/* ── Trust / stats strip ──────────────────────────────────────────── */
-.serenity-stats-strip {
-  background: var(--site-ink);
+/* ══════════════════════════════════════════════════════════════════════
+   HERO — centered, logo mark as anchor, no hero photo
+   ══════════════════════════════════════════════════════════════════════ */
+
+.serenity-hero {
+  padding: 4.5rem 0 4rem;
+  text-align: center;
+}
+
+/* Override any two-column grid from showcase.css */
+.serenity-hero .showcase-wrap {
+  display: block;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Lotus mark — blends seamlessly into teal background */
+.serenity-lotus-mark {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.serenity-lotus-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Thin ornamental gold divider between heading and body text */
+.serenity-hero-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.5rem auto 1.75rem;
+  color: rgba(201, 154, 58, 0.6);
+  font-size: 0.6rem;
+  letter-spacing: 0.6em;
+}
+.serenity-hero-ornament::before,
+.serenity-hero-ornament::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 154, 58, 0.55),
+    transparent
+  );
+}
+
+/* Center the CTA row */
+.serenity-hero-actions {
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* ── Proof strip (three items, horizontal) ───────────────────────────── */
+.serenity-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
   border-top: 1px solid rgba(201, 154, 58, 0.2);
-  border-bottom: 1px solid rgba(201, 154, 58, 0.2);
-  padding: 1.4rem 0;
+  padding-top: 2.25rem;
+  text-align: left;
+}
+
+.serenity-proof {
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(201, 154, 58, 0.14);
+}
+.serenity-proof:first-child { padding-left: 0; }
+.serenity-proof:last-child  { border-right: none; padding-right: 0; }
+
+.serenity-proof strong {
+  display: block;
+  font-size: 0.78rem;
+  color: #c99a3a;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+.serenity-proof span {
+  display: block;
+  font-size: 0.81rem;
+  color: rgba(253, 250, 244, 0.52);
+  line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+  .serenity-hero { padding: 3.5rem 0 3rem; }
+  .serenity-lotus-mark { width: 90px; height: 90px; }
+
+  .serenity-proof-strip {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0;
+  }
+  .serenity-proof {
+    padding: 1rem 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(201, 154, 58, 0.12);
+  }
+  .serenity-proof:last-child { border-bottom: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   STATS STRIP
+   ══════════════════════════════════════════════════════════════════════ */
+
+.serenity-stats-strip {
+  background: #172e2c;
+  border-top: 1px solid rgba(201, 154, 58, 0.18);
+  border-bottom: 1px solid rgba(201, 154, 58, 0.18);
+  padding: 1.6rem 0;
 }
 
 .serenity-stats-grid {
@@ -140,11 +446,10 @@
   line-height: 1;
   letter-spacing: 0.04em;
 }
-
 .serenity-stat span {
   display: block;
   font-size: 0.76rem;
-  color: rgba(255, 250, 243, 0.65);
+  color: rgba(253, 250, 244, 0.48);
   font-weight: 700;
   margin-top: 0.35rem;
   text-transform: uppercase;
@@ -158,7 +463,10 @@
   }
 }
 
-/* ── Treatment card icon ──────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════
+   TREATMENT CARDS
+   ══════════════════════════════════════════════════════════════════════ */
+
 .serenity-treatment-icon {
   width: 44px;
   height: 44px;
@@ -172,56 +480,40 @@
   margin-bottom: 0.9rem;
   flex-shrink: 0;
 }
-
 .serenity-treatment-icon svg {
   width: 22px;
   height: 22px;
 }
 
-/* ── Visible form labels ──────────────────────────────────────────── */
-.form-group {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.form-group label {
-  font-size: 0.84rem;
+/* Duration / category meta label */
+.serenity-treatment-meta {
+  display: block;
+  font-size: 0.74rem;
+  color: rgba(253, 250, 244, 0.4);
   font-weight: 700;
-  color: var(--site-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-}
-
-/* Labels inside the dark consult panel */
-.serenity-consult-panel .form-group label {
-  color: rgba(255, 250, 243, 0.8);
-}
-
-/* ── Form success message ─────────────────────────────────────────── */
-.form-success {
-  background: rgba(201, 154, 58, 0.1);
-  border: 1px solid rgba(201, 154, 58, 0.38);
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
-  font-size: 0.95rem;
-  color: var(--site-ink);
-  line-height: 1.55;
-}
-
-.form-success a {
+/* Card inline links */
+.serenity-theme .serenity-treatment-card a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.87rem;
+  font-weight: 600;
   color: #c99a3a;
-  text-decoration: underline;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.serenity-theme .serenity-treatment-card a:hover {
+  opacity: 0.72;
 }
 
-[hidden] {
-  display: none !important;
-}
+/* ══════════════════════════════════════════════════════════════════════
+   TESTIMONIALS
+   ══════════════════════════════════════════════════════════════════════ */
 
-/* ── Star ratings ─────────────────────────────────────────────────── */
 .serenity-stars {
   color: #c99a3a;
   font-size: 1rem;
@@ -231,39 +523,34 @@
   display: block;
 }
 
-/* ── Reviewer attribution ─────────────────────────────────────────── */
 .serenity-reviewer {
   display: flex;
   align-items: center;
   gap: 0.65rem;
   margin-top: 1rem;
   padding-top: 0.85rem;
-  border-top: 1px solid rgba(25, 51, 49, 0.1);
+  border-top: 1px solid rgba(201, 154, 58, 0.14);
 }
-
 .serenity-reviewer-info {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
-
 .serenity-reviewer-info strong {
   font-size: 0.88rem;
-  color: var(--site-ink);
+  color: #fdfaf4;
   display: block;
 }
-
 .serenity-reviewer-info span {
   font-size: 0.78rem;
-  color: var(--site-muted);
+  color: rgba(253, 250, 244, 0.44);
   display: block;
 }
-
 .serenity-reviewer-avatar {
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  background: var(--site-ink);
+  background: rgba(201, 154, 58, 0.15);
   color: #c99a3a;
   font-size: 0.72rem;
   font-weight: 900;
@@ -272,6 +559,6 @@
   justify-content: center;
   letter-spacing: 0.04em;
   flex-shrink: 0;
-  border: 1px solid rgba(201, 154, 58, 0.36);
+  border: 1px solid rgba(201, 154, 58, 0.38);
   font-family: "Marcellus", Georgia, serif;
 }
