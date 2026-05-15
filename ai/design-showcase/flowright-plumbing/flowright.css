@@ -141,6 +141,14 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 14px 32px rgba(242, 100, 25, 0.44) !important;
 }
 
+.flowright-theme .showcase-cta {
+  border-radius: 999px;
+}
+
+.flowright-theme .showcase-panel {
+  border-radius: 24px;
+}
+
 /* ════════════════════════════════════════════════════════════════════
    HERO — dark navy, confident, industrial
    ════════════════════════════════════════════════════════════════════ */
@@ -949,6 +957,47 @@ html { scroll-behavior: smooth; }
   gap: clamp(1rem, 2vw, 1.35rem);
 }
 
+.flowright-promise-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: clamp(1rem, 2vw, 1.35rem);
+  overflow: hidden;
+  border: 1px solid rgba(9, 31, 52, 0.1);
+  border-radius: 26px;
+  background:
+    linear-gradient(90deg, rgba(10, 167, 215, 0.08), rgba(242, 100, 25, 0.08)),
+    #fff;
+  box-shadow: 0 18px 44px rgba(9, 31, 52, 0.08);
+}
+
+.flowright-promise-bar div {
+  padding: 1.05rem clamp(1rem, 2vw, 1.35rem);
+}
+
+.flowright-promise-bar div + div {
+  border-left: 1px solid rgba(9, 31, 52, 0.1);
+}
+
+.flowright-promise-bar strong,
+.flowright-promise-bar span {
+  display: block;
+}
+
+.flowright-promise-bar strong {
+  color: var(--fr-ink);
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.flowright-promise-bar span {
+  margin-top: 0.28rem;
+  color: var(--fr-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
 .flowright-service-card {
   position: relative;
   overflow: hidden;
@@ -1352,9 +1401,25 @@ html { scroll-behavior: smooth; }
 }
 
 .flowright-theme #reviews .showcase-panel {
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(9, 31, 52, 0.09);
   background: linear-gradient(180deg, #ffffff, #f8fbfd);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flowright-theme #reviews .showcase-panel::before {
+  content: "Verified local job";
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  border-radius: 999px;
+  padding: 0.34rem 0.68rem;
+  background: rgba(10, 167, 215, 0.11);
+  color: var(--fr-blue-deep);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .flowright-theme #reviews .showcase-panel:hover {
@@ -1617,6 +1682,15 @@ html { scroll-behavior: smooth; }
 
   .flowright-service-board {
     grid-template-columns: 1fr;
+  }
+
+  .flowright-promise-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .flowright-promise-bar div + div {
+    border-left: 0;
+    border-top: 1px solid rgba(9, 31, 52, 0.1);
   }
 
   .flowright-quote-shell,
