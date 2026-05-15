@@ -55,6 +55,12 @@ body { overflow-x: hidden; }
   line-height: 1.65;
 }
 
+.serenity-theme .showcase-panel,
+.serenity-treatment-card,
+.serenity-journal-list .showcase-panel {
+  outline: 1px solid transparent;
+}
+
 /* ── Skip navigation ─────────────────────────────────────────────────── */
 .skip-link {
   position: absolute;
@@ -259,7 +265,7 @@ body { overflow-x: hidden; }
 
 .serenity-approach-steps article {
   display: grid;
-  grid-template-columns: 5rem minmax(0, 0.44fr) minmax(0, 1fr);
+  grid-template-columns: 5rem minmax(12rem, 0.5fr) minmax(0, 1fr);
   gap: clamp(1rem, 2.5vw, 2rem);
   align-items: baseline;
   padding: clamp(1.2rem, 2.6vw, 1.75rem) 0;
@@ -348,12 +354,17 @@ body { overflow-x: hidden; }
 }
 
 .serenity-services-section .serenity-treatment-card {
+  grid-column: span 2;
   min-height: 300px;
   padding: clamp(1.2rem, 2vw, 1.55rem);
   border-radius: 0;
   border-color: rgba(201, 154, 58, 0.22);
   background:
     linear-gradient(180deg, rgba(255, 250, 243, 0.98), rgba(250, 243, 232, 0.94));
+}
+
+.serenity-services-section .serenity-treatment-card:hover {
+  outline-color: rgba(201, 154, 58, 0.5);
 }
 
 .serenity-services-section .serenity-treatment-card:first-child {
@@ -534,7 +545,7 @@ body { overflow-x: hidden; }
 }
 
 .serenity-consult-panel h2 {
-  max-width: 9ch;
+  max-width: 11ch;
 }
 
 .serenity-form {
@@ -550,6 +561,15 @@ body { overflow-x: hidden; }
 .serenity-form textarea:focus {
   background: #fffaf3;
   border-color: rgba(201, 154, 58, 0.62);
+}
+
+.serenity-time-grid .booking-line {
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.serenity-time-grid .booking-line:hover {
+  background: rgba(255, 250, 243, 0.1);
+  border-color: rgba(201, 154, 58, 0.38);
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -645,6 +665,73 @@ body { overflow-x: hidden; }
 
 .serenity-journal-list .showcase-panel + .showcase-panel {
   border-left: 1px solid rgba(201, 154, 58, 0.24);
+}
+
+.serenity-final-cta {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  color: var(--site-paper);
+  background:
+    linear-gradient(90deg, rgba(25, 51, 49, 0.98), rgba(18, 38, 36, 0.92)),
+    var(--site-ink);
+}
+
+.serenity-final-cta::before {
+  content: "SERENITY GLOW";
+  position: absolute;
+  right: -0.15em;
+  top: 50%;
+  color: rgba(255, 250, 243, 0.04);
+  font-family: var(--site-serif);
+  font-size: clamp(3.2rem, 12vw, 11rem);
+  letter-spacing: 0.08em;
+  line-height: 0.8;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.serenity-final-cta-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.serenity-final-cta h2 {
+  max-width: 12ch;
+}
+
+.serenity-final-cta .showcase-kicker {
+  color: var(--site-accent);
+}
+
+.serenity-final-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.serenity-final-cta .showcase-cta {
+  background: var(--site-paper);
+  color: var(--site-ink);
+  border-color: var(--site-paper);
+}
+
+.serenity-final-cta .showcase-ghost {
+  background: transparent;
+  color: var(--site-paper);
+  border-color: rgba(201, 154, 58, 0.45);
+}
+
+.serenity-footer {
+  background:
+    linear-gradient(90deg, #122725, #193331);
+}
+
+.serenity-footer a:hover {
+  color: var(--site-accent);
 }
 
 /* Redesign pass: editorial first viewport inspired by boutique med-spa sites */
@@ -968,6 +1055,14 @@ body { overflow-x: hidden; }
     border-left: 0;
     border-top: 1px solid rgba(201, 154, 58, 0.22);
   }
+
+  .serenity-final-cta-inner {
+    display: grid;
+  }
+
+  .serenity-final-cta-actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1024,6 +1119,10 @@ body { overflow-x: hidden; }
     grid-column: auto;
   }
 
+  .serenity-services-section .serenity-treatment-card {
+    grid-column: 1;
+  }
+
   .serenity-services-section .serenity-treatment-card:first-child {
     grid-column: 1;
   }
@@ -1031,6 +1130,10 @@ body { overflow-x: hidden; }
   .serenity-booking-grid {
     border-left: 0;
     border-right: 0;
+  }
+
+  .serenity-final-cta-actions .showcase-cta {
+    width: 100%;
   }
 }
 
