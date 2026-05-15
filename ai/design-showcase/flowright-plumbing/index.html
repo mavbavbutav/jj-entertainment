@@ -51,7 +51,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Black&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
   <link rel="stylesheet" href="/ai/design-showcase/flowright-plumbing/flowright.css" />
 </head>
@@ -495,6 +495,20 @@
           btn.focus();
         }
       });
+    }());
+
+    // Mobile sticky call button: stay out of the hero, then appear while browsing.
+    (function () {
+      var mobileCall = document.querySelector('.flowright-mobile-call');
+      if (!mobileCall) return;
+
+      function updateMobileCall() {
+        mobileCall.classList.toggle('is-visible', window.scrollY > 420);
+      }
+
+      updateMobileCall();
+      window.addEventListener('scroll', updateMobileCall, { passive: true });
+      window.addEventListener('resize', updateMobileCall);
     }());
 
     // Quote form handler

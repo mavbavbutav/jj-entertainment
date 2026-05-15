@@ -13,6 +13,8 @@
 
 /* ── Custom properties ──────────────────────────────────────────────── */
 .flowright-theme {
+  --fr-body:              "Manrope", "Archivo", system-ui, sans-serif;
+  --fr-heading:           "Archivo", "Manrope", system-ui, sans-serif;
   --fr-navy:              #061523;
   --fr-ink:               #0d2238;
   --fr-muted:             #4f6477;
@@ -25,6 +27,20 @@
   --fr-line:              rgba(9, 31, 52, 0.14);
   --fr-panel-shadow:      0 18px 48px rgba(9, 31, 52, 0.12);
   --fr-panel-shadow-lg:   0 28px 64px rgba(9, 31, 52, 0.18);
+  --site-bg:              #f5f8fb;
+  --site-band:            #eaf2f7;
+  --site-panel:           #ffffff;
+  --site-paper:           #ffffff;
+  --site-ink:             var(--fr-ink);
+  --site-muted:           var(--fr-muted);
+  --site-accent:          var(--fr-blue);
+  --site-accent-ink:      #ffffff;
+  --site-radius:          28px;
+  --site-card-radius:     24px;
+  --site-sans:            var(--fr-body);
+  --site-serif:           var(--fr-heading);
+  font-family: var(--fr-body);
+  text-rendering: optimizeLegibility;
 }
 
 /* ── Global helpers ─────────────────────────────────────────────────── */
@@ -56,8 +72,21 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── Heading line-heights ───────────────────────────────────────────── */
+.flowright-theme h1,
+.flowright-theme h2,
+.flowright-theme h3 {
+  font-family: var(--fr-heading);
+  font-weight: 900;
+  text-wrap: balance;
+}
+
 .flowright-theme h1 { line-height: 1.0; }
 .flowright-theme h2 { line-height: 1.08; }
+.flowright-theme h3 {
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
 
 /* ════════════════════════════════════════════════════════════════════
    NAV BAR
@@ -255,11 +284,12 @@ html { scroll-behavior: smooth; }
 /* All text inside hero goes light */
 .flowright-theme .showcase-hero h1 {
   color: #ffffff;
-  max-width: 12.5ch;
-  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+  max-width: 13ch;
+  font-family: var(--fr-heading);
   font-size: clamp(3.2rem, 5.8vw, 5.9rem);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
+  word-spacing: 0.04em;
 }
 
 .flowright-theme .showcase-hero .showcase-kicker {
@@ -696,9 +726,9 @@ html { scroll-behavior: smooth; }
 .flowright-triage-call a {
   margin-top: 0.45rem;
   color: #fff;
-  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+  font-family: var(--fr-heading);
   font-size: clamp(1.5rem, 2.4vw, 2rem);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   text-decoration: none;
 }
 
@@ -858,9 +888,9 @@ html { scroll-behavior: smooth; }
 .flowright-quote-copy h2,
 .flowright-review-column h2,
 .flowright-map-column h2 {
-  max-width: 17ch;
-  font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
-  letter-spacing: -0.055em;
+  max-width: 19ch;
+  font-family: var(--fr-heading);
+  letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
@@ -909,7 +939,7 @@ html { scroll-behavior: smooth; }
 
 .flowright-stat strong {
   display: block;
-  font: 900 clamp(1.45rem, 2vw, 2rem)/1 "Archivo Black", "Archivo", system-ui, sans-serif;
+  font: 900 clamp(1.45rem, 2vw, 2rem)/1 var(--fr-heading);
   color: var(--fr-blue-light);
 }
 
@@ -1615,6 +1645,148 @@ html { scroll-behavior: smooth; }
   display: none;
 }
 
+/* Cohesion pass: shared rhythm, typography, and panel language. */
+.flowright-theme .showcase-topbar,
+.flowright-theme .showcase-panel,
+.flowright-promise-bar,
+.flowright-map-column,
+.flowright-theme .map-block,
+.flowright-theme .flowright-intake-form {
+  border-color: rgba(9, 31, 52, 0.11);
+}
+
+.flowright-theme .showcase-topbar {
+  background: rgba(250, 253, 255, 0.94);
+  box-shadow: 0 10px 32px rgba(9, 31, 52, 0.08);
+}
+
+.flowright-theme .showcase-brand,
+.flowright-theme .showcase-links,
+.flowright-theme .showcase-cta,
+.flowright-service-label,
+.flowright-quote-chips span,
+.flowright-dispatch-board::before {
+  font-family: var(--fr-heading);
+}
+
+.flowright-theme .showcase-kicker {
+  letter-spacing: 0.13em;
+}
+
+.flowright-theme .showcase-head h2,
+.flowright-quote-copy h2,
+.flowright-review-column h2,
+.flowright-map-column h2 {
+  line-height: 1.02;
+}
+
+.flowright-theme .showcase-lead,
+.flowright-theme .showcase-head p,
+.flowright-service-card p,
+.flowright-theme .showcase-list li,
+.flowright-review-cards p,
+.flowright-theme .showcase-form-note {
+  line-height: 1.68;
+}
+
+.flowright-theme .showcase-section {
+  padding-block: clamp(4rem, 7vw, 6.4rem);
+}
+
+.flowright-services-section,
+.flowright-proof-section {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(10, 167, 215, 0.09), transparent 30%),
+    linear-gradient(180deg, #eef5f9 0%, #fbfdff 100%);
+}
+
+.flowright-theme .showcase-panel,
+.flowright-promise-bar {
+  box-shadow: 0 18px 48px rgba(9, 31, 52, 0.09);
+}
+
+.flowright-service-card {
+  border-left-width: 5px;
+  background:
+    linear-gradient(135deg, rgba(10, 167, 215, 0.045), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%);
+}
+
+.flowright-service-featured {
+  border-top: 1px solid rgba(9, 31, 52, 0.1);
+  border-left: 5px solid var(--fr-orange);
+  background:
+    radial-gradient(circle at right top, rgba(242, 100, 25, 0.1), transparent 36%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%);
+}
+
+.flowright-service-card h3,
+.flowright-theme #reviews .showcase-panel h3 {
+  color: var(--fr-ink);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  letter-spacing: -0.025em;
+}
+
+.flowright-service-featured h3 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.flowright-service-label,
+.flowright-theme #reviews .showcase-panel::before {
+  background: rgba(10, 167, 215, 0.1);
+  color: var(--fr-blue-deep);
+}
+
+.flowright-service-icon {
+  background: #eef9fd;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+.flowright-promise-bar {
+  background:
+    linear-gradient(90deg, rgba(10, 167, 215, 0.055), rgba(242, 100, 25, 0.055)),
+    #ffffff;
+}
+
+.flowright-quote-section {
+  background:
+    radial-gradient(circle at 16% 24%, rgba(10, 167, 215, 0.15), transparent 34%),
+    radial-gradient(circle at 88% 72%, rgba(242, 100, 25, 0.1), transparent 34%),
+    linear-gradient(145deg, #061523 0%, #0a1f34 56%, #071827 100%);
+}
+
+.flowright-theme .flowright-intake-form {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #ffffff, #f6fbfe);
+}
+
+.flowright-theme .flowright-intake-form::before {
+  background: linear-gradient(90deg, var(--fr-ink), #14304a);
+  border-left: 5px solid var(--fr-orange);
+}
+
+.flowright-theme .showcase-form input,
+.flowright-theme .showcase-form select,
+.flowright-theme .showcase-form textarea {
+  background: #fbfdff;
+}
+
+.flowright-map-column {
+  background:
+    linear-gradient(rgba(79, 200, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 200, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(160deg, #071a2e, #0c2740);
+}
+
+.flowright-map-column h2 {
+  max-width: 18ch;
+  font-size: clamp(1.9rem, 3vw, 2.65rem);
+}
+
+.flowright-theme #reviews .showcase-panel {
+  box-shadow: 0 16px 42px rgba(9, 31, 52, 0.08);
+}
+
 /* ════════════════════════════════════════════════════════════════════
    MOBILE NAV DRAWER
    ════════════════════════════════════════════════════════════════════ */
@@ -1760,13 +1932,14 @@ html { scroll-behavior: smooth; }
   .flowright-mobile-call {
     position: fixed;
     left: 1rem;
-    right: 1rem;
+    right: auto;
     bottom: 1rem;
     z-index: 80;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    width: calc(100vw - 2rem);
     min-height: 4rem;
     padding: 0.8rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1775,6 +1948,16 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 20px 46px rgba(242, 100, 25, 0.42);
     color: #fff;
     text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .flowright-mobile-call.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .flowright-mobile-call span,
@@ -1783,6 +1966,10 @@ html { scroll-behavior: smooth; }
   }
 
   .flowright-mobile-call span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 0.74rem;
     font-weight: 900;
     letter-spacing: 0.08em;
@@ -1791,6 +1978,8 @@ html { scroll-behavior: smooth; }
   }
 
   .flowright-mobile-call strong {
+    flex: 0 0 auto;
+    white-space: nowrap;
     font-size: 1rem;
     font-weight: 900;
     letter-spacing: 0.03em;
@@ -1809,9 +1998,10 @@ html { scroll-behavior: smooth; }
   }
 
   .flowright-theme .showcase-hero h1 {
-    max-width: 100%;
-    font-size: clamp(2.9rem, 15vw, 4.4rem);
-    letter-spacing: -0.06em;
+    max-width: 8.6ch;
+    font-size: clamp(2.35rem, 10.2vw, 3rem);
+    letter-spacing: -0.02em;
+    word-spacing: 0.03em;
   }
 
   .flowright-hero-status {
