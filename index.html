@@ -71,7 +71,13 @@
         <a href="#coverage">Coverage</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a href="mailto:contact@jjentertainmentsolutions.com?subject=Coffee%20Meeting%20Request%20%E2%80%94%20JJ%20Entertainment%20Solutions" class="nav-cta">Meet Me for Coffee</a>
+        <div class="chat-menu">
+          <button class="nav-cta chat-trigger" type="button" aria-expanded="false" aria-controls="chat-options">let's chat!</button>
+          <div class="chat-options" id="chat-options" aria-label="Chat options">
+            <a href="sms:?&body=Hi%20JJ%20Entertainment%20Solutions%2C%20I%27d%20love%20to%20chat%20about%20a%20project.">Text Us</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Virtual%20Google%20Meet%20with%20JJ%20Entertainment%20Solutions&details=I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.%20Please%20add%20Google%20Meet%20conferencing%20when%20confirming%20the%20meeting.&location=Google%20Meet&add=contact%40jjentertainmentsolutions.com" target="_blank" rel="noopener">Schedule Google Meet</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -230,6 +236,29 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const chatMenu = document.querySelector('.chat-menu');
+    const chatTrigger = document.querySelector('.chat-trigger');
+
+    if (chatMenu && chatTrigger) {
+      chatMenu.addEventListener('focusin', () => {
+        chatTrigger.setAttribute('aria-expanded', 'true');
+      });
+
+      chatMenu.addEventListener('focusout', () => {
+        window.setTimeout(() => {
+          chatTrigger.setAttribute('aria-expanded', String(chatMenu.matches(':focus-within')));
+        }, 0);
+      });
+
+      chatMenu.addEventListener('mouseenter', () => {
+        chatTrigger.setAttribute('aria-expanded', 'true');
+      });
+
+      chatMenu.addEventListener('mouseleave', () => {
+        chatTrigger.setAttribute('aria-expanded', String(chatMenu.matches(':focus-within')));
+      });
+    }
   </script>
 </body>
 </html>
