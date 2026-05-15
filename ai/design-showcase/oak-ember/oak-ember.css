@@ -1398,15 +1398,41 @@
   padding-top: 0.25rem; /* nudge to optically align with kicker text */
 }
 
-@media (max-width: 540px) {
-  /* On very small screens stack logo back above text */
+@media (max-width: 860px) {
+  /* When hero collapses to single column, stack logo above text */
   .oak-hero-copy {
     flex-direction: column;
+    gap: 0;
   }
 
   .oak-sign-wrap {
     padding-top: 0;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    align-self: flex-start;
+  }
+
+  /* Shrink logo so it doesn't dominate a narrow column */
+  .oak-hero-reimagined .oak-brand-art {
+    width: clamp(100px, 28vw, 160px);
+  }
+
+  /* Pull East Nashville tag in so it doesn't overflow the edge */
+  .oak-sign-tag {
+    right: -0.6rem;
+    bottom: -0.3rem;
+  }
+
+  /* Scale h1 down so it reads comfortably on one screen */
+  .oak-hero-reimagined h1 {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    max-width: 16ch;
+    line-height: 0.92;
+  }
+
+  /* Give the hero section more breathing room top and bottom */
+  .oak-hero-reimagined {
+    padding-top: clamp(2.5rem, 6vw, 3.5rem);
+    padding-bottom: clamp(2rem, 5vw, 3rem);
   }
 }
 
