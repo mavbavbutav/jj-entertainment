@@ -1405,9 +1405,26 @@
     gap: 0;
   }
 
-  /* Hide logo image on mobile — it's already in the nav, no need to repeat */
+  /* Remove the background photo on mobile — solid dark color reads much cleaner */
+  .oak-hero-reimagined::before {
+    background: #1a110d;
+  }
+
+  /* Restore the logo */
   .oak-sign-wrap {
-    display: none;
+    display: inline-block;
+    padding-top: 0;
+    margin-bottom: 1.25rem;
+    align-self: flex-start;
+  }
+
+  .oak-hero-reimagined .oak-brand-art {
+    width: clamp(90px, 22vw, 130px);
+  }
+
+  .oak-sign-tag {
+    right: -0.6rem;
+    bottom: -0.3rem;
   }
 
   /* Scale h1 down so it reads comfortably on one screen */
