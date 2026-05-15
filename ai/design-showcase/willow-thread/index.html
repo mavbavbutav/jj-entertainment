@@ -765,6 +765,223 @@
       .newsletter-form { flex-direction:column; }
       .newsletter-input { border-right:1px solid rgba(212,180,122,.3); }
     }
+
+    /* Minimal refinement pass */
+    body {
+      background: var(--cream);
+    }
+
+    .nav {
+      background: rgba(250,246,241,.97);
+      box-shadow: none;
+    }
+
+    .nav-brand::after,
+    .editorial-text::after,
+    .story-text::after,
+    .newsletter::before {
+      content: none;
+    }
+
+    .hero {
+      min-height: 720px;
+      background: var(--wine);
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .hero-bg {
+      opacity: .72;
+      filter: saturate(.82);
+      background-position: center 34%;
+    }
+
+    .hero-scrim {
+      background:
+        linear-gradient(90deg, rgba(61,10,16,.78), rgba(61,10,16,.18) 58%, rgba(61,10,16,.34)),
+        linear-gradient(to bottom, rgba(26,5,8,.02), rgba(26,5,8,.58));
+    }
+
+    .hero-body {
+      width: min(620px, calc(100% - 2rem));
+      margin: 0 0 clamp(4.5rem, 8vw, 7rem) clamp(2rem, 8vw, 8rem);
+      padding: 0;
+      border: 0;
+      background: transparent;
+      backdrop-filter: none;
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .hero-logo {
+      display: none;
+    }
+
+    .hero-body h1 {
+      max-width: 10ch;
+      margin-bottom: 1.1rem;
+      font-size: clamp(3.4rem, 8vw, 7.2rem);
+      line-height: .86;
+      text-shadow: none;
+    }
+
+    .hero-copy {
+      max-width: 30rem;
+      margin-bottom: 1.65rem;
+      color: rgba(250,246,241,.76);
+    }
+
+    .hero-sub {
+      margin-bottom: 1rem;
+      letter-spacing: .24em;
+    }
+
+    .hero-cta {
+      border-bottom-color: rgba(212,180,122,.48);
+    }
+
+    .hero-scroll {
+      display: none;
+    }
+
+    .section {
+      padding: clamp(4.25rem, 7vw, 6.5rem) 0;
+    }
+
+    .section-head {
+      margin-bottom: 3rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .gold-rule {
+      width: 28px;
+      margin: 1.15rem auto;
+      opacity: .7;
+    }
+
+    .editorial-grid,
+    .story-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .editorial-text,
+    .story-text {
+      padding: clamp(3rem, 6vw, 5rem);
+    }
+
+    .editorial-quote,
+    .story-pull {
+      font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+    }
+
+    .filter-row {
+      width: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      gap: 1.4rem;
+    }
+
+    .filter-btn {
+      padding: 0 0 4px;
+    }
+
+    .filter-btn[aria-pressed="true"] {
+      background: transparent;
+      color: var(--wine);
+      border-bottom-color: var(--gold);
+    }
+
+    .product-grid {
+      gap: clamp(1.1rem, 2.4vw, 2rem);
+    }
+
+    .product-card {
+      padding-bottom: 0;
+    }
+
+    .product-card:hover {
+      transform: none;
+    }
+
+    .product-img-wrap {
+      box-shadow: none;
+      background: #f3ebe4;
+    }
+
+    .quick-add {
+      background: rgba(61,10,16,.78);
+    }
+
+    .product-name {
+      font-size: 1.04rem;
+    }
+
+    .values,
+    .cart-summary,
+    .contact-form {
+      box-shadow: none;
+    }
+
+    .values {
+      background: transparent;
+    }
+
+    .newsletter {
+      background: var(--wine);
+    }
+
+    .newsletter-inner {
+      max-width: 620px;
+    }
+
+    .footer {
+      background: var(--ink);
+    }
+
+    .footer-grid {
+      border-bottom: 0;
+    }
+
+    @media(max-width:900px){
+      .editorial-grid,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero {
+        min-height: 700px;
+        align-items: flex-end;
+      }
+
+      .hero-body {
+        width: calc(100% - 2rem);
+        margin: 0 1rem 3.2rem;
+        padding: 0;
+      }
+
+      .hero-logo {
+        display: none;
+      }
+
+      .hero-body h1 {
+        font-size: clamp(3.25rem, 18vw, 4.4rem);
+      }
+
+      .hero-copy {
+        max-width: 29ch;
+      }
+
+      .hero-sub {
+        max-width: 24ch;
+        letter-spacing: .16em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -808,24 +1025,6 @@
     </section>
 
     <!-- ═══ EDITORIAL BAND ═══ -->
-    <section class="boutique-strip" aria-label="Boutique services">
-      <div class="boutique-strip-item">
-        <span>01</span>
-        <strong>Private styling</strong>
-        <em>One-on-one outfit edits</em>
-      </div>
-      <div class="boutique-strip-item">
-        <span>02</span>
-        <strong>Local pickup</strong>
-        <em>Ready Tue-Sat</em>
-      </div>
-      <div class="boutique-strip-item">
-        <span>03</span>
-        <strong>Capsule drops</strong>
-        <em>Small-batch arrivals</em>
-      </div>
-    </section>
-
     <section class="editorial" aria-label="Spring Edit feature">
       <div class="editorial-grid">
         <div class="editorial-img">
