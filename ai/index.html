@@ -101,11 +101,7 @@
             </div>
           </div>
 
-          <form class="founding-form" id="founding-five-form" action="mailto:contact@jjentertainmentsolutions.com?subject=JJE%20Founding%20Five%20Application" method="POST" enctype="text/plain" data-submit-endpoint="https://formsubmit.co/ajax/contact@jjentertainmentsolutions.com">
-            <input type="hidden" name="_subject" value="JJE Founding Five Application" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://jjentertainmentsolutions.com/ai/?founding-five=sent#founding-five" />
+          <form class="founding-form" id="founding-five-form" action="mailto:contact@jjentertainmentsolutions.com?subject=JJE%20Founding%20Five%20Application" method="POST" enctype="text/plain" data-submit-endpoint="https://jjentertainmentsolutions.com/api/founding-five">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
 
             <div class="form-head">
@@ -487,12 +483,14 @@
             body: formData
           });
 
+          const result = await response.json().catch(() => ({}));
+
           if (!response.ok) {
-            throw new Error('Submission service unavailable');
+            throw new Error(result.message || 'Submission service unavailable');
           }
 
           foundingForm.reset();
-          foundingStatus.textContent = 'Application sent. JJE Digital will follow up soon.';
+          foundingStatus.textContent = result.message || 'Application sent. JJE Digital will follow up soon.';
         } catch (error) {
           foundingStatus.textContent = 'Opening an email draft so your application can still be sent.';
           window.location.href = buildFoundingFiveEmail(formData);
