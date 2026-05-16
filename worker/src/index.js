@@ -1,3 +1,5 @@
+import { Resend } from 'resend';
+
 const FIELD_LABELS = [
   'Full name',
   'Business name',
@@ -59,12 +61,11 @@ export default {
         return json({ ok: false, message: validationError }, 400, corsHeaders);
       }
 
-      const emailResponse = await sendEmail(submission, env);
+      const emailResult = await sendEmail(submission, env);
 
-      if (!emailResponse.ok) {
-        const detail = await emailResponse.text();
-        console.error('Resend delivery failed', emailResponse.status, detail);
-        return json({ ok: false, message: 'Application could not be sent right now.' }, 502, corsHeaders);
+      if (emailResult.error) {
+        console.error('Resend delivery failed', emailResult.error);
+        return json({ ok: false, message: getEmailErrorMessage(emailResult.error) }, 502, corsHeaders);
       }
 
       return json({ ok: true, message: 'Application sent.' }, 200, corsHeaders);
@@ -139,20 +140,14 @@ async function sendEmail(submission, env) {
     throw new Error('Missing resend, RESEND_API_KEY, TO_EMAIL, or FROM_EMAIL.');
   }
 
-  return fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      from: env.FROM_EMAIL,
-      to: [env.TO_EMAIL],
-      reply_to: submission.Email,
-      subject: `JJE Founding Five Application - ${submission['Business name']}`,
-      text: buildTextEmail(submission),
-      html: buildHtmlEmail(submission)
-    })
+  const resend = new Resend(resendApiKey);
+
+  return resend.emails.send({
+    from: env.FROM_EMAIL,
+    to: [env.TO_EMAIL],
+    subject: `JJE Founding Five Application - ${submission['Business name']}`,
+    text: buildTextEmail(submission),
+    html: buildHtmlEmail(submission)
   });
 }
 
@@ -177,6 +172,22 @@ function buildHtmlEmail(submission) {
       ${rows}
     </table>
   `;
+}
+
+function getEmailErrorMessage(error) {
+  const status = error.statusCode || error.status || 0;
+  const detail = error.message || JSON.stringify(error);
+  const normalizedDetail = detail.toLowerCase();
+
+  if (status === 401 || normalizedDetail.includes('api key')) {
+    return 'Email delivery is not configured correctly yet. Check the Resend API key secret in Cloudflare.';
+  }
+
+  if (status === 403 || normalizedDetail.includes('domain') || normalizedDetail.includes('sender')) {
+    return 'Email delivery is not configured correctly yet. Verify contact@jjentertainmentsolutions.com or the jjentertainmentsolutions.com domain in Resend.';
+  }
+
+  return 'Email delivery is temporarily unavailable. Please check the Resend sender/domain setup or email contact@jjentertainmentsolutions.com directly.';
 }
 
 function escapeHtml(value) {

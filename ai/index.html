@@ -487,13 +487,14 @@
           const result = await response.json().catch(() => ({}));
 
           if (!response.ok) {
-            throw new Error(result.message || 'Submission service unavailable');
+            foundingStatus.textContent = result.message || 'Application could not be sent right now. Please email contact@jjentertainmentsolutions.com directly.';
+            return;
           }
 
           foundingForm.reset();
           foundingStatus.textContent = result.message || 'Application sent. JJE Digital will follow up soon.';
         } catch (error) {
-          foundingStatus.textContent = 'Opening an email draft so your application can still be sent.';
+          foundingStatus.textContent = 'We could not reach the application service. Opening an email draft so your application can still be sent.';
           window.location.href = buildFoundingFiveEmail(formData, fallbackEmail);
         }
       });
