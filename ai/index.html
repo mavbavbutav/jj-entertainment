@@ -101,7 +101,7 @@
             </div>
           </div>
 
-          <form class="founding-form" id="founding-five-form" action="mailto:contact@jjentertainmentsolutions.com?subject=JJE%20Founding%20Five%20Application" method="POST" enctype="text/plain" data-submit-endpoint="https://jje-founding-five-form.johnmartinferguson.workers.dev">
+          <form class="founding-form" id="founding-five-form" action="https://jje-founding-five-form.johnmartinferguson.workers.dev" method="POST" data-email-fallback="contact@jjentertainmentsolutions.com">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
 
             <div class="form-head">
@@ -451,7 +451,7 @@
     const foundingForm = document.getElementById('founding-five-form');
     const foundingStatus = document.getElementById('founding-five-status');
 
-    function buildFoundingFiveEmail(formData) {
+    function buildFoundingFiveEmail(formData, fallbackEmail) {
       const fields = [];
 
       formData.forEach((value, key) => {
@@ -460,13 +460,14 @@
         }
       });
 
-      return `mailto:contact@jjentertainmentsolutions.com?subject=${encodeURIComponent('JJE Founding Five Application')}&body=${encodeURIComponent(fields.join('\n\n'))}`;
+      return `mailto:${fallbackEmail}?subject=${encodeURIComponent('JJE Founding Five Application')}&body=${encodeURIComponent(fields.join('\n\n'))}`;
     }
 
     if (foundingForm) {
       foundingForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        const fallbackEmail = foundingForm.dataset.emailFallback || 'contact@jjentertainmentsolutions.com';
         const formData = new FormData(foundingForm);
         const honey = formData.get('_honey');
 
@@ -477,7 +478,7 @@
         foundingStatus.textContent = 'Sending application...';
 
         try {
-          const response = await fetch(foundingForm.dataset.submitEndpoint, {
+          const response = await fetch(foundingForm.action, {
             method: 'POST',
             headers: { Accept: 'application/json' },
             body: formData
@@ -493,7 +494,7 @@
           foundingStatus.textContent = result.message || 'Application sent. JJE Digital will follow up soon.';
         } catch (error) {
           foundingStatus.textContent = 'Opening an email draft so your application can still be sent.';
-          window.location.href = buildFoundingFiveEmail(formData);
+          window.location.href = buildFoundingFiveEmail(formData, fallbackEmail);
         }
       });
     }
