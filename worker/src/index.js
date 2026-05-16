@@ -146,8 +146,7 @@ async function sendEmail(submission, env) {
     from: env.FROM_EMAIL,
     to: [env.TO_EMAIL],
     subject: `JJE Founding Five Application - ${submission['Business name']}`,
-    text: buildTextEmail(submission),
-    html: buildHtmlEmail(submission)
+    text: buildTextEmail(submission)
   });
 }
 
