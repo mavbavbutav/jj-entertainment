@@ -645,6 +645,149 @@ h3 {
   margin: 0;
 }
 
+.founding-section {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(244, 241, 236, 0.96) 100%);
+}
+
+.founding-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.founding-points {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.founding-points div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(221, 212, 202, 0.9);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.founding-points span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.founding-points p {
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.founding-form {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid rgba(221, 212, 202, 0.95);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #ffffff 0%, var(--surface-tint) 100%);
+  box-shadow: var(--shadow-strong);
+}
+
+.form-head h3 {
+  margin-bottom: 0;
+  font-size: 1.75rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.founding-form label {
+  display: grid;
+  gap: 0.42rem;
+  color: var(--accent-ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.founding-form input,
+.founding-form select,
+.founding-form textarea {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid rgba(143, 122, 102, 0.32);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--text);
+  font: 500 0.96rem/1.4 "Manrope", system-ui, sans-serif;
+  letter-spacing: 0;
+  padding: 0.82rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.founding-form textarea {
+  resize: vertical;
+}
+
+.founding-form input:focus,
+.founding-form select:focus,
+.founding-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-dark);
+  background: #fff;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.checkbox-label {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.checkbox-label input {
+  width: 1.05rem;
+  min-height: 1.05rem;
+  margin-top: 0.2rem;
+  accent-color: var(--accent-ink);
+}
+
+.founding-form .btn {
+  width: 100%;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.form-honey {
+  display: none;
+}
+
 .pricing-section {
   background: linear-gradient(180deg, rgba(248, 245, 240, 0.82) 0%, rgba(244, 241, 236, 0.98) 100%);
 }
@@ -1045,7 +1188,8 @@ h3 {
   .contact-block,
   .service-grid,
   .pricing-grid,
-  .about-grid {
+  .about-grid,
+  .founding-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1101,8 +1245,13 @@ h3 {
 
   .hero-actions .btn,
   .pricing-card .btn,
+  .form-grid,
   .contact-actions .btn {
     width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
   .pricing-card-head .eyebrow {
