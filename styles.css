@@ -645,6 +645,176 @@ h3 {
   margin: 0;
 }
 
+.pricing-section {
+  background: linear-gradient(180deg, rgba(248, 245, 240, 0.82) 0%, rgba(244, 241, 236, 0.98) 100%);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 2rem;
+  border: 1px solid rgba(221, 212, 202, 0.9);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #ffffff 0%, var(--surface-tint) 100%);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.pricing-card.featured {
+  border-color: rgba(143, 122, 102, 0.64);
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-0.35rem);
+}
+
+.pricing-ribbon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  padding: 0.36rem 0.72rem;
+  border: 1px solid rgba(143, 122, 102, 0.28);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pricing-card-head {
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(221, 212, 202, 0.82);
+  margin-bottom: 1.2rem;
+}
+
+.pricing-card-head .eyebrow {
+  padding-right: 5.5rem;
+}
+
+.pricing-price {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.pricing-price span {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--text);
+  font-size: clamp(2.3rem, 4vw, 3.1rem);
+  line-height: 1;
+}
+
+.pricing-summary {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+}
+
+.pricing-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0 0 1.7rem;
+  padding: 0;
+  list-style: none;
+  color: var(--text);
+}
+
+.pricing-list li {
+  position: relative;
+  padding-left: 1.55rem;
+}
+
+.pricing-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.24rem var(--accent-soft);
+}
+
+.pricing-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.comparison-wrap {
+  margin-top: 1.25rem;
+  border: 1px solid rgba(221, 212, 202, 0.9);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.05rem 1.15rem;
+  border-bottom: 1px solid rgba(221, 212, 202, 0.78);
+  text-align: left;
+  vertical-align: top;
+}
+
+.comparison-table th {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.comparison-table thead th {
+  color: var(--accent-ink);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.comparison-table td {
+  color: var(--muted);
+}
+
+.comparison-table tr:last-child th,
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.contact-actions .btn {
+  text-decoration: none;
+  min-width: 0;
+}
+
+.contact-actions .btn-primary {
+  color: var(--paper);
+}
+
+.contact-actions .btn-ghost {
+  color: var(--text);
+}
+
 .metrics-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -874,6 +1044,7 @@ h3 {
   .ventures-grid,
   .contact-block,
   .service-grid,
+  .pricing-grid,
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -885,7 +1056,12 @@ h3 {
 
   .venture-card-body,
   .service-card,
+  .pricing-card,
   .contact-card { padding: 1.5rem; }
+
+  .pricing-card.featured {
+    transform: none;
+  }
 
   .metrics-row,
   .process-strip {
@@ -923,8 +1099,20 @@ h3 {
     min-width: min(78vw, 240px);
   }
 
-  .btn {
+  .hero-actions .btn,
+  .pricing-card .btn,
+  .contact-actions .btn {
     width: 100%;
+  }
+
+  .pricing-card-head .eyebrow {
+    padding-right: 0;
+  }
+
+  .pricing-ribbon {
+    position: static;
+    width: fit-content;
+    margin-bottom: 1rem;
   }
 
   .metrics-row,
