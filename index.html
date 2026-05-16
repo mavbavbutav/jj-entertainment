@@ -74,7 +74,7 @@
         <div class="chat-menu">
           <button class="nav-cta chat-trigger" type="button" aria-expanded="false" aria-controls="chat-options">Let's Chat!</button>
           <div class="chat-options" id="chat-options" aria-label="Chat options">
-            <a href="sms:?&body=Hi%20JJ%20Entertainment%20Solutions%2C%20I%27d%20love%20to%20chat%20about%20a%20project.">Text Us</a>
+            <a href="#contact">Send a Message</a>
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Virtual%20Google%20Meet%20with%20JJ%20Entertainment%20Solutions&details=I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.%20Please%20add%20Google%20Meet%20conferencing%20when%20confirming%20the%20meeting.&location=Google%20Meet&add=contact%40jjentertainmentsolutions.com" target="_blank" rel="noopener">Schedule Google Meet</a>
           </div>
         </div>
@@ -211,12 +211,57 @@
         <h2>Start a project with the studio.</h2>
         <p class="lead">Tell us about your event, shoot, or project &mdash; the date, the scope, and anything that makes it special. We&rsquo;ll route your inquiry to the right specialist and respond within one business day.</p>
 
-        <div class="contact-block" style="grid-template-columns: 1fr; max-width: 560px;">
+        <div class="contact-block" style="grid-template-columns: 1fr; max-width: 640px;">
           <div class="contact-card">
             <p class="name">General Inquiries</p>
             <p class="role">All Studios &middot; All Services</p>
             <a href="mailto:contact@jjentertainmentsolutions.com?subject=Project%20Inquiry%20%E2%80%94%20JJ%20Entertainment%20Solutions">contact@jjentertainmentsolutions.com</a>
           </div>
+
+          <form class="founding-form contact-form" id="general-inquiry-form" action="https://jje-founding-five-form.johnmartinferguson.workers.dev" method="POST" data-email-fallback="contact@jjentertainmentsolutions.com">
+            <input type="hidden" name="Form type" value="General inquiry" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
+
+            <div class="form-head">
+              <p class="eyebrow">Project Inquiry</p>
+              <h3>Tell us what you have in mind.</h3>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Full name
+                <input type="text" name="Full name" autocomplete="name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="Email" autocomplete="email" required />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="Phone" autocomplete="tel" />
+              </label>
+              <label>
+                Service interest
+                <select name="Service interest" required>
+                  <option value="">Select one</option>
+                  <option>Photography</option>
+                  <option>Floral design</option>
+                  <option>Aerial cinematography</option>
+                  <option>Web, AI, and automation</option>
+                  <option>Multiple services</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Project details
+              <textarea name="Project details" rows="5" placeholder="Share your date, location, budget range, timeline, or anything else helpful." required></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <p class="form-status" id="general-inquiry-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -239,24 +284,103 @@
 
     const chatMenu = document.querySelector('.chat-menu');
     const chatTrigger = document.querySelector('.chat-trigger');
+    const chatOptions = document.querySelector('#chat-options');
+    const inquiryForm = document.querySelector('#general-inquiry-form');
+    const inquiryStatus = document.querySelector('#general-inquiry-status');
 
     if (chatMenu && chatTrigger) {
+      const setChatOpen = (isOpen) => {
+        chatMenu.classList.toggle('is-open', isOpen);
+        chatTrigger.setAttribute('aria-expanded', String(isOpen));
+      };
+
       chatMenu.addEventListener('focusin', () => {
-        chatTrigger.setAttribute('aria-expanded', 'true');
+        setChatOpen(true);
       });
 
       chatMenu.addEventListener('focusout', () => {
         window.setTimeout(() => {
-          chatTrigger.setAttribute('aria-expanded', String(chatMenu.matches(':focus-within')));
+          setChatOpen(chatMenu.matches(':focus-within'));
         }, 0);
       });
 
       chatMenu.addEventListener('mouseenter', () => {
-        chatTrigger.setAttribute('aria-expanded', 'true');
+        setChatOpen(true);
       });
 
       chatMenu.addEventListener('mouseleave', () => {
-        chatTrigger.setAttribute('aria-expanded', String(chatMenu.matches(':focus-within')));
+        setChatOpen(chatMenu.matches(':focus-within'));
+      });
+
+      chatTrigger.addEventListener('click', () => {
+        setChatOpen(!chatMenu.classList.contains('is-open'));
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!chatMenu.contains(event.target)) {
+          setChatOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setChatOpen(false);
+          chatTrigger.focus();
+        }
+      });
+
+      chatOptions?.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          setChatOpen(false);
+        }
+      });
+    }
+
+    function buildInquiryEmail(formData, fallbackEmail) {
+      const fields = [];
+
+      formData.forEach((value, key) => {
+        if (!key.startsWith('_') && value) {
+          fields.push(`${key}: ${value}`);
+        }
+      });
+
+      return `mailto:${fallbackEmail}?subject=${encodeURIComponent('Project Inquiry - JJ Entertainment Solutions')}&body=${encodeURIComponent(fields.join('\n\n'))}`;
+    }
+
+    if (inquiryForm && inquiryStatus) {
+      inquiryForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const fallbackEmail = inquiryForm.dataset.emailFallback || 'contact@jjentertainmentsolutions.com';
+        const formData = new FormData(inquiryForm);
+
+        if (formData.get('_honey')) {
+          return;
+        }
+
+        inquiryStatus.textContent = 'Sending message...';
+
+        try {
+          const response = await fetch(inquiryForm.action, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: formData
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            inquiryStatus.textContent = result.message || 'Message could not be sent right now. Please email contact@jjentertainmentsolutions.com directly.';
+            return;
+          }
+
+          inquiryForm.reset();
+          inquiryStatus.textContent = result.message || 'Message sent. We will follow up within one business day.';
+        } catch (error) {
+          inquiryStatus.textContent = 'We could not reach the message service. Opening an email draft so your inquiry can still be sent.';
+          window.location.href = buildInquiryEmail(formData, fallbackEmail);
+        }
       });
     }
   </script>

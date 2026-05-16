@@ -31,6 +31,22 @@ const REQUIRED_FIELDS = [
   'Founding Five consent'
 ];
 
+const GENERAL_INQUIRY_FIELD_LABELS = [
+  'Form type',
+  'Full name',
+  'Email',
+  'Phone',
+  'Service interest',
+  'Project details'
+];
+
+const GENERAL_INQUIRY_REQUIRED_FIELDS = [
+  'Full name',
+  'Email',
+  'Service interest',
+  'Project details'
+];
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -126,7 +142,11 @@ async function readSubmission(request) {
 }
 
 function validateSubmission(submission) {
-  for (const field of REQUIRED_FIELDS) {
+  const requiredFields = isGeneralInquiry(submission)
+    ? GENERAL_INQUIRY_REQUIRED_FIELDS
+    : REQUIRED_FIELDS;
+
+  for (const field of requiredFields) {
     if (!submission[field]) {
       return `Missing required field: ${field}`;
     }
@@ -137,6 +157,10 @@ function validateSubmission(submission) {
   }
 
   return '';
+}
+
+function isGeneralInquiry(submission) {
+  return String(submission['Form type'] || '').toLowerCase() === 'general inquiry';
 }
 
 function getResendClient(env) {
@@ -157,7 +181,9 @@ async function sendInternalNotification(submission, env) {
   return getResendClient(env).emails.send({
     from: env.FROM_EMAIL,
     to: [env.TO_EMAIL],
-    subject: `JJE Founding Five Application - ${submission['Business name']}`,
+    subject: isGeneralInquiry(submission)
+      ? `JJ Entertainment Inquiry - ${submission['Full name']}`
+      : `JJE Founding Five Application - ${submission['Business name']}`,
     text: buildTextEmail(submission)
   });
 }
@@ -170,13 +196,19 @@ async function sendApplicantConfirmation(submission, env) {
   return getResendClient(env).emails.send({
     from: env.FROM_EMAIL,
     to: [submission.Email],
-    subject: 'JJE Digital received your Founding Five application',
+    subject: isGeneralInquiry(submission)
+      ? 'JJ Entertainment received your message'
+      : 'JJE Digital received your Founding Five application',
     text: buildApplicantConfirmationText(submission)
   });
 }
 
 function buildTextEmail(submission) {
-  return FIELD_LABELS
+  const labels = isGeneralInquiry(submission)
+    ? GENERAL_INQUIRY_FIELD_LABELS
+    : FIELD_LABELS;
+
+  return labels
     .filter((label) => submission[label])
     .map((label) => `${label}: ${submission[label]}`)
     .join('\n\n');
@@ -187,6 +219,22 @@ function getFirstName(fullName) {
 }
 
 function buildApplicantConfirmationText(submission) {
+  if (isGeneralInquiry(submission)) {
+    return `Hi ${getFirstName(submission['Full name'])},
+
+Thanks for reaching out to JJ Entertainment Solutions.
+
+We received your message about ${submission['Service interest']} and will route it to the right specialist. You can expect a follow-up within one business day.
+
+Quick summary:
+Service interest: ${submission['Service interest']}
+Project details: ${submission['Project details']}
+
+JJ Entertainment Solutions
+Nashville creative studio
+contact@jjentertainmentsolutions.com`;
+  }
+
   return `Hi ${getFirstName(submission['Full name'])},
 
 Thanks for applying for the JJE Founding Five.

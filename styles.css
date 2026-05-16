@@ -149,6 +149,9 @@ button:focus-visible {
 
 .chat-menu {
   position: relative;
+  z-index: 35;
+  padding-bottom: 0.75rem;
+  margin-bottom: -0.75rem;
 }
 
 .nav-links .nav-cta {
@@ -175,8 +178,8 @@ button:focus-visible {
 .chat-options {
   position: absolute;
   right: 0;
-  top: calc(100% + 0.75rem);
-  z-index: 30;
+  top: 100%;
+  z-index: 40;
   width: max-content;
   min-width: 220px;
   padding: 0.45rem;
@@ -191,7 +194,8 @@ button:focus-visible {
 }
 
 .chat-menu:hover .chat-options,
-.chat-menu:focus-within .chat-options {
+.chat-menu:focus-within .chat-options,
+.chat-menu.is-open .chat-options {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -1034,6 +1038,10 @@ body.modal-open {
   color: var(--text);
 }
 
+.contact-form {
+  box-shadow: var(--shadow-soft);
+}
+
 .metrics-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1305,7 +1313,7 @@ body.modal-open {
 
   .nav-links a:not(.nav-cta) { display: none; }
 
-  .chat-options a {
+  .nav-links .chat-options a {
     display: block;
   }
 
