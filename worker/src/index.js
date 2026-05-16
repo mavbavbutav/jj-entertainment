@@ -133,14 +133,16 @@ function validateSubmission(submission) {
 }
 
 async function sendEmail(submission, env) {
-  if (!env.RESEND_API_KEY || !env.TO_EMAIL || !env.FROM_EMAIL) {
-    throw new Error('Missing RESEND_API_KEY, TO_EMAIL, or FROM_EMAIL.');
+  const resendApiKey = env.RESEND_API_KEY || env.resend || env.RESEND;
+
+  if (!resendApiKey || !env.TO_EMAIL || !env.FROM_EMAIL) {
+    throw new Error('Missing resend, RESEND_API_KEY, TO_EMAIL, or FROM_EMAIL.');
   }
 
   return fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      Authorization: `Bearer ${resendApiKey}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({

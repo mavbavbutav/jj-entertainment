@@ -1,12 +1,9 @@
 name = "jje-founding-five-form"
 main = "src/index.js"
 compatibility_date = "2026-05-16"
-
-routes = [
-  { pattern = "jjentertainmentsolutions.com/api/founding-five", zone_name = "jjentertainmentsolutions.com" }
-]
+workers_dev = true
 
 [vars]
 TO_EMAIL = "contact@jjentertainmentsolutions.com"
-FROM_EMAIL = "JJE Digital <founding-five@jjentertainmentsolutions.com>"
+FROM_EMAIL = "JJE Digital <contact@jjentertainmentsolutions.com>"
 ALLOWED_ORIGINS = "https://jjentertainmentsolutions.com,https://www.jjentertainmentsolutions.com,http://localhost:5173"
