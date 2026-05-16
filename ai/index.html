@@ -199,6 +199,20 @@
       </div>
     </section>
 
+    <div class="confirmation-modal" id="founding-five-confirmation" role="dialog" aria-modal="true" aria-labelledby="confirmation-title" aria-describedby="confirmation-message" hidden>
+      <div class="confirmation-backdrop" data-confirmation-close></div>
+      <div class="confirmation-dialog">
+        <button class="confirmation-close" type="button" aria-label="Close confirmation" data-confirmation-close>&times;</button>
+        <p class="eyebrow">Application Received</p>
+        <h2 id="confirmation-title">You&rsquo;re on the Founding Five list.</h2>
+        <p id="confirmation-message">Thanks for applying. Your application was sent to JJE Digital, and you&rsquo;ll receive a confirmation email at the address you provided.</p>
+        <div class="confirmation-actions">
+          <a class="btn btn-primary" href="#pricing" data-confirmation-close>View Packages</a>
+          <button class="btn btn-ghost" type="button" data-confirmation-close>Close</button>
+        </div>
+      </div>
+    </div>
+
     <section class="section alt">
       <div class="container">
         <div class="section-head">
@@ -450,6 +464,9 @@
 
     const foundingForm = document.getElementById('founding-five-form');
     const foundingStatus = document.getElementById('founding-five-status');
+    const foundingConfirmation = document.getElementById('founding-five-confirmation');
+    const confirmationCloseControls = document.querySelectorAll('[data-confirmation-close]');
+    let lastFocusedElement = null;
 
     function buildFoundingFiveEmail(formData, fallbackEmail) {
       const fields = [];
@@ -493,12 +510,51 @@
 
           foundingForm.reset();
           foundingStatus.textContent = result.message || 'Application sent. JJE Digital will follow up soon.';
+          openConfirmationModal();
         } catch (error) {
           foundingStatus.textContent = 'We could not reach the application service. Opening an email draft so your application can still be sent.';
           window.location.href = buildFoundingFiveEmail(formData, fallbackEmail);
         }
       });
     }
+
+    function openConfirmationModal() {
+      if (!foundingConfirmation) {
+        return;
+      }
+
+      lastFocusedElement = document.activeElement;
+      foundingConfirmation.hidden = false;
+      document.body.classList.add('modal-open');
+      const closeButton = foundingConfirmation.querySelector('.confirmation-close');
+
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    function closeConfirmationModal() {
+      if (!foundingConfirmation || foundingConfirmation.hidden) {
+        return;
+      }
+
+      foundingConfirmation.hidden = true;
+      document.body.classList.remove('modal-open');
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+    }
+
+    confirmationCloseControls.forEach((control) => {
+      control.addEventListener('click', closeConfirmationModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeConfirmationModal();
+      }
+    });
   </script>
 </body>
 </html>

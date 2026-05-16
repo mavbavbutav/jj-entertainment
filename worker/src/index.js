@@ -61,11 +61,17 @@ export default {
         return json({ ok: false, message: validationError }, 400, corsHeaders);
       }
 
-      const emailResult = await sendEmail(submission, env);
+      const emailResult = await sendInternalNotification(submission, env);
 
       if (emailResult.error) {
         console.error('Resend delivery failed', emailResult.error);
         return json({ ok: false, message: getEmailErrorMessage(emailResult.error) }, 502, corsHeaders);
+      }
+
+      const confirmationResult = await sendApplicantConfirmation(submission, env);
+
+      if (confirmationResult.error) {
+        console.error('Applicant confirmation failed', confirmationResult.error);
       }
 
       return json({ ok: true, message: 'Application sent.' }, 200, corsHeaders);
@@ -133,20 +139,39 @@ function validateSubmission(submission) {
   return '';
 }
 
-async function sendEmail(submission, env) {
+function getResendClient(env) {
   const resendApiKey = env.resend || env.RESEND_API_KEY || env.RESEND;
 
-  if (!resendApiKey || !env.TO_EMAIL || !env.FROM_EMAIL) {
-    throw new Error('Missing resend, RESEND_API_KEY, TO_EMAIL, or FROM_EMAIL.');
+  if (!resendApiKey) {
+    throw new Error('Missing resend, RESEND_API_KEY, or RESEND.');
   }
 
-  const resend = new Resend(resendApiKey);
+  return new Resend(resendApiKey);
+}
 
-  return resend.emails.send({
+async function sendInternalNotification(submission, env) {
+  if (!env.TO_EMAIL || !env.FROM_EMAIL) {
+    throw new Error('Missing TO_EMAIL or FROM_EMAIL.');
+  }
+
+  return getResendClient(env).emails.send({
     from: env.FROM_EMAIL,
     to: [env.TO_EMAIL],
     subject: `JJE Founding Five Application - ${submission['Business name']}`,
     text: buildTextEmail(submission)
+  });
+}
+
+async function sendApplicantConfirmation(submission, env) {
+  if (!env.FROM_EMAIL) {
+    throw new Error('Missing FROM_EMAIL.');
+  }
+
+  return getResendClient(env).emails.send({
+    from: env.FROM_EMAIL,
+    to: [submission.Email],
+    subject: 'JJE Digital received your Founding Five application',
+    text: buildApplicantConfirmationText(submission)
   });
 }
 
@@ -155,6 +180,27 @@ function buildTextEmail(submission) {
     .filter((label) => submission[label])
     .map((label) => `${label}: ${submission[label]}`)
     .join('\n\n');
+}
+
+function getFirstName(fullName) {
+  return String(fullName || '').trim().split(/\s+/)[0] || 'there';
+}
+
+function buildApplicantConfirmationText(submission) {
+  return `Hi ${getFirstName(submission['Full name'])},
+
+Thanks for applying for the JJE Founding Five.
+
+We received your application for ${submission['Business name']} and will review it for one of the first five launch slots. If your project looks like a strong fit, JJE Digital will follow up with next steps.
+
+Quick summary:
+Package interest: ${submission['Package interest']}
+Ideal timeline: ${submission['Ideal timeline']}
+Primary automation opportunity: ${submission['Automation opportunity']}
+
+JJE Digital
+Web, AI, and Automation
+contact@jjentertainmentsolutions.com`;
 }
 
 function buildHtmlEmail(submission) {
