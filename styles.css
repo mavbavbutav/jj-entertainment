@@ -784,6 +784,15 @@ h3 {
   line-height: 1.55;
 }
 
+.form-status {
+  min-height: 1.35rem;
+  margin: 0;
+  color: var(--accent-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .form-honey {
   display: none;
 }
