@@ -74,7 +74,7 @@
         <div class="chat-menu">
           <button class="nav-cta chat-trigger" type="button" aria-expanded="false" aria-controls="chat-options">Let's Chat!</button>
           <div class="chat-options" id="chat-options" aria-label="Chat options">
-            <a href="#contact">Send a Message</a>
+            <a href="#contact" class="chat-message-link">Send a Message</a>
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Virtual%20Google%20Meet%20with%20JJ%20Entertainment%20Solutions&details=I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.%20Please%20add%20Google%20Meet%20conferencing%20when%20confirming%20the%20meeting.&location=Google%20Meet&add=contact%40jjentertainmentsolutions.com" target="_blank" rel="noopener">Schedule Google Meet</a>
           </div>
         </div>
@@ -308,6 +308,7 @@
     const chatMenu = document.querySelector('.chat-menu');
     const chatTrigger = document.querySelector('.chat-trigger');
     const chatOptions = document.querySelector('#chat-options');
+    const chatMessageLink = document.querySelector('.chat-message-link');
     const inquiryForm = document.querySelector('#general-inquiry-form');
     const inquiryStatus = document.querySelector('#general-inquiry-status');
     const inquiryConfirmation = document.querySelector('#general-inquiry-confirmation');
@@ -341,12 +342,6 @@
       });
 
       chatTrigger.addEventListener('click', () => {
-        if (isMobileChat()) {
-          setChatOpen(false);
-          window.location.href = mobileSmsHref;
-          return;
-        }
-
         setChatOpen(!chatMenu.classList.contains('is-open'));
       });
 
@@ -367,6 +362,16 @@
         if (event.target.closest('a')) {
           setChatOpen(false);
         }
+      });
+
+      chatMessageLink?.addEventListener('click', (event) => {
+        if (!isMobileChat()) {
+          return;
+        }
+
+        event.preventDefault();
+        setChatOpen(false);
+        window.location.href = mobileSmsHref;
       });
     }
 
