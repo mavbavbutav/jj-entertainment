@@ -31,7 +31,7 @@ The current `wrangler.toml` deploys the Worker to a `workers.dev` URL because `j
 After `npx wrangler deploy`, Wrangler will print a URL like:
 
 ```text
-https://jje-founding-five-form.YOUR-SUBDOMAIN.workers.dev
+https://jje-founding-five-form.johnmartinferguson.workers.dev
 ```
 
 Use that URL as the form endpoint until the domain is added to Cloudflare.
