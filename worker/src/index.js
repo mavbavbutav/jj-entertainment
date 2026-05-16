@@ -134,7 +134,7 @@ function validateSubmission(submission) {
 }
 
 async function sendEmail(submission, env) {
-  const resendApiKey = env.RESEND_API_KEY || env.resend || env.RESEND;
+  const resendApiKey = env.resend || env.RESEND_API_KEY || env.RESEND;
 
   if (!resendApiKey || !env.TO_EMAIL || !env.FROM_EMAIL) {
     throw new Error('Missing resend, RESEND_API_KEY, TO_EMAIL, or FROM_EMAIL.');
