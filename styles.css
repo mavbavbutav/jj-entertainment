@@ -447,33 +447,6 @@ h3 {
   filter: saturate(1.1) contrast(1.05);
 }
 
-/* ── Live iframe thumbnails ─────────────────────────────────────── */
-/* Each showcase page renders at 1200px wide, scaled 50% to fill the
-   ~600×375px card media area (16:10 ratio). Self-updating — any
-   change to a showcase site automatically shows in the thumbnail. */
-.venture-thumb-frame {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  transition: transform 0.55s ease;
-  transform-origin: top center;
-}
-
-.venture-thumb-frame iframe {
-  display: block;
-  width: 1200px;
-  height: 750px;
-  border: none;
-  transform: scale(0.5);
-  transform-origin: top left;
-  pointer-events: none;
-}
-
-.venture-card:hover .venture-thumb-frame {
-  transform: scale(1.05);
-}
-
 .venture-card-body {
   padding: 1.75rem 2rem 2rem;
   display: flex;
