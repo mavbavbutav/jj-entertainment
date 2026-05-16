@@ -315,6 +315,8 @@
     let lastFocusedElement = null;
 
     if (chatMenu && chatTrigger) {
+      const mobileSmsHref = 'sms:+16155164341?&body=Hi%20Jami%2C%20I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.';
+      const isMobileChat = () => window.matchMedia('(max-width: 560px)').matches;
       const setChatOpen = (isOpen) => {
         chatMenu.classList.toggle('is-open', isOpen);
         chatTrigger.setAttribute('aria-expanded', String(isOpen));
@@ -339,6 +341,12 @@
       });
 
       chatTrigger.addEventListener('click', () => {
+        if (isMobileChat()) {
+          setChatOpen(false);
+          window.location.href = mobileSmsHref;
+          return;
+        }
+
         setChatOpen(!chatMenu.classList.contains('is-open'));
       });
 
