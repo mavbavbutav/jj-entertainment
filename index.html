@@ -265,6 +265,20 @@
         </div>
       </div>
     </section>
+
+    <div class="confirmation-modal" id="general-inquiry-confirmation" role="dialog" aria-modal="true" aria-labelledby="inquiry-confirmation-title" aria-describedby="inquiry-confirmation-message" hidden>
+      <div class="confirmation-backdrop" data-inquiry-confirmation-close></div>
+      <div class="confirmation-dialog">
+        <button class="confirmation-close" type="button" aria-label="Close confirmation" data-inquiry-confirmation-close>&times;</button>
+        <p class="eyebrow">Message Sent</p>
+        <h2 id="inquiry-confirmation-title">We received your inquiry.</h2>
+        <p id="inquiry-confirmation-message">Thanks for reaching out. Your message was sent to JJ Entertainment Solutions, and a confirmation email is on its way to the address you provided.</p>
+        <div class="confirmation-actions">
+          <a class="btn btn-primary" href="#services" data-inquiry-confirmation-close>Explore Services</a>
+          <button class="btn btn-ghost" type="button" data-inquiry-confirmation-close>Close</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -287,6 +301,9 @@
     const chatOptions = document.querySelector('#chat-options');
     const inquiryForm = document.querySelector('#general-inquiry-form');
     const inquiryStatus = document.querySelector('#general-inquiry-status');
+    const inquiryConfirmation = document.querySelector('#general-inquiry-confirmation');
+    const inquiryConfirmationCloseControls = document.querySelectorAll('[data-inquiry-confirmation-close]');
+    let lastFocusedElement = null;
 
     if (chatMenu && chatTrigger) {
       const setChatOpen = (isOpen) => {
@@ -377,12 +394,51 @@
 
           inquiryForm.reset();
           inquiryStatus.textContent = result.message || 'Message sent. We will follow up within one business day.';
+          openInquiryConfirmationModal();
         } catch (error) {
           inquiryStatus.textContent = 'We could not reach the message service. Opening an email draft so your inquiry can still be sent.';
           window.location.href = buildInquiryEmail(formData, fallbackEmail);
         }
       });
     }
+
+    function openInquiryConfirmationModal() {
+      if (!inquiryConfirmation) {
+        return;
+      }
+
+      lastFocusedElement = document.activeElement;
+      inquiryConfirmation.hidden = false;
+      document.body.classList.add('modal-open');
+      const closeButton = inquiryConfirmation.querySelector('.confirmation-close');
+
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    function closeInquiryConfirmationModal() {
+      if (!inquiryConfirmation || inquiryConfirmation.hidden) {
+        return;
+      }
+
+      inquiryConfirmation.hidden = true;
+      document.body.classList.remove('modal-open');
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+    }
+
+    inquiryConfirmationCloseControls.forEach((control) => {
+      control.addEventListener('click', closeInquiryConfirmationModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeInquiryConfirmationModal();
+      }
+    });
   </script>
 </body>
 </html>
