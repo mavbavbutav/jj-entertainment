@@ -335,6 +335,38 @@ h3 {
   max-width: min(100%, 31rem);
 }
 
+.digital-hero .container {
+  display: grid;
+  grid-template-columns: minmax(18rem, 31rem) minmax(20rem, 34rem);
+  align-items: center;
+  column-gap: clamp(2rem, 6vw, 5rem);
+}
+
+.digital-hero .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.digital-hero .digital-logo-heading {
+  margin: 0;
+}
+
+.hero-side-copy {
+  align-self: center;
+  padding-top: clamp(3.75rem, 7vw, 5.75rem);
+}
+
+.hero-side-copy .lead {
+  margin-bottom: 0;
+}
+
+.hero-side-copy .hero-actions {
+  margin-top: 1.75rem;
+}
+
+.hero-side-copy .social-row {
+  margin-top: 1.25rem;
+}
+
 .hero h1.aerial-logo-heading {
   max-width: min(100%, 27rem);
 }
@@ -1425,6 +1457,18 @@ body.modal-open {
 
   .about-grid { gap: 1.5rem; }
   .hero { padding: 3rem 0 3rem; }
+  .digital-hero .container {
+    display: block;
+  }
+
+  .digital-hero .digital-logo-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-side-copy {
+    padding-top: 0;
+  }
+
   .section { padding: 4rem 0; }
   .nav-links { gap: 1rem; font-size: 0.85rem; }
 
@@ -1471,7 +1515,10 @@ body.modal-open {
   }
 
   .nav-with-home {
+    flex-direction: column;
+    justify-content: center;
     gap: 0.55rem;
+    padding-block: 0.85rem;
   }
 
   .nav-with-home .brand {
@@ -1488,6 +1535,7 @@ body.modal-open {
     max-width: 220px;
     font-size: 0.64rem;
     letter-spacing: 0.11em;
+    text-align: center;
   }
 
   .brand-affiliation-sub {
@@ -1496,6 +1544,8 @@ body.modal-open {
   }
 
   .nav-with-home .nav-links {
+    width: 100%;
+    justify-content: center;
     gap: 0.55rem;
   }
 
@@ -1534,6 +1584,11 @@ body.modal-open {
 
   .hero h1.hero-logo-heading {
     max-width: min(100%, 22rem);
+    margin-inline: auto;
+  }
+
+  .digital-logo-heading img {
+    transform: translateX(0.8rem);
   }
 
   .form-grid {
