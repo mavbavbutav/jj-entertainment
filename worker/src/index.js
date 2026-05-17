@@ -47,6 +47,23 @@ const GENERAL_INQUIRY_REQUIRED_FIELDS = [
   'Project details'
 ];
 
+const PHOTOGRAPHY_INQUIRY_FIELD_LABELS = [
+  'Form type',
+  'First name',
+  'Last name',
+  'Email',
+  'Subject',
+  'Message'
+];
+
+const PHOTOGRAPHY_INQUIRY_REQUIRED_FIELDS = [
+  'First name',
+  'Last name',
+  'Email',
+  'Subject',
+  'Message'
+];
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -68,7 +85,7 @@ export default {
       const submission = await readSubmission(request);
 
       if (submission._honey) {
-        return json({ ok: true, message: 'Application received.' }, 200, corsHeaders);
+        return json({ ok: true, message: 'Submission received.' }, 200, corsHeaders);
       }
 
       const validationError = validateSubmission(submission);
@@ -90,10 +107,10 @@ export default {
         console.error('Applicant confirmation failed', confirmationResult.error);
       }
 
-      return json({ ok: true, message: 'Application sent.' }, 200, corsHeaders);
+      return json({ ok: true, message: getSuccessMessage(submission) }, 200, corsHeaders);
     } catch (error) {
-      console.error('Founding Five form error', error);
-      return json({ ok: false, message: 'Application could not be sent right now.' }, 500, corsHeaders);
+      console.error('Form submission error', error);
+      return json({ ok: false, message: 'Submission could not be sent right now.' }, 500, corsHeaders);
     }
   }
 };
@@ -142,9 +159,7 @@ async function readSubmission(request) {
 }
 
 function validateSubmission(submission) {
-  const requiredFields = isGeneralInquiry(submission)
-    ? GENERAL_INQUIRY_REQUIRED_FIELDS
-    : REQUIRED_FIELDS;
+  const requiredFields = getRequiredFields(submission);
 
   for (const field of requiredFields) {
     if (!submission[field]) {
@@ -161,6 +176,22 @@ function validateSubmission(submission) {
 
 function isGeneralInquiry(submission) {
   return String(submission['Form type'] || '').toLowerCase() === 'general inquiry';
+}
+
+function isPhotographyInquiry(submission) {
+  return String(submission['Form type'] || '').toLowerCase() === 'photography inquiry';
+}
+
+function getRequiredFields(submission) {
+  if (isGeneralInquiry(submission)) {
+    return GENERAL_INQUIRY_REQUIRED_FIELDS;
+  }
+
+  if (isPhotographyInquiry(submission)) {
+    return PHOTOGRAPHY_INQUIRY_REQUIRED_FIELDS;
+  }
+
+  return REQUIRED_FIELDS;
 }
 
 function getResendClient(env) {
@@ -180,10 +211,8 @@ async function sendInternalNotification(submission, env) {
 
   return getResendClient(env).emails.send({
     from: env.FROM_EMAIL,
-    to: [env.TO_EMAIL],
-    subject: isGeneralInquiry(submission)
-      ? `JJ Entertainment Inquiry - ${submission['Full name']}`
-      : `JJE Founding Five Application - ${submission['Business name']}`,
+    to: getInternalRecipients(submission, env),
+    subject: getInternalSubject(submission),
     text: buildTextEmail(submission)
   });
 }
@@ -196,17 +225,13 @@ async function sendApplicantConfirmation(submission, env) {
   return getResendClient(env).emails.send({
     from: env.FROM_EMAIL,
     to: [submission.Email],
-    subject: isGeneralInquiry(submission)
-      ? 'JJ Entertainment received your message'
-      : 'JJE Digital received your Founding Five application',
+    subject: getApplicantSubject(submission),
     text: buildApplicantConfirmationText(submission)
   });
 }
 
 function buildTextEmail(submission) {
-  const labels = isGeneralInquiry(submission)
-    ? GENERAL_INQUIRY_FIELD_LABELS
-    : FIELD_LABELS;
+  const labels = getFieldLabels(submission);
 
   return labels
     .filter((label) => submission[label])
@@ -216,6 +241,66 @@ function buildTextEmail(submission) {
 
 function getFirstName(fullName) {
   return String(fullName || '').trim().split(/\s+/)[0] || 'there';
+}
+
+function getPhotographyFullName(submission) {
+  return `${submission['First name'] || ''} ${submission['Last name'] || ''}`.trim();
+}
+
+function getFieldLabels(submission) {
+  if (isGeneralInquiry(submission)) {
+    return GENERAL_INQUIRY_FIELD_LABELS;
+  }
+
+  if (isPhotographyInquiry(submission)) {
+    return PHOTOGRAPHY_INQUIRY_FIELD_LABELS;
+  }
+
+  return FIELD_LABELS;
+}
+
+function getInternalRecipients(submission, env) {
+  if (isPhotographyInquiry(submission)) {
+    return [env.PHOTOGRAPHY_TO_EMAIL || 'jamicarswell@gmail.com'];
+  }
+
+  return [env.TO_EMAIL];
+}
+
+function getInternalSubject(submission) {
+  if (isGeneralInquiry(submission)) {
+    return `JJ Entertainment Inquiry - ${submission['Full name']}`;
+  }
+
+  if (isPhotographyInquiry(submission)) {
+    return `Photography Inquiry - ${getPhotographyFullName(submission) || submission.Email}`;
+  }
+
+  return `JJE Founding Five Application - ${submission['Business name']}`;
+}
+
+function getApplicantSubject(submission) {
+  if (isGeneralInquiry(submission)) {
+    return 'JJ Entertainment received your message';
+  }
+
+  if (isPhotographyInquiry(submission)) {
+    return 'Jami Ferguson Photography received your message';
+  }
+
+  return 'JJE Digital received your Founding Five application';
+}
+
+function getSuccessMessage(submission) {
+  if (isPhotographyInquiry(submission)) {
+    return 'Message sent.';
+  }
+
+  if (isGeneralInquiry(submission)) {
+    return 'Message sent.';
+  }
+
+  return 'Application sent.';
 }
 
 function buildApplicantConfirmationText(submission) {
@@ -233,6 +318,22 @@ Project details: ${submission['Project details']}
 JJ Entertainment Solutions
 Nashville creative studio
 contact@jjentertainmentsolutions.com`;
+  }
+
+  if (isPhotographyInquiry(submission)) {
+    return `Hi ${submission['First name'] || 'there'},
+
+Thanks for reaching out to Jami Ferguson Photography.
+
+Jami received your message and will review the details soon.
+
+Quick summary:
+Subject: ${submission.Subject}
+Message: ${submission.Message}
+
+Jami Ferguson Photography
+Nashville, TN
+jamicarswell@gmail.com`;
   }
 
   return `Hi ${getFirstName(submission['Full name'])},

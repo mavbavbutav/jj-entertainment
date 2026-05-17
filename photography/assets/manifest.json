@@ -1,0 +1,486 @@
+{
+  "love": [
+    {
+      "src": "/photography/assets/love/01-brittanyandmarkkissedit.webp",
+      "alt": "Love and Weddings portfolio image 01 by Jami Ferguson Photography",
+      "title": "Brittanyandmarkkissedit",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/02-image.webp",
+      "alt": "Love and Weddings portfolio image 02 by Jami Ferguson Photography",
+      "title": "Image",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/03-brittandmarkbandwedit.webp",
+      "alt": "Love and Weddings portfolio image 03 by Jami Ferguson Photography",
+      "title": "Brittandmarkbandwedit",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/04-weddings-2.webp",
+      "alt": "Love and Weddings portfolio image 04 by Jami Ferguson Photography",
+      "title": "Weddings 2",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/05-img-2308.webp",
+      "alt": "Love and Weddings portfolio image 05 by Jami Ferguson Photography",
+      "title": "IMG 2308",
+      "dimensions": "4400x2798"
+    },
+    {
+      "src": "/photography/assets/love/06-kayleeandprestoninsta.webp",
+      "alt": "Love and Weddings portfolio image 06 by Jami Ferguson Photography",
+      "title": "Kayleeandprestoninsta",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/07-brittanybouquet.webp",
+      "alt": "Love and Weddings portfolio image 07 by Jami Ferguson Photography",
+      "title": "Brittanybouquet",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/08-img-8348.webp",
+      "alt": "Love and Weddings portfolio image 08 by Jami Ferguson Photography",
+      "title": "IMG 8348",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/09-suzybandwweb.webp",
+      "alt": "Love and Weddings portfolio image 09 by Jami Ferguson Photography",
+      "title": "Suzybandwweb",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/10-brayweddingfinals-5.webp",
+      "alt": "Love and Weddings portfolio image 10 by Jami Ferguson Photography",
+      "title": "Brayweddingfinals 5",
+      "dimensions": "2500x1660"
+    },
+    {
+      "src": "/photography/assets/love/11-weddingweb14.webp",
+      "alt": "Love and Weddings portfolio image 11 by Jami Ferguson Photography",
+      "title": "Weddingweb14",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/12-weddings.webp",
+      "alt": "Love and Weddings portfolio image 12 by Jami Ferguson Photography",
+      "title": "Weddings",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/13-rootsedits7.webp",
+      "alt": "Love and Weddings portfolio image 13 by Jami Ferguson Photography",
+      "title": "ROOTSedits7",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/14-camilleweddingweb19.webp",
+      "alt": "Love and Weddings portfolio image 14 by Jami Ferguson Photography",
+      "title": "CAMILLEweddingweb19",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/15-weddings1.webp",
+      "alt": "Love and Weddings portfolio image 15 by Jami Ferguson Photography",
+      "title": "Weddings1",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/16-snyderfinalpicks-7.webp",
+      "alt": "Love and Weddings portfolio image 16 by Jami Ferguson Photography",
+      "title": "SNYDERFINALPICKS 7",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/17-averydavidfinal6.webp",
+      "alt": "Love and Weddings portfolio image 17 by Jami Ferguson Photography",
+      "title": "Averydavidfinal6",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/18-weddinginsta.webp",
+      "alt": "Love and Weddings portfolio image 18 by Jami Ferguson Photography",
+      "title": "Weddinginsta",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/love/19-camilleweddingweb8.webp",
+      "alt": "Love and Weddings portfolio image 19 by Jami Ferguson Photography",
+      "title": "CAMILLEweddingweb8",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/20-photographyinsta1.webp",
+      "alt": "Love and Weddings portfolio image 20 by Jami Ferguson Photography",
+      "title": "Photographyinsta1",
+      "dimensions": "4058x2760"
+    },
+    {
+      "src": "/photography/assets/love/21-j-26jsession-29.webp",
+      "alt": "Love and Weddings portfolio image 21 by Jami Ferguson Photography",
+      "title": "J%26Jsession 29",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/22-kcute.webp",
+      "alt": "Love and Weddings portfolio image 22 by Jami Ferguson Photography",
+      "title": "Kcute",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/23-suzywedding1.webp",
+      "alt": "Love and Weddings portfolio image 23 by Jami Ferguson Photography",
+      "title": "Suzywedding1",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/24-img-8345.webp",
+      "alt": "Love and Weddings portfolio image 24 by Jami Ferguson Photography",
+      "title": "IMG 8345",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/love/25-averydavidcolorpop-3.webp",
+      "alt": "Love and Weddings portfolio image 25 by Jami Ferguson Photography",
+      "title": "Averydavidcolorpop 3",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/26-weddings1-2.webp",
+      "alt": "Love and Weddings portfolio image 26 by Jami Ferguson Photography",
+      "title": "Weddings1 2",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/27-suzywedding-5.webp",
+      "alt": "Love and Weddings portfolio image 27 by Jami Ferguson Photography",
+      "title": "Suzywedding 5",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/28-kayleeandprestoninsta1-2.webp",
+      "alt": "Love and Weddings portfolio image 28 by Jami Ferguson Photography",
+      "title": "Kayleeandprestoninsta1 2",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/love/29-rootsedits1-3.webp",
+      "alt": "Love and Weddings portfolio image 29 by Jami Ferguson Photography",
+      "title": "ROOTSedits1 3",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/love/30-afterceremonyedits-18.webp",
+      "alt": "Love and Weddings portfolio image 30 by Jami Ferguson Photography",
+      "title": "Afterceremonyedits 18",
+      "dimensions": "5472x3648"
+    }
+  ],
+  "people": [
+    {
+      "src": "/photography/assets/people/01-angelalake.webp",
+      "alt": "Portraits and People portfolio image 01 by Jami Ferguson Photography",
+      "title": "ANGELALAKE",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/02-jordananimaleditfinals1-2.webp",
+      "alt": "Portraits and People portfolio image 02 by Jami Ferguson Photography",
+      "title": "Jordananimaleditfinals1 2",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/03-andreacliff.webp",
+      "alt": "Portraits and People portfolio image 03 by Jami Ferguson Photography",
+      "title": "Andreacliff",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/04-ambraedits-37.webp",
+      "alt": "Portraits and People portfolio image 04 by Jami Ferguson Photography",
+      "title": "Ambraedits 37",
+      "dimensions": "5342x3648"
+    },
+    {
+      "src": "/photography/assets/people/05-c37d8a86efdf931da4d213c44de36063-xxlarge.webp",
+      "alt": "Portraits and People portfolio image 05 by Jami Ferguson Photography",
+      "title": "C37d8a86efdf931da4d213c44de36063 Xxlarge",
+      "dimensions": "1600x2536"
+    },
+    {
+      "src": "/photography/assets/people/06-philbatch5edits-7.webp",
+      "alt": "Portraits and People portfolio image 06 by Jami Ferguson Photography",
+      "title": "Philbatch5edits 7",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/07-angelabeauty.webp",
+      "alt": "Portraits and People portfolio image 07 by Jami Ferguson Photography",
+      "title": "Angelabeauty",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/people/08-aceportraitnew.webp",
+      "alt": "Portraits and People portfolio image 08 by Jami Ferguson Photography",
+      "title": "Aceportraitnew",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/people/09-taylorcommercial.webp",
+      "alt": "Portraits and People portfolio image 09 by Jami Ferguson Photography",
+      "title": "Taylorcommercial",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/10-erinheadshots-5.webp",
+      "alt": "Portraits and People portfolio image 10 by Jami Ferguson Photography",
+      "title": "Erinheadshots 5",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/people/11-jillinstaphotosfinal.webp",
+      "alt": "Portraits and People portfolio image 11 by Jami Ferguson Photography",
+      "title": "Jillinstaphotosfinal",
+      "dimensions": "1500x1000"
+    },
+    {
+      "src": "/photography/assets/people/12-loreliportrait.webp",
+      "alt": "Portraits and People portfolio image 12 by Jami Ferguson Photography",
+      "title": "Loreliportrait",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/13-5e8a0438.webp",
+      "alt": "Portraits and People portfolio image 13 by Jami Ferguson Photography",
+      "title": "5E8A0438",
+      "dimensions": "3788x5720"
+    },
+    {
+      "src": "/photography/assets/people/14-jaime-moore.webp",
+      "alt": "Portraits and People portfolio image 14 by Jami Ferguson Photography",
+      "title": "Jaime Moore",
+      "dimensions": "2048x1360"
+    },
+    {
+      "src": "/photography/assets/people/15-aceandjettflashy.webp",
+      "alt": "Portraits and People portfolio image 15 by Jami Ferguson Photography",
+      "title": "Aceandjettflashy",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/16-angelasilloedit.webp",
+      "alt": "Portraits and People portfolio image 16 by Jami Ferguson Photography",
+      "title": "Angelasilloedit",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/17-jannaneutral.webp",
+      "alt": "Portraits and People portfolio image 17 by Jami Ferguson Photography",
+      "title": "Jannaneutral",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/18-jaimemooreleaves.webp",
+      "alt": "Portraits and People portfolio image 18 by Jami Ferguson Photography",
+      "title": "Jaimemooreleaves",
+      "dimensions": "2048x1360"
+    },
+    {
+      "src": "/photography/assets/people/19-portrait5.webp",
+      "alt": "Portraits and People portfolio image 19 by Jami Ferguson Photography",
+      "title": "Portrait5",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/20-auntlofinal.webp",
+      "alt": "Portraits and People portfolio image 20 by Jami Ferguson Photography",
+      "title": "Auntlofinal",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/21-andrealake.webp",
+      "alt": "Portraits and People portfolio image 21 by Jami Ferguson Photography",
+      "title": "Andrealake",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/22-angelaovershoulder-copy.webp",
+      "alt": "Portraits and People portfolio image 22 by Jami Ferguson Photography",
+      "title": "Angelaovershoulder Copy",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/23-portrait1.webp",
+      "alt": "Portraits and People portfolio image 23 by Jami Ferguson Photography",
+      "title": "Portrait1",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/24-rootsedits10-5.webp",
+      "alt": "Portraits and People portfolio image 24 by Jami Ferguson Photography",
+      "title": "ROOTSedits10 5",
+      "dimensions": "2500x3750"
+    },
+    {
+      "src": "/photography/assets/people/25-eleanore.webp",
+      "alt": "Portraits and People portfolio image 25 by Jami Ferguson Photography",
+      "title": "Eleanore",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/people/26-ambrafavorites-2.webp",
+      "alt": "Portraits and People portfolio image 26 by Jami Ferguson Photography",
+      "title": "Ambrafavorites 2",
+      "dimensions": "5472x3648"
+    }
+  ],
+  "families": [
+    {
+      "src": "/photography/assets/families/01-tawlksalledits-14.webp",
+      "alt": "Family portfolio image 01 by Jami Ferguson Photography",
+      "title": "Tawlksalledits 14",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/02-img-1913.webp",
+      "alt": "Family portfolio image 02 by Jami Ferguson Photography",
+      "title": "IMG 1913",
+      "dimensions": "5027x3201"
+    },
+    {
+      "src": "/photography/assets/families/03-greensstreet.webp",
+      "alt": "Family portfolio image 03 by Jami Ferguson Photography",
+      "title": "Greensstreet",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/04-hitsonfamilyallfinals-3.webp",
+      "alt": "Family portfolio image 04 by Jami Ferguson Photography",
+      "title": "HitsonfamilyALLfinals 3",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/05-family-photos-39.webp",
+      "alt": "Family portfolio image 05 by Jami Ferguson Photography",
+      "title": "Family Photos 39",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/families/06-hopperfamfinals-48.webp",
+      "alt": "Family portfolio image 06 by Jami Ferguson Photography",
+      "title": "HopperFamFinals 48",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/families/07-tawlksalledits-21.webp",
+      "alt": "Family portfolio image 07 by Jami Ferguson Photography",
+      "title": "Tawlksalledits 21",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/08-jayfallfaminsta.webp",
+      "alt": "Family portfolio image 08 by Jami Ferguson Photography",
+      "title": "Jayfallfaminsta",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/families/09-ambarianfaminsta.webp",
+      "alt": "Family portfolio image 09 by Jami Ferguson Photography",
+      "title": "Ambarianfaminsta",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/families/10-northupsbatchedit5.webp",
+      "alt": "Family portfolio image 10 by Jami Ferguson Photography",
+      "title": "Northupsbatchedit5",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/11-halledit.webp",
+      "alt": "Family portfolio image 11 by Jami Ferguson Photography",
+      "title": "Halledit",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/12-davisfamneutral.webp",
+      "alt": "Family portfolio image 12 by Jami Ferguson Photography",
+      "title": "Davisfamneutral",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/13-poppyfinals-8.webp",
+      "alt": "Family portfolio image 13 by Jami Ferguson Photography",
+      "title": "PoppyFinals 8",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/14-img-1984.webp",
+      "alt": "Family portfolio image 14 by Jami Ferguson Photography",
+      "title": "IMG 1984",
+      "dimensions": "5081x3387"
+    },
+    {
+      "src": "/photography/assets/families/15-bohannonfinals5warmer-4.webp",
+      "alt": "Family portfolio image 15 by Jami Ferguson Photography",
+      "title": "Bohannonfinals5warmer 4",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/16-northupsbatchedit2-5.webp",
+      "alt": "Family portfolio image 16 by Jami Ferguson Photography",
+      "title": "Northupsbatchedit2 5",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/17-snyderedit.webp",
+      "alt": "Family portfolio image 17 by Jami Ferguson Photography",
+      "title": "Snyderedit",
+      "dimensions": "2500x1667"
+    },
+    {
+      "src": "/photography/assets/families/18-bohannonfinals3-19.webp",
+      "alt": "Family portfolio image 18 by Jami Ferguson Photography",
+      "title": "Bohannonfinals3 19",
+      "dimensions": "5472x3648"
+    },
+    {
+      "src": "/photography/assets/families/19-tawlksalledits-23.webp",
+      "alt": "Family portfolio image 19 by Jami Ferguson Photography",
+      "title": "Tawlksalledits 23",
+      "dimensions": "5472x3648"
+    }
+  ],
+  "pricing": [
+    {
+      "src": "/photography/assets/pricing/01-portraitweb.webp",
+      "alt": "Pricing category portfolio image 01 by Jami Ferguson Photography",
+      "title": "Portraitweb",
+      "dimensions": "1500x1000"
+    },
+    {
+      "src": "/photography/assets/pricing/02-familybandw.webp",
+      "alt": "Pricing category portfolio image 02 by Jami Ferguson Photography",
+      "title": "Familybandw",
+      "dimensions": "1500x1000"
+    },
+    {
+      "src": "/photography/assets/pricing/03-weddingbandwweb.webp",
+      "alt": "Pricing category portfolio image 03 by Jami Ferguson Photography",
+      "title": "WeddingbandwWEB",
+      "dimensions": "2500x1667"
+    }
+  ],
+  "about": [
+    {
+      "src": "/photography/assets/about/01-image-asset.webp",
+      "alt": "Jami Ferguson smiling for her photography studio portrait",
+      "title": "Image Asset",
+      "dimensions": "1053x604"
+    }
+  ]
+}

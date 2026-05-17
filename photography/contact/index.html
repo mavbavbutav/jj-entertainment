@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Jami Ferguson Photography</title>
+  <meta name="description" content="Contact Jami Ferguson Photography to book wedding, portrait, or family photography in Nashville and Middle Tennessee." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#f4f1ec" />
+  <link rel="canonical" href="https://jjentertainmentsolutions.com/photography/contact/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Contact | Jami Ferguson Photography" />
+  <meta property="og:description" content="Send Jami a note, call, text, or email about booking a photography session." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://jjentertainmentsolutions.com/photography/assets/love/02-image.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/photography/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/photography/" class="brand"><span>Jami Ferguson Photography</span><span>A JJ Entertainment studio</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation"><span></span></button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Primary">
+        <a href="/photography/">Home</a>
+        <a href="/photography/love/">Love</a>
+        <a href="/photography/people/">People</a>
+        <a href="/photography/families/">Families</a>
+        <a href="/photography/pricing/">Pricing</a>
+        <a href="/photography/about/">About</a>
+        <a class="nav-cta" href="/photography/contact/" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container narrow">
+        <p class="eyebrow">Contact</p>
+        <h1>Want to get something on the books?</h1>
+        <p class="lead">Feel free to call or text Jami directly at <a class="inline-link" href="tel:+16155164341">615-516-4341</a>, email <a class="inline-link" href="mailto:jamicarswell@gmail.com">jamicarswell@gmail.com</a>, or fill out the form below.</p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <p class="eyebrow">Direct</p>
+          <p class="name">Jami Ferguson</p>
+          <p class="role">Nashville, TN &middot; Middle Tennessee</p>
+          <p><a href="tel:+16155164341">615-516-4341</a></p>
+          <p><a href="mailto:jamicarswell@gmail.com">jamicarswell@gmail.com</a></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="sms:+16155164341?&body=Hi%20Jami%2C%20I%27d%20love%20to%20talk%20about%20a%20photography%20session.">Text Jami</a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/jamifergusonphotography" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="form-head">
+            <p class="eyebrow">Inquiry Form</p>
+            <h2>Send a message.</h2>
+          </div>
+          <form class="contact-form" id="photography-inquiry-form" action="https://jje-founding-five-form.johnmartinferguson.workers.dev" method="POST" data-email-fallback="jamicarswell@gmail.com">
+            <input type="hidden" name="Form type" value="Photography inquiry" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
+            <div class="form-grid">
+              <label>
+                First Name
+                <input name="First name" autocomplete="given-name" required />
+              </label>
+              <label>
+                Last Name
+                <input name="Last name" autocomplete="family-name" required />
+              </label>
+            </div>
+            <label>
+              Email Address
+              <input type="email" name="Email" autocomplete="email" required />
+            </label>
+            <label>
+              Subject
+              <input name="Subject" required />
+            </label>
+            <label>
+              Message
+              <textarea name="Message" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <p class="form-status" id="photography-inquiry-status" role="status" aria-live="polite"></p>
+            <p class="form-note">If the form service is unavailable, an email draft will open so your message still reaches Jami.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="confirmation-modal" id="photography-confirmation" role="dialog" aria-modal="true" aria-labelledby="photography-confirmation-title" aria-describedby="photography-confirmation-message" hidden>
+      <div class="confirmation-backdrop" data-confirmation-close></div>
+      <div class="confirmation-dialog">
+        <button class="confirmation-close" type="button" aria-label="Close confirmation" data-confirmation-close>&times;</button>
+        <p class="eyebrow">Message Sent</p>
+        <h2 id="photography-confirmation-title">Your inquiry is on its way.</h2>
+        <p id="photography-confirmation-message">Thanks for reaching out. Your message was sent to Jami Ferguson Photography, and a confirmation email is on its way to the address you provided.</p>
+        <div class="confirmation-actions">
+          <a class="btn btn-primary" href="/photography/love/" data-confirmation-close>View Portfolio</a>
+          <button class="btn btn-ghost" type="button" data-confirmation-close>Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>&copy; <span data-year></span> Jami Ferguson Photography &middot; A studio of JJ Entertainment Solutions</p>
+      <nav aria-label="Footer">
+        <a href="/photography/">Photography Home</a>
+        <a href="/photography/pricing/">Pricing</a>
+        <a href="/photography/about/">About</a>
+        <a href="https://www.instagram.com/jamifergusonphotography" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/photography/site.js" defer></script>
+</body>
+</html>
