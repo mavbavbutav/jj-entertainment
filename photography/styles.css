@@ -286,6 +286,17 @@ h3 { font-size: 1.35rem; }
 .hero-copy { max-width: 720px; }
 .hero h1 { max-width: 13ch; }
 
+.hero .hero-logo-title {
+  max-width: min(100%, 34rem);
+  margin-bottom: 1.35rem;
+  line-height: 0;
+}
+
+.hero-logo {
+  width: min(100%, 34rem);
+  height: auto;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
