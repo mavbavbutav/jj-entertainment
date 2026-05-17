@@ -127,6 +127,11 @@ button:focus-visible {
   padding-bottom: 0.15rem;
 }
 
+.nav-links .nav-home {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 .nav-links button {
   font: inherit;
 }
@@ -1297,7 +1302,30 @@ body.modal-open {
     font-size: 1.05rem;
   }
 
-  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-with-home {
+    gap: 0.55rem;
+  }
+
+  .nav-with-home .brand {
+    font-size: clamp(0.82rem, 3.6vw, 0.98rem);
+    letter-spacing: 0.11em;
+  }
+
+  .nav-with-home .nav-links {
+    gap: 0.55rem;
+  }
+
+  .nav-with-home .nav-home {
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-with-home .nav-cta {
+    padding: 0.42rem 0.68rem;
+    font-size: 0.78rem;
+  }
+
+  .nav-links a:not(.nav-cta):not(.nav-home) { display: none; }
 
   .nav-links .chat-options a {
     display: block;
