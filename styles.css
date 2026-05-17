@@ -113,6 +113,29 @@ button:focus-visible {
   font-weight: 600;
 }
 
+.brand-subsidiary {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  line-height: 1.05;
+  font-family: "Manrope", system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+.brand-affiliation {
+  color: var(--text);
+  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.brand-affiliation-sub {
+  color: var(--muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -284,6 +307,27 @@ h3 {
 }
 
 .hero h1 { max-width: 18ch; }
+
+.hero h1.hero-logo-heading {
+  max-width: min(100%, 28rem);
+  margin-bottom: 1.5rem;
+  line-height: 0;
+}
+
+.hero-logo-heading img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.hero h1.digital-logo-heading {
+  max-width: min(100%, 31rem);
+}
+
+.hero h1.aerial-logo-heading {
+  max-width: min(100%, 27rem);
+}
 
 .hero-actions {
   display: flex;
@@ -1311,6 +1355,22 @@ body.modal-open {
     letter-spacing: 0.11em;
   }
 
+  .nav-with-home .brand-subsidiary {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .brand-affiliation {
+    max-width: 220px;
+    font-size: 0.64rem;
+    letter-spacing: 0.11em;
+  }
+
+  .brand-affiliation-sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.24em;
+  }
+
   .nav-with-home .nav-links {
     gap: 0.55rem;
   }
@@ -1346,6 +1406,10 @@ body.modal-open {
   .form-grid,
   .contact-actions .btn {
     width: 100%;
+  }
+
+  .hero h1.hero-logo-heading {
+    max-width: min(100%, 22rem);
   }
 
   .form-grid {

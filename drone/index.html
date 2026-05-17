@@ -46,14 +46,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=main-home-link" />
+  <link rel="stylesheet" href="/styles.css?v=brand-subsidiary" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container nav nav-with-home">
-      <a href="/" class="brand">JJ Entertainment</a>
+      <a href="/" class="brand brand-subsidiary" aria-label="JJ Entertainment Solutions Subsidiary home">
+        <span class="brand-affiliation">JJ Entertainment Solutions</span>
+        <span class="brand-affiliation-sub">Subsidiary</span>
+      </a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-home" href="/">JJ Home</a>
         <a href="/#services">Services</a>
@@ -67,7 +70,9 @@
     <section class="hero hero-bg" style="--hero-image: url('/drone/469518686_122134821566393589_3481226767245238969_n.jpg');">
       <div class="container">
         <p class="eyebrow">Aerial Cinematography Studio &middot; JJ Entertainment Solutions</p>
-        <h1>Cinematic aerial footage above Middle Tennessee.</h1>
+        <h1 class="hero-logo-heading aerial-logo-heading">
+          <img src="/drone/ferguson-aerial-visions-logo.png?v=transparent" alt="Ferguson Aerial Visions" width="1608" height="1377" fetchpriority="high" />
+        </h1>
         <p class="lead">Ferguson Aerial Visions is the aerial cinematography studio of JJ Entertainment Solutions &mdash; FAA Part 107 licensed drone video and photography for weddings, real estate, and commercial production across the Nashville region.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:contact@jjentertainmentsolutions.com?subject=Aerial%20Cinematography%20Inquiry">Request a Quote</a>
