@@ -68,14 +68,15 @@ button:focus-visible {
 .container.narrow { max-width: 820px; }
 
 .logo-banner {
-  padding: clamp(1.4rem, 3vw, 2.4rem) 1rem clamp(0.9rem, 2.2vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.25rem) 1rem clamp(0.6rem, 1.4vw, 0.95rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(248, 245, 240, 0.26));
 }
 
 .logo-banner a {
   display: block;
   line-height: 0;
   width: 100%;
-  max-width: 660px;
+  max-width: min(420px, 72vw);
   margin: 0 auto;
 }
 
@@ -102,6 +103,15 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.logo-banner + .site-header .nav {
+  justify-content: center;
+  min-height: 72px;
+}
+
+.logo-banner + .site-header .nav-links {
+  justify-content: center;
 }
 
 .brand {
@@ -340,11 +350,12 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/logo-jj-mark.png");
+  background-image: url("/assets/brand/jj-entertainment-site-header-transparent.png");
   background-repeat: no-repeat;
-  background-position: 65% 100%;
-  background-size: clamp(340px, 56vw, 720px);
-  opacity: 0.12;
+  background-position: 88% 76%;
+  background-size: clamp(220px, 30vw, 420px);
+  mix-blend-mode: multiply;
+  opacity: 0.045;
   pointer-events: none;
   z-index: 0;
 }
