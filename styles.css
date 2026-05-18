@@ -76,7 +76,7 @@ button:focus-visible {
   display: block;
   line-height: 0;
   width: 100%;
-  max-width: min(560px, 84vw);
+  max-width: min(620px, 88vw);
   margin: 0 auto;
 }
 
