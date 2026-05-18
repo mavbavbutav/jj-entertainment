@@ -1471,3 +1471,251 @@
     margin-top: 0;
   }
 }
+
+/* Client cleanup: simpler hero, larger nav mark, and click-open specials */
+.oak-theme .showcase-nav {
+  min-height: 96px;
+}
+
+.oak-theme .showcase-brand {
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.oak-theme .oak-nav-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+}
+
+.oak-nav-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.18);
+  transform-origin: 50% 48%;
+}
+
+.oak-hero-reimagined {
+  padding-top: 4.2rem;
+  padding-bottom: 3.4rem;
+}
+
+.oak-hero-reimagined .oak-hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.oak-hero-copy {
+  display: block;
+  max-width: 1120px;
+  order: initial;
+}
+
+.oak-copy-text {
+  max-width: 1120px;
+}
+
+.oak-sign-wrap,
+.oak-hero-board,
+.oak-hero-photo {
+  display: none;
+}
+
+.oak-hero-reimagined h1 {
+  max-width: 100%;
+  font-size: 6.35rem;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.oak-hero-reimagined .showcase-lead {
+  max-width: 72ch;
+  font-size: 1.18rem;
+  line-height: 1.55;
+}
+
+.oak-hero-actions {
+  align-items: center;
+  position: relative;
+}
+
+.oak-specials {
+  position: relative;
+  display: inline-flex;
+}
+
+.oak-specials-toggle {
+  white-space: nowrap;
+}
+
+.oak-specials.is-open .oak-specials-toggle,
+.oak-specials-toggle[aria-expanded="true"] {
+  background: #f0c88b;
+  border-color: #f0c88b;
+  color: #2b221d;
+}
+
+.oak-specials-panel {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 8;
+  width: min(340px, calc(100vw - 2rem));
+  border: 1px solid rgba(240, 200, 139, 0.36);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(28, 20, 16, 0.96);
+  color: #fffaf4;
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.oak-specials-panel::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: 1.35rem;
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid rgba(240, 200, 139, 0.36);
+  border-top: 1px solid rgba(240, 200, 139, 0.36);
+  background: rgba(28, 20, 16, 0.96);
+  transform: rotate(45deg);
+}
+
+.oak-specials.is-open .oak-specials-panel,
+.oak-specials:hover .oak-specials-panel,
+.oak-specials:focus-within .oak-specials-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.oak-specials-panel span,
+.oak-specials-panel strong,
+.oak-specials-panel small {
+  display: block;
+}
+
+.oak-specials-panel span {
+  color: #f0c88b;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.oak-specials-panel strong {
+  margin-top: 0.34rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.24rem;
+  line-height: 1.05;
+}
+
+.oak-specials-panel p {
+  margin: 0.6rem 0 0;
+  color: rgba(255, 250, 244, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.oak-specials-meta {
+  display: grid;
+  gap: 0.32rem;
+  margin-top: 0.78rem;
+  padding-top: 0.72rem;
+  border-top: 1px solid rgba(255, 250, 244, 0.14);
+}
+
+.oak-specials-meta small {
+  color: rgba(255, 250, 244, 0.68);
+  font-size: 0.78rem;
+}
+
+.oak-photo-card:nth-child(1)::after {
+  content: "Cafe seating";
+}
+
+.oak-photo-card:nth-child(2)::after {
+  content: "Espresso counter";
+}
+
+.oak-photo-card:nth-child(3)::after {
+  content: "Coffee and bakery";
+}
+
+@media (max-width: 860px) {
+  .oak-theme .showcase-nav {
+    min-height: 84px;
+  }
+
+  .oak-theme .oak-nav-mark {
+    width: 56px;
+    height: 56px;
+  }
+
+  .oak-hero-reimagined {
+    padding-top: 2.8rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .oak-hero-copy {
+    max-width: 100%;
+  }
+
+  .oak-hero-reimagined h1 {
+    max-width: 100%;
+    font-size: 4.2rem;
+    line-height: 0.92;
+  }
+
+  .oak-specials {
+    display: block;
+    width: 100%;
+  }
+
+  .oak-specials-toggle {
+    width: 100%;
+  }
+
+  .oak-specials-panel {
+    position: static;
+    width: 100%;
+    max-height: 0;
+    margin-top: 0;
+    border-width: 0;
+    padding: 0 1rem;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .oak-specials-panel::before {
+    display: none;
+  }
+
+  .oak-specials.is-open .oak-specials-panel,
+  .oak-specials:hover .oak-specials-panel,
+  .oak-specials:focus-within .oak-specials-panel {
+    max-height: 24rem;
+    margin-top: 0.75rem;
+    border-width: 1px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .oak-hero-reimagined h1 {
+    font-size: 3.15rem;
+  }
+
+  .oak-hero-reimagined .showcase-lead {
+    font-size: 1rem;
+  }
+}

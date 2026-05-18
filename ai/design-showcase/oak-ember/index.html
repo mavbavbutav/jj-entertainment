@@ -58,7 +58,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Manrope:wght@400;600;700;800;900&family=Rubik+Dirt&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/ai/design-showcase/showcase.css" />
-  <link rel="stylesheet" href="/ai/design-showcase/oak-ember/oak-ember.css" />
+  <link rel="stylesheet" href="/ai/design-showcase/oak-ember/oak-ember.css?v=hero-clean-2" />
 </head>
 <body class="showcase-page oak-theme">
 
@@ -101,43 +101,37 @@
             <p class="showcase-kicker">Roasted Thursdays &middot; Baked daily</p>
             <h1>Coffee with fire and soul.</h1>
             <p class="showcase-lead">Small-batch coffee, daily bakes, and a front room made for morning rush, regulars, and Saturday music.</p>
-            <div class="showcase-actions">
+            <div class="showcase-actions oak-hero-actions">
               <a class="showcase-cta" href="#menu">View Menu</a>
               <a class="showcase-cta showcase-ghost" href="#order">Order Ahead</a>
+              <div class="oak-specials" data-specials>
+                <button
+                  class="showcase-cta showcase-ghost oak-specials-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="oak-specials-panel"
+                >
+                  Today&rsquo;s Specials
+                </button>
+                <div
+                  class="oak-specials-panel"
+                  id="oak-specials-panel"
+                  role="region"
+                  aria-label="Today's specials"
+                  aria-hidden="true"
+                >
+                  <span>Today&rsquo;s Board</span>
+                  <strong>Brown Sugar Oat Latte</strong>
+                  <p>Colombia Huila drip, cheddar biscuits, and blueberry scones while they last.</p>
+                  <div class="oak-specials-meta">
+                    <small>Pickup wait: 8-12 min</small>
+                    <small>Open 6:30 am - 5 pm</small>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="oak-sign-wrap">
-            <img
-              class="showcase-brand-art oak-brand-art"
-              src="/ai/design-showcase/oak-ember/oak-ember-logo-cropped.png"
-              alt="Oak &amp; Ember Coffee Co. - Premium quality, made with love"
-            />
-            <span class="oak-sign-tag">East Nashville</span>
           </div>
         </div>
-
-        <div class="oak-hero-board" aria-label="Today's shop details">
-          <div class="oak-board-header">
-            <span>Today</span>
-            <strong>6:30 am - 5 pm</strong>
-          </div>
-          <div class="oak-board-menu">
-            <div>
-              <span>Roast</span>
-              <strong>Colombia Huila</strong>
-            </div>
-            <div>
-              <span>Bakery drop</span>
-              <strong>Cheddar biscuits</strong>
-            </div>
-            <div>
-              <span>Pickup wait</span>
-              <strong>8-12 min</strong>
-            </div>
-          </div>
-          <p>Ask for the brown sugar oat latte if you want the regulars' order.</p>
-        </div>
-        <div class="oak-hero-photo" aria-hidden="true"></div>
       </div>
 
       <div class="showcase-wrap oak-action-strip" aria-label="Popular Oak and Ember actions">
@@ -159,16 +153,16 @@
       </div>
     </section>
 
-    <section class="showcase-section oak-photo-band" aria-label="Cafe moments">
+    <section class="showcase-section oak-photo-band" aria-label="Inside Oak and Ember">
       <div class="showcase-wrap oak-photo-band-grid">
         <figure class="oak-photo-card oak-photo-tall">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=82" alt="Guests talking over coffee at Oak and Ember" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=82" alt="Guests seated inside the Oak and Ember cafe" loading="lazy" />
         </figure>
         <figure class="oak-photo-card">
-          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=82" alt="Pastry and espresso setup at the cafe counter" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=82" alt="Espresso and pastry setup at the Oak and Ember counter" loading="lazy" />
         </figure>
         <figure class="oak-photo-card">
-          <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1200&q=82" alt="Coffee beans and brewing tools at Oak and Ember" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1200&q=82" alt="Coffee beans and brewing tools used at Oak and Ember" loading="lazy" />
         </figure>
       </div>
     </section>
@@ -481,6 +475,38 @@
           success.hidden = false;
           success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 900);
+      });
+    }());
+
+    // Today's specials popover
+    (function () {
+      var wrap = document.querySelector('[data-specials]');
+      if (!wrap) return;
+
+      var btn = wrap.querySelector('.oak-specials-toggle');
+      var panel = document.getElementById('oak-specials-panel');
+      if (!btn || !panel) return;
+
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        panel.setAttribute('aria-hidden', String(!open));
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(btn.getAttribute('aria-expanded') !== 'true');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          btn.focus();
+        }
       });
     }());
   </script>
