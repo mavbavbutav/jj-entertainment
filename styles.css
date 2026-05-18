@@ -76,7 +76,7 @@ button:focus-visible {
   display: block;
   line-height: 0;
   width: 100%;
-  max-width: min(420px, 72vw);
+  max-width: min(560px, 84vw);
   margin: 0 auto;
 }
 
@@ -382,12 +382,11 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/brand/jj-entertainment-site-header-transparent.png");
+  background-image: url("/logo-jj-mark.png");
   background-repeat: no-repeat;
-  background-position: 88% 76%;
-  background-size: clamp(220px, 30vw, 420px);
-  mix-blend-mode: multiply;
-  opacity: 0.045;
+  background-position: 65% 100%;
+  background-size: clamp(340px, 56vw, 720px);
+  opacity: 0.12;
   pointer-events: none;
   z-index: 0;
 }
