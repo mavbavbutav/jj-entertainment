@@ -319,9 +319,16 @@
     if (chatMenu && chatTrigger) {
       const mobileSmsHref = 'sms:+16155164341?&body=Hi%20Jami%2C%20I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.';
       const isMobileChat = () => window.matchMedia('(max-width: 560px)').matches;
+      let chatOpenedByClick = false;
       const setChatOpen = (isOpen) => {
         chatMenu.classList.toggle('is-open', isOpen);
         chatTrigger.setAttribute('aria-expanded', String(isOpen));
+        if (!isOpen) {
+          chatOpenedByClick = false;
+        }
+      };
+      const shouldKeepChatOpen = () => {
+        return chatOpenedByClick || chatMenu.matches(':focus-within');
       };
 
       chatMenu.addEventListener('focusin', () => {
@@ -330,7 +337,7 @@
 
       chatMenu.addEventListener('focusout', () => {
         window.setTimeout(() => {
-          setChatOpen(chatMenu.matches(':focus-within'));
+          setChatOpen(shouldKeepChatOpen());
         }, 0);
       });
 
@@ -339,21 +346,25 @@
       });
 
       chatMenu.addEventListener('mouseleave', () => {
-        setChatOpen(chatMenu.matches(':focus-within'));
+        setChatOpen(shouldKeepChatOpen());
       });
 
-      chatTrigger.addEventListener('click', () => {
-        setChatOpen(!chatMenu.classList.contains('is-open'));
+      chatTrigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        chatOpenedByClick = !chatOpenedByClick;
+        setChatOpen(chatOpenedByClick);
       });
 
       document.addEventListener('click', (event) => {
         if (!chatMenu.contains(event.target)) {
+          chatOpenedByClick = false;
           setChatOpen(false);
         }
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
+          chatOpenedByClick = false;
           setChatOpen(false);
           chatTrigger.focus();
         }
@@ -361,6 +372,7 @@
 
       chatOptions?.addEventListener('click', (event) => {
         if (event.target.closest('a')) {
+          chatOpenedByClick = false;
           setChatOpen(false);
         }
       });
@@ -371,6 +383,7 @@
         }
 
         event.preventDefault();
+        chatOpenedByClick = false;
         setChatOpen(false);
         window.location.href = mobileSmsHref;
       });

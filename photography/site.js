@@ -98,6 +98,11 @@ const lightboxCaption = document.querySelector('.lightbox-caption');
 const lightboxCloseControls = document.querySelectorAll('[data-lightbox-close]');
 const lightboxPrev = document.querySelector('[data-lightbox-prev]');
 const lightboxNext = document.querySelector('[data-lightbox-next]');
+const lightboxPlaceholderSrc = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1" viewBox="0 0 1 1"%3E%3C/svg%3E';
+
+if (lightboxImage && !lightboxImage.getAttribute('src')) {
+  lightboxImage.src = lightboxPlaceholderSrc;
+}
 
 function updateLightbox() {
   if (!lightboxImage || !lightboxCaption || !activeGalleryImages.length) {
