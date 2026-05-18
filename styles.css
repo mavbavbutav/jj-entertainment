@@ -1560,7 +1560,7 @@ body.modal-open {
 
   .nav-links a:not(.nav-cta):not(.nav-home) { display: none; }
 
-  .nav-links .chat-options a {
+  .nav-links .chat-options a:not(.nav-cta):not(.nav-home) {
     display: block;
   }
 
