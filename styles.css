@@ -476,23 +476,14 @@ h3 {
 }
 
 .hero-mark-bg::after {
-  content: "JJE";
+  content: "";
   position: absolute;
-  top: 52%;
-  right: clamp(-10rem, 2vw, 7rem);
-  width: clamp(350px, 54vw, 690px);
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: clamp(7px, 1vw, 12px) solid rgba(143, 122, 102, 0.1);
-  border-radius: 50%;
-  color: rgba(143, 122, 102, 0.12);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(7rem, 15vw, 14rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  transform: translateY(-50%);
+  inset: 0;
+  background-image: url("/assets/brand/jj-entertainment-watermark-transparent.png?v=jami-watermark");
+  background-repeat: no-repeat;
+  background-position: 72% 56%;
+  background-size: clamp(350px, 54vw, 690px);
+  opacity: 0.105;
   pointer-events: none;
   z-index: 0;
 }
