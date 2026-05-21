@@ -64,6 +64,29 @@ const PHOTOGRAPHY_INQUIRY_REQUIRED_FIELDS = [
   'Message'
 ];
 
+const REAL_LIFE_COURT_FORM_TYPE = 'real life court case';
+
+const REAL_LIFE_COURT_FIELD_LABELS = [
+  'Form type',
+  'Your case idea',
+  'Case type',
+  'Side A',
+  'Side B',
+  'Why relatable',
+  'Suggested joke or burn line',
+  'Credit permission',
+  'TikTok handle',
+  'Email',
+  'Source',
+  'Submitted at'
+];
+
+const REAL_LIFE_COURT_REQUIRED_FIELDS = [
+  'Your case idea',
+  'Case type',
+  'Why relatable'
+];
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -127,6 +150,10 @@ function isAllowedOrigin(origin, env) {
     return true;
   }
 
+  if (/^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)) {
+    return true;
+  }
+
   return getAllowedOrigins(env).includes(origin);
 }
 
@@ -145,17 +172,39 @@ async function readSubmission(request) {
   const contentType = request.headers.get('Content-Type') || '';
 
   if (contentType.includes('application/json')) {
-    return request.json();
+    return normalizeSubmission(await request.json());
   }
 
   const formData = await request.formData();
   const submission = {};
 
   formData.forEach((value, key) => {
-    submission[key] = String(value).trim();
+    submission[key] = normalizeValue(value);
   });
 
   return submission;
+}
+
+function normalizeSubmission(payload) {
+  const submission = {};
+
+  Object.entries(payload || {}).forEach(([key, value]) => {
+    submission[key] = normalizeValue(value);
+  });
+
+  return submission;
+}
+
+function normalizeValue(value) {
+  if (value === null || value === undefined) {
+    return '';
+  }
+
+  if (typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+
+  return String(value).trim();
 }
 
 function validateSubmission(submission) {
@@ -167,22 +216,34 @@ function validateSubmission(submission) {
     }
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.Email)) {
+  if (submission.Email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.Email)) {
     return 'Please enter a valid email address.';
   }
 
   return '';
 }
 
+function getFormType(submission) {
+  return String(submission['Form type'] || '').toLowerCase();
+}
+
 function isGeneralInquiry(submission) {
-  return String(submission['Form type'] || '').toLowerCase() === 'general inquiry';
+  return getFormType(submission) === 'general inquiry';
 }
 
 function isPhotographyInquiry(submission) {
-  return String(submission['Form type'] || '').toLowerCase() === 'photography inquiry';
+  return getFormType(submission) === 'photography inquiry';
+}
+
+function isRealLifeCourtSubmission(submission) {
+  return getFormType(submission) === REAL_LIFE_COURT_FORM_TYPE;
 }
 
 function getRequiredFields(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return REAL_LIFE_COURT_REQUIRED_FIELDS;
+  }
+
   if (isGeneralInquiry(submission)) {
     return GENERAL_INQUIRY_REQUIRED_FIELDS;
   }
@@ -218,6 +279,10 @@ async function sendInternalNotification(submission, env) {
 }
 
 async function sendApplicantConfirmation(submission, env) {
+  if (isRealLifeCourtSubmission(submission) && !submission.Email) {
+    return { skipped: true };
+  }
+
   if (!env.FROM_EMAIL) {
     throw new Error('Missing FROM_EMAIL.');
   }
@@ -248,6 +313,10 @@ function getPhotographyFullName(submission) {
 }
 
 function getFieldLabels(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return REAL_LIFE_COURT_FIELD_LABELS;
+  }
+
   if (isGeneralInquiry(submission)) {
     return GENERAL_INQUIRY_FIELD_LABELS;
   }
@@ -260,6 +329,10 @@ function getFieldLabels(submission) {
 }
 
 function getInternalRecipients(submission, env) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return [env.REAL_LIFE_COURT_TO_EMAIL || env.TO_EMAIL];
+  }
+
   if (isPhotographyInquiry(submission)) {
     return [env.PHOTOGRAPHY_TO_EMAIL || 'jamicarswell@gmail.com'];
   }
@@ -268,6 +341,10 @@ function getInternalRecipients(submission, env) {
 }
 
 function getInternalSubject(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return `Real Life Court Case - ${shorten(submission['Your case idea'] || 'New submission')}`;
+  }
+
   if (isGeneralInquiry(submission)) {
     return `JJ Entertainment Inquiry - ${submission['Full name']}`;
   }
@@ -280,6 +357,10 @@ function getInternalSubject(submission) {
 }
 
 function getApplicantSubject(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return 'Your Real Life Court case was entered into evidence';
+  }
+
   if (isGeneralInquiry(submission)) {
     return 'JJ Entertainment received your message';
   }
@@ -292,6 +373,10 @@ function getApplicantSubject(submission) {
 }
 
 function getSuccessMessage(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return 'Your case has been entered into evidence. Court is now emotionally reviewing it. ⚖️';
+  }
+
   if (isPhotographyInquiry(submission)) {
     return 'Message sent.';
   }
@@ -304,6 +389,20 @@ function getSuccessMessage(submission) {
 }
 
 function buildApplicantConfirmationText(submission) {
+  if (isRealLifeCourtSubmission(submission)) {
+    return `Your case has been entered into evidence.
+
+The Real Life Court writing room received:
+Case idea: ${submission['Your case idea']}
+Case type: ${submission['Case type']}
+Why it is painfully relatable: ${submission['Why relatable']}
+
+If this makes it to court, the comments will deliberate.
+
+Real Life Court
+Nostalgia, wellness, and bad ideas on trial.`;
+  }
+
   if (isGeneralInquiry(submission)) {
     return `Hi ${getFirstName(submission['Full name'])},
 
@@ -350,6 +449,16 @@ Primary automation opportunity: ${submission['Automation opportunity']}
 JJE Digital
 Web, AI, and Automation
 contact@jjentertainmentsolutions.com`;
+}
+
+function shorten(value, maxLength = 72) {
+  const text = String(value || '').trim();
+
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return `${text.slice(0, maxLength - 1)}...`;
 }
 
 function buildHtmlEmail(submission) {

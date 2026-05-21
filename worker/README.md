@@ -1,12 +1,12 @@
 # JJ Entertainment Form Worker
 
-This Cloudflare Worker receives JJ Entertainment static-site forms and sends them through Resend. It currently supports the JJE Digital Founding Five form, the general JJ Entertainment inquiry form, and the Jami Ferguson Photography inquiry form.
+This Cloudflare Worker receives JJ Entertainment static-site forms and sends them through Resend. It currently supports the JJE Digital Founding Five form, the general JJ Entertainment inquiry form, the Jami Ferguson Photography inquiry form, and Real Life Court case submissions.
 
 ## Setup
 
 1. Create or log in to a Cloudflare account for `jjecreative.com`.
 2. Create a Resend account and verify a sending domain or email.
-3. Update `FROM_EMAIL`, `TO_EMAIL`, or `PHOTOGRAPHY_TO_EMAIL` in `wrangler.toml` if the verified sender or recipients change.
+3. Update `FROM_EMAIL`, `TO_EMAIL`, `PHOTOGRAPHY_TO_EMAIL`, or `REAL_LIFE_COURT_TO_EMAIL` in `wrangler.toml` if the verified sender or recipients change.
 4. Install dependencies:
 
    ```bash
