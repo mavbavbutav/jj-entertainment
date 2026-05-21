@@ -4,7 +4,7 @@ This Cloudflare Worker receives JJ Entertainment static-site forms and sends the
 
 ## Setup
 
-1. Create or log in to a Cloudflare account for `jjentertainmentsolutions.com`.
+1. Create or log in to a Cloudflare account for `jjecreative.com`.
 2. Create a Resend account and verify a sending domain or email.
 3. Update `FROM_EMAIL`, `TO_EMAIL`, or `PHOTOGRAPHY_TO_EMAIL` in `wrangler.toml` if the verified sender or recipients change.
 4. Install dependencies:
@@ -26,7 +26,7 @@ This Cloudflare Worker receives JJ Entertainment static-site forms and sends the
    npx wrangler deploy
    ```
 
-The current `wrangler.toml` deploys the Worker to a `workers.dev` URL because `jjentertainmentsolutions.com` is not currently available as a Cloudflare zone.
+The current `wrangler.toml` deploys the Worker to a `workers.dev` URL. `jjecreative.com` and `www.jjecreative.com` are included in `ALLOWED_ORIGINS` so the standalone Cloudflare Pages site can submit the Founding Five form.
 
 After `npx wrangler deploy`, Wrangler will print a URL like:
 
@@ -36,10 +36,10 @@ https://jje-founding-five-form.johnmartinferguson.workers.dev
 
 Use that URL as the form endpoint until the domain is added to Cloudflare.
 
-When `jjentertainmentsolutions.com` is managed by Cloudflare, you can switch back to a production route:
+When the form endpoint is ready to move behind a branded Cloudflare route, switch the site form action from the `workers.dev` URL to a production route:
 
 ```text
-https://jjentertainmentsolutions.com/api/founding-five
+https://jjecreative.com/api/founding-five
 ```
 
-The main website can stay on GitHub Pages. Cloudflare will only intercept this `/api/founding-five` route for form submissions once the domain is active in Cloudflare.
+The main JJ Entertainment website can stay on GitHub Pages. Cloudflare can handle the branded form route through the `jjecreative.com` zone when you are ready.
