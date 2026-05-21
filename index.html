@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=chat-menu-mobile-fix" />
+  <link rel="stylesheet" href="/styles.css?v=home-polish-fifth-pass" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -67,6 +67,13 @@
 
   <header class="site-header">
     <div class="container nav">
+      <a class="nav-logo" href="/" aria-label="JJ Entertainment Solutions home">
+        <img src="/assets/brand/jj-entertainment-site-header-transparent.png?v=jami-new-transparent"
+             alt=""
+             width="1878"
+             height="748"
+             decoding="async" />
+      </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#coverage">Coverage</a>
@@ -94,6 +101,12 @@
             <a class="btn btn-primary" href="#services">Our Services</a>
             <a class="btn btn-ghost" href="#contact">Start a Project</a>
           </div>
+          <div class="hero-service-strip" aria-label="Studio services">
+            <span>Photography</span>
+            <span>Floral Design</span>
+            <span>Aerial</span>
+            <span>Web &amp; AI</span>
+          </div>
         </div>
       </div>
     </section>
@@ -107,7 +120,7 @@
         </div>
 
         <div class="ventures-grid">
-          <a class="venture-card" href="/ai/">
+          <a class="venture-card venture-card-digital" href="/ai/">
             <div class="venture-card-media">
               <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
                    alt="Clean minimalist workspace representing the digital studio"
@@ -121,7 +134,7 @@
             </div>
           </a>
 
-          <a class="venture-card" href="/photography/">
+          <a class="venture-card venture-card-photo" href="/photography/">
             <div class="venture-card-media">
               <img src="/photography/assets/love/02-image.webp"
                    alt="Editorial wedding photograph by Jami Ferguson Photography"
@@ -135,7 +148,7 @@
             </div>
           </a>
 
-          <a class="venture-card" href="https://www.williamsonwallflowers.com/" target="_blank" rel="noopener">
+          <a class="venture-card venture-card-floral" href="https://www.williamsonwallflowers.com/" target="_blank" rel="noopener">
             <span class="external-tag">External</span>
             <div class="venture-card-media venture-card-collage" aria-label="Williamson Wallflowers flower walls: The Timeless Bloom, The Love Language, Wild Bloom, and The Secret Garden">
               <img src="/assets/williamson-wallflowers/timeless-bloom-alt.jpg"
@@ -159,7 +172,7 @@
             </div>
           </a>
 
-          <a class="venture-card" href="/drone/">
+          <a class="venture-card venture-card-aerial" href="/drone/">
             <div class="venture-card-media">
               <img src="/drone/469518686_122134821566393589_3481226767245238969_n.jpg"
                    alt="Aerial still captured by Ferguson Aerial Visions"
@@ -178,20 +191,22 @@
 
     <section id="coverage" class="section alt">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Coverage</p>
-          <h2>Proudly serving Middle Tennessee.</h2>
-          <p class="lead">Based in the Nashville area, we work with clients across the greater Middle Tennessee region &mdash; and travel for destination projects on request.</p>
-        </div>
-        <div class="social-row" style="margin-top: 0;">
-          <span class="badge">Nashville</span>
-          <span class="badge">Franklin</span>
-          <span class="badge">Brentwood</span>
-          <span class="badge">Nolensville</span>
-          <span class="badge">Spring Hill</span>
-          <span class="badge">Thompson&rsquo;s Station</span>
-          <span class="badge">Williamson County</span>
-          <span class="badge">Greater Middle TN</span>
+        <div class="coverage-panel">
+          <div>
+            <p class="eyebrow">Coverage</p>
+            <h2>Proudly serving Middle Tennessee.</h2>
+            <p class="lead">Based in the Nashville area, we work with clients across the greater Middle Tennessee region &mdash; and travel for destination projects on request.</p>
+          </div>
+          <div class="coverage-list" aria-label="Service areas">
+            <span class="badge">Nashville</span>
+            <span class="badge">Franklin</span>
+            <span class="badge">Brentwood</span>
+            <span class="badge">Nolensville</span>
+            <span class="badge">Spring Hill</span>
+            <span class="badge">Thompson&rsquo;s Station</span>
+            <span class="badge">Williamson County</span>
+            <span class="badge">Greater Middle TN</span>
+          </div>
         </div>
       </div>
     </section>
@@ -310,11 +325,99 @@
     const chatTrigger = document.querySelector('.chat-trigger');
     const chatOptions = document.querySelector('#chat-options');
     const chatMessageLink = document.querySelector('.chat-message-link');
+    const siteHeader = document.querySelector('.site-header');
+    const logoBanner = document.querySelector('.logo-banner');
+    const primaryNavLinks = Array.from(document.querySelectorAll('.nav-links > a[href^="#"]'));
+    const primaryNavSections = primaryNavLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
     const inquiryForm = document.querySelector('#general-inquiry-form');
     const inquiryStatus = document.querySelector('#general-inquiry-status');
     const inquiryConfirmation = document.querySelector('#general-inquiry-confirmation');
     const inquiryConfirmationCloseControls = document.querySelectorAll('[data-inquiry-confirmation-close]');
     let lastFocusedElement = null;
+
+    if (siteHeader) {
+      const syncHeaderLogo = () => {
+        const threshold = logoBanner ? Math.max(96, logoBanner.offsetHeight * 0.68) : 96;
+        siteHeader.classList.toggle('is-condensed', window.scrollY > threshold);
+      };
+
+      syncHeaderLogo();
+      window.addEventListener('scroll', syncHeaderLogo, { passive: true });
+      window.addEventListener('resize', syncHeaderLogo);
+    }
+
+    if (primaryNavLinks.length && primaryNavSections.length) {
+      let activeNavFrame = null;
+
+      const setActiveNavLink = (activeSectionId) => {
+        primaryNavLinks.forEach((link) => {
+          const isActive = link.getAttribute('href') === `#${activeSectionId}`;
+          link.classList.toggle('is-active', isActive);
+
+          if (isActive) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const syncActiveNav = () => {
+        const headerOffset = (siteHeader?.offsetHeight || 0) + 110;
+        let activeSectionId = "";
+
+        primaryNavSections.forEach((section) => {
+          if (section.getBoundingClientRect().top <= headerOffset) {
+            activeSectionId = section.id;
+          }
+        });
+
+        setActiveNavLink(activeSectionId);
+
+        activeNavFrame = null;
+      };
+
+      const requestActiveNavSync = () => {
+        if (!activeNavFrame) {
+          activeNavFrame = window.requestAnimationFrame(syncActiveNav);
+        }
+      };
+
+      const syncHashNavTarget = () => {
+        const targetSection = primaryNavSections.find((section) => `#${section.id}` === window.location.hash);
+
+        if (!targetSection) return false;
+
+        setActiveNavLink(targetSection.id);
+        window.requestAnimationFrame(() => {
+          targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+        });
+        return true;
+      };
+
+      primaryNavLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const targetHash = link.getAttribute('href');
+          const targetSection = targetHash ? document.querySelector(targetHash) : null;
+
+          if (!targetSection) return;
+
+          event.preventDefault();
+          targetSection.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+          });
+          window.history.pushState(null, '', targetHash);
+          setActiveNavLink(targetSection.id);
+        });
+      });
+
+      if (!syncHashNavTarget()) syncActiveNav();
+      window.addEventListener('scroll', requestActiveNavSync, { passive: true });
+      window.addEventListener('resize', requestActiveNavSync);
+    }
 
     if (chatMenu && chatTrigger) {
       const mobileSmsHref = 'sms:+16155164341?&body=Hi%20Jami%2C%20I%27d%20love%20to%20chat%20with%20JJ%20Entertainment%20Solutions%20about%20a%20project.';
