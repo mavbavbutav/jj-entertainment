@@ -1,0 +1,19 @@
+name = "event-time-machine-api"
+main = "src/index.js"
+compatibility_date = "2026-05-28"
+workers_dev = true
+
+[vars]
+SITE_BASE_URL = "https://jjecreative.com/event-time-machine/"
+ALLOWED_ORIGINS = "https://jjecreative.com,https://www.jjecreative.com,http://localhost:4173,http://127.0.0.1:4173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:8787,http://127.0.0.1:8787"
+MAX_UPLOAD_BYTES = "26214400"
+
+[[d1_databases]]
+binding = "EVENT_DB"
+database_name = "event-time-machine"
+database_id = "65acb8cb-7198-4ef6-aaf2-c2211ecfd856"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "MEMORY_BUCKET"
+bucket_name = "event-time-machine-uploads"

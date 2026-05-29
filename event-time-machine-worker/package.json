@@ -1,0 +1,15 @@
+{
+  "name": "event-time-machine-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "dev:remote": "wrangler dev --remote",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply event-time-machine --remote",
+    "db:migrate:local": "wrangler d1 migrations apply event-time-machine --local"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
