@@ -57,7 +57,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=drone-video-bg-2" />
+  <link rel="stylesheet" href="/styles.css?v=drone-video-bg-3" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -79,7 +79,7 @@
 
   <main id="main">
     <section class="hero hero-bg hero-video-bg">
-      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-hero-video>
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-autoplay-video>
         <source src="/drone/ferguson-aerial-visions-bg.mp4?v=1" type="video/mp4" />
       </video>
       <div class="container">
@@ -120,9 +120,9 @@
           </div>
         </div>
         <div class="about-media" style="margin-top: 2rem; aspect-ratio: 16 / 9;">
-          <img src="/drone/469518686_122134821566393589_3481226767245238969_n.jpg"
-               alt="Featured aerial still captured by Ferguson Aerial Visions"
-               loading="lazy" />
+          <video class="about-media-video" autoplay muted loop playsinline preload="metadata" aria-label="Aerial video captured by Ferguson Aerial Visions" data-autoplay-video>
+            <source src="/drone/ferguson-aerial-visions-bg.mp4?v=1" type="video/mp4" />
+          </video>
         </div>
       </div>
     </section>
@@ -161,22 +161,24 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const heroVideo = document.querySelector('[data-hero-video]');
+    const autoplayVideos = document.querySelectorAll('[data-autoplay-video]');
 
-    if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const startHeroVideo = () => {
-        heroVideo.muted = true;
-        heroVideo.play().catch(() => {});
+    if (autoplayVideos.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const startAutoplayVideos = () => {
+        autoplayVideos.forEach((video) => {
+          video.muted = true;
+          video.play().catch(() => {});
+        });
       };
 
-      window.addEventListener('load', startHeroVideo, { once: true });
-      window.addEventListener('pageshow', startHeroVideo);
+      window.addEventListener('load', startAutoplayVideos, { once: true });
+      window.addEventListener('pageshow', startAutoplayVideos);
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) startHeroVideo();
+        if (!document.hidden) startAutoplayVideos();
       });
-      document.addEventListener('pointerdown', startHeroVideo, { once: true, passive: true });
-      document.addEventListener('touchstart', startHeroVideo, { once: true, passive: true });
-      document.addEventListener('keydown', startHeroVideo, { once: true });
+      document.addEventListener('pointerdown', startAutoplayVideos, { once: true, passive: true });
+      document.addEventListener('touchstart', startAutoplayVideos, { once: true, passive: true });
+      document.addEventListener('keydown', startAutoplayVideos, { once: true });
     }
   </script>
   <!-- Cloudflare Web Analytics -->

@@ -858,7 +858,9 @@ h3 {
   border: 1px solid rgba(221, 212, 202, 0.84);
 }
 
-.about-media img {
+.about-media img,
+.about-media video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
