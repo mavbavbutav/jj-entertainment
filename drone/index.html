@@ -57,7 +57,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=brand-subsidiary" />
+  <link rel="stylesheet" href="/styles.css?v=drone-video-bg-2" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -78,9 +78,9 @@
   </header>
 
   <main id="main">
-    <section class="hero hero-bg hero-video-bg" style="--hero-image: url('/drone/469518686_122134821566393589_3481226767245238969_n.jpg');">
-      <video class="hero-bg-video" autoplay muted loop playsinline preload="none" poster="/drone/469518686_122134821566393589_3481226767245238969_n.jpg" aria-hidden="true">
-        <source src="https://media.githubusercontent.com/media/mavbavbutav/jj-entertainment/5efc663b1f6775e553243e0bec5872f020ba99f2/drone/DJI_0001_3.mp4" type="video/mp4" />
+    <section class="hero hero-bg hero-video-bg">
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-hero-video>
+        <source src="/drone/ferguson-aerial-visions-bg.mp4?v=1" type="video/mp4" />
       </video>
       <div class="container">
         <p class="eyebrow">Aerial Cinematography Studio &middot; JJ Entertainment Solutions</p>
@@ -160,6 +160,24 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const heroVideo = document.querySelector('[data-hero-video]');
+
+    if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const startHeroVideo = () => {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+      };
+
+      window.addEventListener('load', startHeroVideo, { once: true });
+      window.addEventListener('pageshow', startHeroVideo);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) startHeroVideo();
+      });
+      document.addEventListener('pointerdown', startHeroVideo, { once: true, passive: true });
+      document.addEventListener('touchstart', startHeroVideo, { once: true, passive: true });
+      document.addEventListener('keydown', startHeroVideo, { once: true });
+    }
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"d203045decf2464c9193a30e3dcbe26e"}'></script>
