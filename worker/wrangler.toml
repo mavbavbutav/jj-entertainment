@@ -7,4 +7,4 @@ workers_dev = true
 TO_EMAIL = "contact@jjentertainmentsolutions.com"
 PHOTOGRAPHY_TO_EMAIL = "jamicarswell@gmail.com"
 FROM_EMAIL = "JJ Entertainment Solutions <noreply@jjentertainmentsolutions.com>"
-ALLOWED_ORIGINS = "https://jjentertainmentsolutions.com,https://www.jjentertainmentsolutions.com,https://www.jamifergusonphotography.com,https://jamifergusonphotography.com,http://localhost:5173,http://localhost:4173,http://127.0.0.1:4173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:8081,http://127.0.0.1:8081"
+ALLOWED_ORIGINS = "https://jjecreative.com,https://www.jjecreative.com,https://jjentertainmentsolutions.com,https://www.jjentertainmentsolutions.com,https://www.jamifergusonphotography.com,https://jamifergusonphotography.com,http://localhost:5173,http://localhost:4173,http://127.0.0.1:4173,http://localhost:8080,http://127.0.0.1:8080,http://localhost:8081,http://127.0.0.1:8081"

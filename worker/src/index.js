@@ -64,6 +64,23 @@ const PHOTOGRAPHY_INQUIRY_REQUIRED_FIELDS = [
   'Message'
 ];
 
+const DEFAULT_RATE_LIMIT_SALT = 'jj-entertainment-form-rate-limit-v1';
+const FORM_RATE_LIMITS = {
+  ip: {
+    scope: 'form_submission_ip',
+    limit: 5,
+    windowSeconds: 60 * 60,
+    message: 'Too many form submissions. Please wait before trying again.'
+  },
+  email: {
+    scope: 'form_submission_email',
+    limit: 3,
+    windowSeconds: 24 * 60 * 60,
+    message: 'This email has reached the daily form submission limit.'
+  }
+};
+const memoryRateLimitHits = new Map();
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
@@ -94,6 +111,24 @@ export default {
         return json({ ok: false, message: validationError }, 400, corsHeaders);
       }
 
+      const ipRateLimit = await enforceRateLimit(request, env, FORM_RATE_LIMITS.ip);
+      if (!ipRateLimit.ok) {
+        return json(
+          { ok: false, message: ipRateLimit.message, retryAfterSeconds: ipRateLimit.retryAfter },
+          429,
+          { ...corsHeaders, ...buildRateLimitHeaders(ipRateLimit) }
+        );
+      }
+
+      const emailRateLimit = await enforceRateLimit(request, env, FORM_RATE_LIMITS.email, submission.Email, 'email');
+      if (!emailRateLimit.ok) {
+        return json(
+          { ok: false, message: emailRateLimit.message, retryAfterSeconds: emailRateLimit.retryAfter },
+          429,
+          { ...corsHeaders, ...buildRateLimitHeaders(emailRateLimit) }
+        );
+      }
+
       const emailResult = await sendInternalNotification(submission, env);
 
       if (emailResult.error) {
@@ -115,6 +150,75 @@ export default {
   }
 };
 
+async function enforceRateLimit(request, env, rule, identifier = '', identifierType = 'ip') {
+  const limit = Math.max(1, Number(rule.limit || 1));
+  const windowSeconds = Math.max(1, Number(rule.windowSeconds || 60));
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  const windowStart = Math.floor(nowSeconds / windowSeconds) * windowSeconds;
+  const resetAt = windowStart + windowSeconds;
+  const retryAfter = Math.max(1, resetAt - nowSeconds);
+  const baseKey = await buildRateLimitKey(request, env, rule.scope, identifier, identifierType);
+  const key = `${baseKey}:${windowStart}`;
+  const count = env.RATE_LIMIT_KV
+    ? await incrementKvRateLimit(env.RATE_LIMIT_KV, key, retryAfter)
+    : incrementMemoryRateLimit(key, windowStart, windowSeconds);
+
+  return {
+    ok: count <= limit,
+    status: count <= limit ? 200 : 429,
+    limit,
+    remaining: Math.max(0, limit - count),
+    retryAfter,
+    resetAt,
+    message: rule.message
+  };
+}
+
+async function incrementKvRateLimit(kv, key, retryAfter) {
+  const current = await kv.get(key, 'json').catch(() => null);
+  const count = Math.max(0, Number(current?.count || 0)) + 1;
+  await kv.put(key, JSON.stringify({ count }), { expirationTtl: retryAfter + 60 });
+  return count;
+}
+
+function incrementMemoryRateLimit(key, windowStart, windowSeconds) {
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  for (const [existingKey, value] of memoryRateLimitHits.entries()) {
+    if (value.expiresAt <= nowSeconds) memoryRateLimitHits.delete(existingKey);
+  }
+
+  const current = memoryRateLimitHits.get(key);
+  const count = current ? current.count + 1 : 1;
+  memoryRateLimitHits.set(key, {
+    count,
+    expiresAt: windowStart + windowSeconds + 60
+  });
+  return count;
+}
+
+async function buildRateLimitKey(request, env, scope, identifier = '', identifierType = 'ip') {
+  const rawIdentifier = String(identifier || '').trim()
+    || request.headers.get('CF-Connecting-IP')
+    || request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim()
+    || 'anonymous';
+  const normalized = identifierType === 'email' ? rawIdentifier.toLowerCase() : rawIdentifier;
+  const salt = env.RATE_LIMIT_SALT || DEFAULT_RATE_LIMIT_SALT;
+  const digest = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(`${salt}:${scope}:${identifierType}:${normalized}`)
+  );
+  return `rate:${scope}:${hexEncode(new Uint8Array(digest))}`;
+}
+
+function buildRateLimitHeaders(result) {
+  return {
+    'Retry-After': String(result.retryAfter),
+    'X-RateLimit-Limit': String(result.limit),
+    'X-RateLimit-Remaining': String(result.remaining),
+    'X-RateLimit-Reset': String(result.resetAt)
+  };
+}
+
 function getAllowedOrigins(env) {
   return (env.ALLOWED_ORIGINS || '')
     .split(',')
@@ -124,7 +228,7 @@ function getAllowedOrigins(env) {
 
 function isAllowedOrigin(origin, env) {
   if (!origin) {
-    return true;
+    return env.ALLOW_MISSING_ORIGIN === 'true';
   }
 
   return getAllowedOrigins(env).includes(origin);
@@ -391,6 +495,10 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function hexEncode(bytes) {
+  return Array.from(bytes).map((byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
 function json(payload, status, headers) {
